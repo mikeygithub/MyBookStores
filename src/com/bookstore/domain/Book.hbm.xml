@@ -3,17 +3,16 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="com.bookstore.domain.Book">
-		<id name="bId" length="10">
+		<id name="bId" length="50">
 			<generator class="increment"></generator>
 		</id>
-		<property name="bAuthor" length="10"></property>
-		<property name="bName" length="20"></property>
+		<property name="bAuthor" length="50"></property>
+		<property name="bName" length="50"></property>
 		<property name="bDescription" length="100"></property>
-		<property name="bImage" length="30"></property>
+		<property name="bImage" length="50"></property>
 		<property name="bPress" type="java.lang.Double" length="10"></property>
 		<property name="bPrice" type="java.lang.Double" length="10"></property>
 		<property name="bNumber" type="java.lang.Integer" length="10"></property>
-		<many-to-one name="bookType" column="typeId" class="com.bookstore.type.BookType" cascade="save-update"></many-to-one>
+		<many-to-one name="bookType" column="typeId" class="com.bookstore.domain.BookType" cascade="save-update"></many-to-one>
 	</class>
-
 </hibernate-mapping>

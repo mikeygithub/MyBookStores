@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bookstore.domain.User">
+		<id name="uId" type="java.lang.Long" length="10">
+			<generator class="increment"></generator>
+		</id>
+		<property name="uName" unique="true"></property>
+		<property name="uPw"></property>
+		<property name="sex"></property>
+		<property name="state" ></property>
+		<property name="uPhone" unique="true"></property>
+		<property name="uDentityCode" unique="true"></property>
+		<property name="uTrueName"></property>
+		<property name="uAddress"></property>
+		<property name="uEmail" length="50" unique="true"></property>
+		<list name="orders" cascade="save-update,delete">
+			<key>
+				<column name="uId"></column>
+			</key>
+			<list-index>
+				<column name="index_o"></column>
+			</list-index>
+			<one-to-many class="com.bookstore.domain.Orders"/>
+		</list>
+	</class>
+</hibernate-mapping>
