@@ -21,8 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<script type="text/javascript" src="../js/jquery-1.4.2.js"></script>
+
 <!--<script type="text/javascript" src="../js/user.js" charset="UTF-8"></script>-->
+ <script src="js/jquery-1.4.2.js" type="text/javascript"></script>
   </head>
   
   <body>
@@ -55,57 +56,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</table>
 			</form>
 <script type="text/javascript">
+$().ready(function(){
+	
+})
 function CheckItem(obj)
 {
-	//alert("进入检查方法")
-	obj.parentNode.parentNode.className = "";
 	var msgBox = obj.parentNode.getElementsByTagName("span")[0];
 	var re = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
 	switch(obj.name) {
 		case "userName":
 			if(obj.value == "") {
 				msgBox.innerHTML = "用户名不能为空";
-				msgBox.className = "error";
 				return false;
 			}
 			break;
 		case "email":
 			if(obj.value == "") {
 				msgBox.innerHTML = "邮箱不能为空";
-				msgBox.className = "error";
 				return false;
 			}else if(!re.test(obj.value)){
 				msgBox.innerHTML = "邮箱格式错误";
-				msgBox.className = "error";
 				return false;
-			}else{//执行异步交互判断邮箱是否已经注册
-			alert("异步交互1");
-			alert($("#passWord").val());
-				
+			}else{
+				checkEmail();//执行异步交互判断邮箱是否已经注册
 			}
 			break;
 		case "passWord":
 			if(obj.value == "") {
-				msgBox.innerHTML = "密码不能为空";
-				msgBox.className = "error";
+				msgBox.innerHTML = "密码不能为空";				
 				return false;
 			}
 			break;
 		case "rePassWord":
 			if(obj.value == "") {
 				msgBox.innerHTML = "确认密码不能为空";
-				msgBox.className = "error";
 				return false;
 			} else if(obj.value != document.getElementById("passWord").value) {
 				msgBox.innerHTML = "两次输入的密码不相同";
-				msgBox.className = "error";
 				return false;
 			}
 			break;
 		case "veryCode":
 			if(obj.value == "") {
 				msgBox.innerHTML = "验证码不能为空";
-				msgBox.className = "error";
 				return false;
 			}
 			break;
@@ -128,7 +121,11 @@ function FocusItem(obj)
 	obj.parentNode.parentNode.className = "current";
 	var msgBox = obj.parentNode.getElementsByTagName("span")[0];
 	msgBox.innerHTML = "";
-	msgBox.className = "";
+}
+function checkEmail(){//判断邮箱是否已经注册
+	
+	$("#email").css("background","yellow");
+	
 }
 </script>
   </body>
