@@ -57,4 +57,17 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		}
 	}
 
+	public Boolean findUserReeEmail(String email) {
+		// TODO Auto-generated method stub
+		String sql="from User where uEmail=?";
+		try {
+			List<User> list=this.getSession().createQuery(sql).setString(0,email).list();
+			return list.isEmpty();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

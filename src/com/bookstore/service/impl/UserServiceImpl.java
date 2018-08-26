@@ -45,4 +45,9 @@ public class UserServiceImpl implements UserService {
 		return this.userDao.findUserByUsm(usm);
 	}
 
+	public Boolean findUserReeEmail(String email) {
+		// TODO Auto-generated method stub
+		return this.userDao.findUserReeEmail(email);
+	}
+
 }

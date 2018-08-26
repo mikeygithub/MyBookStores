@@ -9,4 +9,7 @@
 			<result name="Register">WEB-INF/jsp/Register.jsp</result>
 		</action>
 	</package>
+	<package name="reemail" namespace="/" extends="struts-default">
+		<action name="LoginAction_*" method="{1}" class="com.bookstore.action.LoginAction"></action>
+	</package>
 </struts>

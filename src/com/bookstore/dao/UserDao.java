@@ -11,5 +11,6 @@ public interface UserDao {
 	public User login(User user);//登入
 	public User findUserById(Serializable id);//查找
 	public Boolean findUserByUsm(String usm);//用户名查找，用于异步交互
+	public Boolean findUserReeEmail(String email);//检测邮箱是否已经注册
 
 }
