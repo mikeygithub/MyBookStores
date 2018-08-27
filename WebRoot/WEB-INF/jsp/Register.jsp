@@ -145,8 +145,7 @@ function FocusItem(obj)
 function regnewuser(){
 
 	$("input[type=submit]").attr('disabled',true)
-	if(checkForm(this)){
-	alert("new user method");
+	if(checkForm()){
 	var json={
 		username:$("#username").val(),
 		password:$("#password").val(),

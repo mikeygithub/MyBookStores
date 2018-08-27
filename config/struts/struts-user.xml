@@ -8,6 +8,7 @@
 		<action name="UserAction_*" method="{1}" class="com.bookstore.action.UserAction">
 			<result name="Register">WEB-INF/jsp/Register.jsp</result>
 			<!-- <result name="confirmRegister"></result> -->
+			<result name="loginUI">WEB-INF/jsp/login.jsp</result>
 		</action>
 	</package>
 </struts>

@@ -71,14 +71,20 @@ public class UserAction extends ActionSupport {
 	}
 	
 	public String confirmRegister(){//确认注册
-		//this.userService.saveUser(this.user);
-		System.out.println("user message:"+email+username+password);
-		return "";
-	}
-	public String login(){//登入
-		
+		User user=new User();
+		user.setuName(username);
+		user.setuPw(password);
+		user.setuEmail(email);
+		this.userService.saveUser(user);
 		return null;
 	}
-	
+	public String loginUI(){//登入界面
+		
+		return "loginUI";
+	}
+	public String sureLogin(){//登入
+		
+		return "loginUI";
+	}
 
 }
