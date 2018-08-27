@@ -18,10 +18,10 @@ public class TestSessionFactory  extends SpringUtils{
 		Session session= sessionFactory.openSession();
 		Transaction transaction=session.beginTransaction();
 		Book b=new Book();
-		b.setbName("absdfsdfl");
+		b.setBname("absdfsdfl");
 		BookType bt=new BookType();
-		bt.setTypeName("阿姆斯特朗炮");
-		b.setBookType(bt);
+		bt.setTypename("阿姆斯特朗炮");
+		b.setBooktype(bt);
 		session.save(b);
 		transaction.commit();
 		

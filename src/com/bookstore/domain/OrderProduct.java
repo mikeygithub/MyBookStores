@@ -4,34 +4,36 @@ import java.io.Serializable;
 
 public class OrderProduct implements Serializable {
 
-	private Long opId;// id
-	private int opNum;// 数量
-	private Orders opOrder;// 订单
-	private Book opBook;// 商品
-	public Long getOpId() {
-		return opId;
+	private Long opid;// id
+	private int opnum;// 数量
+	private Orders oporder;// 订单
+	private Book opbook;// 商品
+	
+	public Long getOpid() {
+		return opid;
 	}
-	public void setOpId(Long opId) {
-		this.opId = opId;
+	public void setOpid(Long opid) {
+		this.opid = opid;
 	}
-	public int getOpNum() {
-		return opNum;
+	public int getOpnum() {
+		return opnum;
 	}
-	public void setOpNum(int opNum) {
-		this.opNum = opNum;
+	public void setOpnum(int opnum) {
+		this.opnum = opnum;
 	}
-	public Orders getOpOrder() {
-		return opOrder;
+	public Orders getOporder() {
+		return oporder;
 	}
-	public void setOpOrder(Orders opOrder) {
-		this.opOrder = opOrder;
+	public void setOporder(Orders oporder) {
+		this.oporder = oporder;
 	}
-	public Book getOpBook() {
-		return opBook;
+	public Book getOpbook() {
+		return opbook;
 	}
-	public void setOpBook(Book opBook) {
-		this.opBook = opBook;
+	public void setOpbook(Book opbook) {
+		this.opbook = opbook;
 	}
+	
 
 	
 

@@ -4,32 +4,28 @@ import java.util.Set;
 
 public class BookType {
 
-	private Integer typeId;
-	private String typeName;
-	private Set<Book> allBook;
-
-	public Integer getTypeId() {
-		return typeId;
+	private Integer typeid;
+	private String typename;
+	private Set<Book> allbook;
+	public Integer getTypeid() {
+		return typeid;
+	}
+	public void setTypeid(Integer typeid) {
+		this.typeid = typeid;
+	}
+	public String getTypename() {
+		return typename;
+	}
+	public void setTypename(String typename) {
+		this.typename = typename;
+	}
+	public Set<Book> getAllbook() {
+		return allbook;
+	}
+	public void setAllbook(Set<Book> allbook) {
+		this.allbook = allbook;
 	}
 
-	public void setTypeId(Integer typeId) {
-		this.typeId = typeId;
-	}
-
-	public String getTypeName() {
-		return typeName;
-	}
-
-	public void setTypeName(String typeName) {
-		this.typeName = typeName;
-	}
-
-	public Set<Book> getAllBook() {
-		return allBook;
-	}
-
-	public void setAllBook(Set<Book> allBook) {
-		this.allBook = allBook;
-	}
+	
 
 }

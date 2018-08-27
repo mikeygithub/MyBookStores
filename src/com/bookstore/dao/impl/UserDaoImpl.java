@@ -34,9 +34,9 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	public User login(User user) {//用户邮箱登入
 		// TODO Auto-generated method stub
-		String sql="from User where uEmail=? AND uPw=?";
+		String sql="from User where uemail=? AND upw=?";
 		try {
-			List<User> list=this.getSession().createQuery(sql).setString(0, user.getuEmail()).setString(1, user.getuPw()).list();
+			List<User> list=this.getSession().createQuery(sql).setString(0, user.getUemail()).setString(1, user.getUpw()).list();
 			return list.get(0);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -46,7 +46,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	public Boolean findUserByUsm(String usm) {//通过用户名查找
 		// TODO Auto-generated method stub
-		String sql="from User where uName=?";
+		String sql="from User where uname=?";
 		try {
 			List<User> list=this.getSession().createQuery(sql).setString(0, usm).list();
 			return list.isEmpty();
@@ -59,7 +59,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
 	public Boolean findUserReeEmail(String email) {
 		// TODO Auto-generated method stub
-		String sql="from User where uEmail=?";
+		String sql="from User where uemail=?";
 		try {
 			List<User> list=this.getSession().createQuery(sql).setString(0,email).list();
 			return list.isEmpty();

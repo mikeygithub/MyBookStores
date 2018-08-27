@@ -8,14 +8,14 @@ public class User implements Serializable {
 	private static final int USER_OLEARDY_STATE=1;//已进激活状态
 	
 	private int state;
-	private Long uId;
-	private String uName;
-	private String uTrueName;
-	private String uPw;
-	private String uEmail;
-	private String uPhone;
-	private String uDentityCode;
-	private String uAddress;
+	private Long uid;
+	private String uname;
+	private String utruename;
+	private String upw;
+	private String uemail;
+	private String uphone;
+	private String udentitycode;
+	private String uaddress;
 	private String sex;
 	private List<Orders> orders;
 	
@@ -32,53 +32,55 @@ public class User implements Serializable {
 	public void setState(int state) {
 		this.state = state;
 	}
-	public Long getuId() {
-		return uId;
+	
+	public Long getUid() {
+		return uid;
 	}
-	public void setuId(Long uId) {
-		this.uId = uId;
+	public void setUid(Long uid) {
+		this.uid = uid;
 	}
-	public String getuName() {
-		return uName;
+	public String getUname() {
+		return uname;
 	}
-	public void setuName(String uName) {
-		this.uName = uName;
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
-	public String getuTrueName() {
-		return uTrueName;
+	public String getUtruename() {
+		return utruename;
 	}
-	public void setuTrueName(String uTrueName) {
-		this.uTrueName = uTrueName;
+	public void setUtruename(String utruename) {
+		this.utruename = utruename;
 	}
-	public String getuPw() {
-		return uPw;
+	public String getUpw() {
+		return upw;
 	}
-	public void setuPw(String uPw) {
-		this.uPw = uPw;
+	public void setUpw(String upw) {
+		this.upw = upw;
 	}
-	public String getuEmail() {
-		return uEmail;
+	public String getUemail() {
+		return uemail;
 	}
-	public void setuEmail(String uEmail) {
-		this.uEmail = uEmail;
+	public void setUemail(String uemail) {
+		this.uemail = uemail;
 	}
-	public String getuPhone() {
-		return uPhone;
+	public String getUphone() {
+		return uphone;
 	}
-	public void setuPhone(String uPhone) {
-		this.uPhone = uPhone;
+	public void setUphone(String uphone) {
+		this.uphone = uphone;
 	}
-	public String getuDentityCode() {
-		return uDentityCode;
+	
+	public String getUdentitycode() {
+		return udentitycode;
 	}
-	public void setuDentityCode(String uDentityCode) {
-		this.uDentityCode = uDentityCode;
+	public void setUdentitycode(String udentitycode) {
+		this.udentitycode = udentitycode;
 	}
-	public String getuAddress() {
-		return uAddress;
+	public String getUaddress() {
+		return uaddress;
 	}
-	public void setuAddress(String uAddress) {
-		this.uAddress = uAddress;
+	public void setUaddress(String uaddress) {
+		this.uaddress = uaddress;
 	}
 	public String getSex() {
 		return sex;

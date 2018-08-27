@@ -3,13 +3,13 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="com.bookstore.domain.BookType">
-		<id name="typeId" length="50">
+		<id name="typeid" length="50">
 			<generator class="increment"></generator>
 		</id>
-		<property name="typeName" length="50" not-null="true"></property>
-		<set name="allBook" cascade="all">
+		<property name="typename" length="50" not-null="true"></property>
+		<set name="allbook" cascade="all">
 			<key>
-				<column name="typeId"></column>
+				<column name="typeid"></column>
 			</key>
 			<one-to-many class="com.bookstore.domain.Book"/>
 		</set>

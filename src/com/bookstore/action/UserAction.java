@@ -11,57 +11,34 @@ import com.bookstore.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class UserAction extends ActionSupport {
+public class UserAction extends ActionSupport implements ModelDriven<User> {
 
-	private String email;
-	private String username;
-	private String password;
-	private User user=new User();
+	
+	private User model=new User();
+	
 	private UserService userService;
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 
-	public String getUsername() {
-		return username;
+	public User getModel() {
+		// TODO Auto-generated method stub
+		return this.model;
 	}
+	
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setModel(User model) {
+		this.model = model;
 	}
 
 	public void CheckuEmail() throws IOException {//邮箱是否已经注册
 		// TODO Auto-generated method stub
-		System.out.println("uEmail===="+this.email);
+		System.out.println("uEmail===="+model.getUemail());
 		
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setCharacterEncoding("UTF-8");
-		if(!userService.findUserReeEmail(email))
+		if(!userService.findUserReeEmail(model.getUemail()))
 				response.getWriter().write("false");
 			
 	}
@@ -71,11 +48,8 @@ public class UserAction extends ActionSupport {
 	}
 	
 	public String confirmRegister(){//确认注册
-		User user=new User();
-		user.setuName(username);
-		user.setuPw(password);
-		user.setuEmail(email);
-		this.userService.saveUser(user);
+		
+		this.userService.saveUser(model);
 		return null;
 	}
 	public String loginUI(){//登入界面
@@ -83,8 +57,11 @@ public class UserAction extends ActionSupport {
 		return "loginUI";
 	}
 	public String sureLogin(){//登入
-		
+		System.out.println("login user message"+model.getUemail());
 		return "loginUI";
 	}
+
+
+	
 
 }

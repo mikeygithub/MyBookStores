@@ -3,68 +3,69 @@ package com.bookstore.domain;
 import java.io.Serializable;
 
 public class Book  implements Serializable {
-	private Long bId;//编号
-	private String bName;//书名
-	private String bAuthor;//作者
-	private double bPrice;//原价
-	private double bPress;//折扣
-	private Integer bNumber;//存货
-	private String bDescription;//简介
-	private String bImage;//封面
-	private BookType bookType;//类型
-	public BookType getBookType() {
-		return bookType;
+	private Long bid;//编号
+	private String bname;//书名
+	private String bauthor;//作者
+	private double bprice;//原价
+	private double bpress;//折扣
+	private Integer bnumber;//存货
+	private String bdescription;//简介
+	private String bimage;//封面
+	private BookType booktype;//类型
+	public Long getBid() {
+		return bid;
 	}
-	public void setBookType(BookType bookType) {
-		this.bookType = bookType;
+	public void setBid(Long bid) {
+		this.bid = bid;
 	}
-	public Long getbId() {
-		return bId;
+	public String getBname() {
+		return bname;
 	}
-	public void setbId(Long bId) {
-		this.bId = bId;
+	public void setBname(String bname) {
+		this.bname = bname;
 	}
-	public String getbName() {
-		return bName;
+	public String getBauthor() {
+		return bauthor;
 	}
-	public void setbName(String bName) {
-		this.bName = bName;
+	public void setBauthor(String bauthor) {
+		this.bauthor = bauthor;
 	}
-	public String getbAuthor() {
-		return bAuthor;
+	public double getBprice() {
+		return bprice;
 	}
-	public void setbAuthor(String bAuthor) {
-		this.bAuthor = bAuthor;
+	public void setBprice(double bprice) {
+		this.bprice = bprice;
 	}
-	public double getbPrice() {
-		return bPrice;
+	public double getBpress() {
+		return bpress;
 	}
-	public void setbPrice(double bPrice) {
-		this.bPrice = bPrice;
+	public void setBpress(double bpress) {
+		this.bpress = bpress;
 	}
-	public double getbPress() {
-		return bPress;
+	public Integer getBnumber() {
+		return bnumber;
 	}
-	public void setbPress(double bPress) {
-		this.bPress = bPress;
+	public void setBnumber(Integer bnumber) {
+		this.bnumber = bnumber;
 	}
-	public String getbDescription() {
-		return bDescription;
+	public String getBdescription() {
+		return bdescription;
 	}
-	public void setbDescription(String bDescription) {
-		this.bDescription = bDescription;
+	public void setBdescription(String bdescription) {
+		this.bdescription = bdescription;
 	}
-	public String getbImage() {
-		return bImage;
+	public String getBimage() {
+		return bimage;
 	}
-	public void setbImage(String bImage) {
-		this.bImage = bImage;
+	public void setBimage(String bimage) {
+		this.bimage = bimage;
 	}
-	public Integer getbNumber() {
-		return bNumber;
+	public BookType getBooktype() {
+		return booktype;
 	}
-	public void setbNumber(Integer bNumber) {
-		this.bNumber = bNumber;
+	public void setBooktype(BookType booktype) {
+		this.booktype = booktype;
 	}
+	
 	
 }

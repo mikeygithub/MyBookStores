@@ -31,19 +31,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<table>
 					<tr>
 						<td class="field">用户名：</td>
-						<td><input class="text" type="text" id="username" name="username" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span ></span></td>
+						<td><input class="text" type="text" id="uname" name="uname" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span ></span></td>
 					</tr>
 					<tr>
 						<td class="field">注册邮箱：</td>
-						<td><input class="text" type="text" name="email" id="email" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td><input class="text" type="text" name="uemail" id="uemail" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">登录密码：</td>
-						<td><input class="text" type="password" id="password" name="password" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span></td>
+						<td><input class="text" type="upw" id="upw" name="upw" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">确认密码：</td>
-						<td><input class="text" type="password" name="repassword" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td><input class="text" type="upw" name="reupw" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">验证码：</td>
@@ -65,13 +65,13 @@ function CheckItem(obj)
 	var re = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
 	//var un=^[0-9a-zA-Z_]{1,}$;由数字、26个英文字母或者下划线组成的字符串:
 	switch(obj.name) {
-		case "username":
+		case "uname":
 			if(obj.value == "") {
 				msgBox.innerHTML = "用户名不能为空";
 				return false;
 			}
 			break;
-		case "email":
+		case "uemail":
 			if(obj.value == "") {
 				msgBox.innerHTML = "邮箱不能为空";
 				return false;
@@ -80,10 +80,10 @@ function CheckItem(obj)
 				return false;
 			}else{
 			
-	var json={"email":$("#email").val()};//获取uEmail
+	var json={"uemail":$("#uemail").val()};//获取uuemail
 	
 	$.ajax({//执行异步交互
-		url:"UserAction_CheckuEmail.action",
+		url:"UserAction_Checkuuemail.action",
 		type:"post",
 		async:true,
 		data:json,
@@ -102,17 +102,17 @@ function CheckItem(obj)
 	})
 			}
 			break;
-		case "password":
+		case "upw":
 			if(obj.value == "") {
 				msgBox.innerHTML = "密码不能为空";				
 				return false;
 			}
 			break;
-		case "repassword":
+		case "reupw":
 			if(obj.value == "") {
 				msgBox.innerHTML = "确认密码不能为空";
 				return false;
-			} else if(obj.value != document.getElementById("password").value) {
+			} else if(obj.value != document.getElementById("upw").value) {
 				msgBox.innerHTML = "两次输入的密码不相同";
 				return false;
 			}
@@ -147,9 +147,9 @@ function regnewuser(){
 	$("input[type=submit]").attr('disabled',true)
 	if(checkForm()){
 	var json={
-		username:$("#username").val(),
-		password:$("#password").val(),
-		email:$("#email").val()
+		uname:$("#uname").val(),
+		upw:$("#upw").val(),
+		uemail:$("#uemail").val()
 	}
 	$.ajax({
 		url:"UserAction_confirmRegister.action",

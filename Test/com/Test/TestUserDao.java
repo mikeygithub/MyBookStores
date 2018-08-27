@@ -21,10 +21,10 @@ public class TestUserDao extends SpringUtils{
 		Session session= sessionFactory.openSession();
 		Transaction transaction=session.beginTransaction();
 		Book b=new Book();
-		b.setbName("absdfsdfl");
+		b.setBname("absdfsdfl");
 		BookType bt=new BookType();
-		bt.setTypeName("阿姆斯特朗炮");
-		b.setBookType(bt);
+		bt.setTypename("阿姆斯特朗炮");
+		b.setBooktype(bt);
 		session.save(b);
 		transaction.commit();
 		
@@ -35,11 +35,11 @@ public class TestUserDao extends SpringUtils{
 		
 		
 		User user=new User();
-		user.setuName("麦奇");
+		user.setUname("麦奇");
 
 		
 		User user1=new User();
-		user1.setuName("里奥");
+		user1.setUname("里奥");
 		userService.saveUser(user);
 		userService.saveUser(user1);
 		
@@ -49,8 +49,8 @@ public class TestUserDao extends SpringUtils{
 		
 		User user=userService.findUserById(1l);
 		user.setState(1);
-		user.setuEmail("16204551@qq.com");
-		user.setuPw("123456uPw");
+		user.setUemail("16204551@qq.com");
+		user.setUpw("123456uPw");
 		userService.updateUser(user);
 		
 	}

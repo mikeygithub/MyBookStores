@@ -5,30 +5,30 @@ import java.util.Date;
 import java.util.Set;
 
 public class Orders implements Serializable {
-		private Long oId;//id
-		private String orderNo;//订单号
-		private Date ocreateTime;//创建时间
+		private Long oid;//id
+		private String orderno;//订单号
+		private Date ocreatetime;//创建时间
 		private double cost;//订单金额
 		private Integer status;//订单状态
-		private Long oUserId;//订单对应userid
-		private Set<OrderProduct> allProduct;
-		public Long getoId() {
-			return oId;
+		private Long ouserid;//订单对应userid
+		private Set<OrderProduct> allproduct;
+		public Long getOid() {
+			return oid;
 		}
-		public void setoId(Long oId) {
-			this.oId = oId;
+		public void setOid(Long oid) {
+			this.oid = oid;
 		}
-		public String getOrderNo() {
-			return orderNo;
+		public String getOrderno() {
+			return orderno;
 		}
-		public void setOrderNo(String orderNo) {
-			this.orderNo = orderNo;
+		public void setOrderno(String orderno) {
+			this.orderno = orderno;
 		}
-		public Date getOcreateTime() {
-			return ocreateTime;
+		public Date getOcreatetime() {
+			return ocreatetime;
 		}
-		public void setOcreateTime(Date ocreateTime) {
-			this.ocreateTime = ocreateTime;
+		public void setOcreatetime(Date ocreatetime) {
+			this.ocreatetime = ocreatetime;
 		}
 		public double getCost() {
 			return cost;
@@ -42,17 +42,18 @@ public class Orders implements Serializable {
 		public void setStatus(Integer status) {
 			this.status = status;
 		}
-		public Long getoUserId() {
-			return oUserId;
+		public Long getOuserid() {
+			return ouserid;
 		}
-		public void setoUserId(Long oUserId) {
-			this.oUserId = oUserId;
+		public void setOuserid(Long ouserid) {
+			this.ouserid = ouserid;
 		}
-		public Set<OrderProduct> getAllProduct() {
-			return allProduct;
+		public Set<OrderProduct> getAllproduct() {
+			return allproduct;
 		}
-		public void setAllProduct(Set<OrderProduct> allProduct) {
-			this.allProduct = allProduct;
+		public void setAllproduct(Set<OrderProduct> allproduct) {
+			this.allproduct = allproduct;
 		}
+		
 
 }
