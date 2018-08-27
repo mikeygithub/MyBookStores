@@ -6,17 +6,45 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.bookstore.domain.User;
 import com.bookstore.service.UserService;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
 public class UserAction extends ActionSupport {
 
 	private String email;
-	
+	private String username;
+	private String password;
+	private User user=new User();
 	private UserService userService;
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getEmail() {
@@ -24,7 +52,7 @@ public class UserAction extends ActionSupport {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;System.out.println("Action成功接收邮箱信息");
+		this.email = email;
 	}
 
 	public void CheckuEmail() throws IOException {//邮箱是否已经注册
@@ -43,8 +71,9 @@ public class UserAction extends ActionSupport {
 	}
 	
 	public String confirmRegister(){//确认注册
-		
-		return null;
+		//this.userService.saveUser(this.user);
+		System.out.println("user message:"+email+username+password);
+		return "";
 	}
 	public String login(){//登入
 		

@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<table>
 					<tr>
 						<td class="field">用户名：</td>
-						<td><input class="text" type="text" name="username" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span ></span></td>
+						<td><input class="text" type="text" id="username" name="username" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span ></span></td>
 					</tr>
 					<tr>
 						<td class="field">注册邮箱：</td>
@@ -127,13 +127,12 @@ function CheckItem(obj)
 	return true;
 }
 
-function checkForm(frm)//检查全部信息
+function checkForm()//检查全部信息
 {
-	var els = frm.getElementsByTagName("input");
+	var els =$("#input");alert("666666");
 	for(var i=0; i<els.length; i++) {
-		if(typeof(els[i].getAttribute("onblur")) == "function") {
-			if(!CheckItem(els[i])) return false;
-		}
+		if(!CheckItem(els[i])) {
+			return false;}
 	}
 	return true;
 }
@@ -144,14 +143,19 @@ function FocusItem(obj)
 	msgBox.innerHTML = "";
 }
 function regnewuser(){
+
 	$("input[type=submit]").attr('disabled',true)
 	if(checkForm(this)){
-	
+	alert("new user method");
+	var json={
+		username:$("#username").val(),
+		password:$("#password").val(),
+		email:$("#email").val()
+	}
 	$.ajax({
 		url:"UserAction_confirmRegister.action",
 		type:"post",
-		data:$("#form").serialize(),
-		dataType:"text",
+		data:json,
 		success:function(){
 	$("input[type=submit]").attr('disabled',false)
 		},
