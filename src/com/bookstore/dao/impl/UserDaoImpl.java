@@ -66,7 +66,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			return false;
+			throw new RuntimeException("执行hql语句失败");
 		}
 	}
 

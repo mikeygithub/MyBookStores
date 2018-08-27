@@ -31,19 +31,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<table>
 					<tr>
 						<td class="field">用户名：</td>
-						<td><input class="text" type="text" name="uName" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span ></span></td>
+						<td><input class="text" type="text" name="username" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span ></span></td>
 					</tr>
 					<tr>
 						<td class="field">注册邮箱：</td>
-						<td><input class="text" type="text" name="uEmail" id="uEmail" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td><input class="text" type="text" name="email" id="email" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">登录密码：</td>
-						<td><input class="text" type="uPw" id="uPw" name="uPw" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span></td>
+						<td><input class="text" type="password" id="password" name="password" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">确认密码：</td>
-						<td><input class="text" type="uPw" name="reuPw" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td><input class="text" type="password" name="repassword" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">验证码：</td>
@@ -65,13 +65,13 @@ function CheckItem(obj)
 	var re = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
 	//var un=^[0-9a-zA-Z_]{1,}$;由数字、26个英文字母或者下划线组成的字符串:
 	switch(obj.name) {
-		case "uName":
+		case "username":
 			if(obj.value == "") {
 				msgBox.innerHTML = "用户名不能为空";
 				return false;
 			}
 			break;
-		case "uEmail":
+		case "email":
 			if(obj.value == "") {
 				msgBox.innerHTML = "邮箱不能为空";
 				return false;
@@ -79,8 +79,9 @@ function CheckItem(obj)
 				msgBox.innerHTML = "邮箱格式错误";
 				return false;
 			}else{
-				//checkuEmail();//执行异步交互判断邮箱是否已经注册
-	var json={uEmail:$("#uEmail").val()};//获取uEmail
+			
+	var json={"email":$("#email").val()};//获取uEmail
+	
 	$.ajax({//执行异步交互
 		url:"UserAction_CheckuEmail.action",
 		type:"post",
@@ -101,17 +102,17 @@ function CheckItem(obj)
 	})
 			}
 			break;
-		case "uPw":
+		case "password":
 			if(obj.value == "") {
 				msgBox.innerHTML = "密码不能为空";				
 				return false;
 			}
 			break;
-		case "reuPw":
+		case "repassword":
 			if(obj.value == "") {
 				msgBox.innerHTML = "确认密码不能为空";
 				return false;
-			} else if(obj.value != document.getElementById("uPw").value) {
+			} else if(obj.value != document.getElementById("password").value) {
 				msgBox.innerHTML = "两次输入的密码不相同";
 				return false;
 			}
@@ -143,25 +144,19 @@ function FocusItem(obj)
 	msgBox.innerHTML = "";
 }
 function regnewuser(){
-
+	$("input[type=submit]").attr('disabled',true)
 	if(checkForm(this)){
-	$("input[type=submit]").attr('disabled',true)//在按钮提交之后和AJAX提交之前将按钮设置为禁用
-$.ajax({
-
-url:"UserAction_confirmRegister.action",
-type:"post",
-data:$("#form").serialize(),
-dataType:"text",
-success:function(){
-
-$("input[type=submit]").attr('disabled',false)//在提交成功之后重新启用该按钮
-
-},
-
-error: function(){
-
-$("input[type=submit]").attr('disabled',false)//即使AJAX失败也需要将按钮设置为可用状态，因为有可能是网络问题导致的失败，所以需要将按钮设置为可用
-
+	
+	$.ajax({
+		url:"UserAction_confirmRegister.action",
+		type:"post",
+		data:$("#form").serialize(),
+		dataType:"text",
+		success:function(){
+	$("input[type=submit]").attr('disabled',false)
+		},
+	error: function(){
+		$("input[type=submit]").attr('disabled',false)
 }
 
 })

@@ -7,9 +7,7 @@
 	<package name="user" namespace="/" extends="struts-default">
 		<action name="UserAction_*" method="{1}" class="com.bookstore.action.UserAction">
 			<result name="Register">WEB-INF/jsp/Register.jsp</result>
+			<result name="confirmRegister">WEB-INF/jsp/Register.jsp</result>
 		</action>
-	</package>
-	<package name="reemail" namespace="/" extends="struts-default">
-		<action name="LoginAction_*" method="{1}" class="com.bookstore.action.LoginAction"></action>
 	</package>
 </struts>
