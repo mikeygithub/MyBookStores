@@ -57,11 +57,14 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return "loginUI";
 	}
 	public String sureLogin(){//登入
-		System.out.println("login user message"+model.getUemail());
-		return "loginUI";
+
+		this.userService.login(model);
+		return "loginsuccess";
 	}
 
-
+	public String  mainpage(){
+		return "index";
+	}
 	
 
 }
