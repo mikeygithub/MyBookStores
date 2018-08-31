@@ -14,6 +14,7 @@ public class User implements Serializable {
 	private String upw;
 	private String uemail;
 	private String uphone;
+	private String headimage;
 	private String udentitycode;
 	private String uaddress;
 	private String sex;
@@ -93,5 +94,11 @@ public class User implements Serializable {
 	}
 	public static int getUserOleardyState() {
 		return USER_OLEARDY_STATE;
+	}
+	public String getHeadimage() {
+		return headimage;
+	}
+	public void setHeadimage(String headimage) {
+		this.headimage = headimage;
 	}
 }

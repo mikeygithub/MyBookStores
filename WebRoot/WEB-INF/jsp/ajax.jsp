@@ -2,3 +2,6 @@
 <%
 	out.println("ajax");
  %>
+<html>
+
+</html>

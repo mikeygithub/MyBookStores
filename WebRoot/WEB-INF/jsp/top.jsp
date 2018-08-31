@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <style type="text/css">
 #header {
     overflow: hidden;
-    padding-top: 5px;
+    padding-top: 15px;
 }
 .wrap {
     width: 960px;
@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	float: left;
 	padding-left: 0px;
 	padding-bottom: 0px;
-	padding-top:30px;
+	padding-top:45px;
 	margin: 0 auto;
 	height: 30px;
 }
@@ -84,6 +84,10 @@ border-top-right-radius:5px;
     color: black;
     background-color: #fc7e31;
 }
+
+
+
+
 </style>
   </head>
   
@@ -91,10 +95,10 @@ border-top-right-radius:5px;
     <div id="header" class="wrap">
     	<div id="logo"><img alt="" src="${pageContext.servletContext.contextPath}/images/logo.jpg"></div>
     	<div class="help">
-    		<a href="login.html">¹ºÎï³µ</a>
-    		<a href="login.html">µÇÂ¼</a>
-    		<a href="login.html">×¢²á</a>
-    		<a href="login.html">ÁôÑÔ</a>
+    		<a href="javascript:void(0)" onclick="document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">¹ºÎï³µ</a>
+    		<a href="javascript:void(0)" onclick="document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">µÇÂ¼</a>
+    		<a href="javascript:void(0)" onclick="document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">×¢²á</a>
+    		<a href="javascript:void(0)" onclick="document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">ÁôÑÔ</a>
     	</div>
     	<div class="nav"><ul>
   <li><a class="active" href="#home">Ö÷Ò³</a></li>

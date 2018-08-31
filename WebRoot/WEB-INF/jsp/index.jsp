@@ -20,6 +20,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 
+<style type="text/css">
+	.hidebox {width: 90%;margin: auto;padding: 28px;height: 82%;border: 1px none #111;background-color: #FFF;}
+
+.hidebox .x {
+	font-size: 15px;
+	text-align: right;
+	width: 80%;
+}
+
+.hidebox input {
+	width: 90%;
+	font-size: 15px;
+	margin-top: 15px;
+}
+
+.black_overlay {
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	z-index: 1001;
+	-moz-opacity: 0.8;
+	opacity: .80;
+	filter: alpha(opacity = 88);
+}
+
+.white_content {
+	display: none;
+	position: absolute;
+	top: 20%;
+	left: 20%;
+	width: 55%;
+	height: 55%;
+	padding: 20px;
+	border: 10px solid orange;
+	background-color: white;
+	z-index: 1002;
+	overflow: auto;
+}
+</style>
   </head>
   
   <body>
@@ -35,5 +78,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div id="foot">
    		<jsp:include page="foot.jsp"></jsp:include>
    	</div>
+   	<div id="light2" class="white_content">
+							<a href="javascript:void(0)"
+								onclick="document.getElementById('light2').style.display='none';document.getElementById('fade').style.display='none'">关闭窗口</a>
+							<div id='inputbox' class="hidebox">
+								<jsp:include page="login.jsp"></jsp:include>
+							</div>
+						</div>
+	<div id="fade" class="black_overlay"></div>
   </body>
 </html>

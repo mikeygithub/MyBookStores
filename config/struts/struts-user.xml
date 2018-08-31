@@ -10,7 +10,6 @@
 			<!-- <result name="confirmRegister"></result> -->
 			<result name="loginUI">WEB-INF/jsp/login.jsp</result>
 			<result name="index">WEB-INF/jsp/index.jsp</result>
-			<result name="top">WEB-INF/jsp/top.jsp</result>
 		</action>
 	</package>
 	<package  name="comman" namespace="/" extends="struts-default">

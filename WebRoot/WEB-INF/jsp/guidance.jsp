@@ -108,26 +108,26 @@ body, p, ul, ol, li, dl, dt, dd, input, h1, h2, h3, h4, form, hr {
   </style>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   </head>
-  
   <body>
   <div id="guidances">
   	<div id="guidance-child">
     <ul class="clearfix">
-    	<li class="firstli"><a href="#">科幻</a></li></li>
-        <li><a href="#">青春</a></li>
-        <li><a href="#">言情</a></li>
+        <li class="firstli"><a href="#">青春</a></li>
+        <li><a href="#">小说</a></li>
+        <li><a href="#">文学</a></li>
         <li><a href="#">艺术</a></li>
         <li><a href="#">动漫</a></li>
-        <li><a href="#">青春</a></li>
-        <li><a href="#">言情</a></li>
-        <li><a href="#">艺术</a></li>
-        <li><a href="#">动漫</a></li>
-        <li><a href="#">青春</a></li>
-        <li><a href="#">言情</a></li>
-        <li><a href="#">艺术</a></li>
-        <li><a href="#">动漫</a></li>
-        <li class="last"><a href="#">娱乐</a></li>
-    </ul>
+        <li><a href="#">娱乐</a></li>
+        <li><a href="#">旅游</a></li>
+        <li><a href="#">地理</a></li>
+        <li><a href="#">生活</a></li>
+        <li><a href="#">婚恋</a></li>
+        <li><a href="#">成长</a></li>
+        <li><a href="#">保健</a></li>
+        <li><a href="#">体育</a></li>
+        <li><a href="#">励志</a></li>
+        <li class="last"><a href="#">管理</a></li>
+    	</ul>
     </div>
   </div>
   </body>

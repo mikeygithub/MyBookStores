@@ -22,25 +22,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
 <script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+  
+  <style type="text/css">
+  #logincontainer {
+  	border-top: 2px solid #fbaa62;
+  	margin: 0 auto;
+  }
+  </style>
   </head>
   
   <body>
+<div id="logincontainer">
 <form action="">
-	<table>
+	<table style="width: 60%;margin:auto">
 		<tr>
-  			<td>邮箱号码</td>
+  			<td align="right" valign="bottom">登入邮箱</td>
   			<td>
   				<input type="text" name="uemail" id="uemail" /><td></td><span id="s1"></span>
   			</td>
   		</tr>
   		<tr>
-  			<td>登入密码</td>
+  			<td align="right" valign="bottom">登入密码</td>
   			<td>
   				<input type="password" name="upw" id="upw" /><td></td><span id="s2"></span>
   			</td>
   		</tr>
   		<tr>
-  			<td>验证码</td>
+  			<td align="right" valign="bottom">验证码</td>
   			<td>
   				<input type="text"  id="veryCode" /><td><img id="veryCode" src="" /></td><span id="s3"></span>
   			</td>
@@ -53,6 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</tr>
 	</table>
 </form>
+</div>
   </body>
   <script type="text/javascript">
   	function login(){

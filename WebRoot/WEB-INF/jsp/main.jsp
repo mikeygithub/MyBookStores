@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 }
 #mains #left-context #con-child h2 {
     background: #fff0d9;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
     color: #853200;
     padding: 2px 8px;

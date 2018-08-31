@@ -11,6 +11,7 @@
 		<property name="sex"></property>
 		<property name="state" ></property>
 		<property name="uphone" unique="true"></property>
+		<property name="headimage" length="100"></property>
 		<property name="udentitycode" unique="true"></property>
 		<property name="utruename"></property>
 		<property name="uaddress"></property>
