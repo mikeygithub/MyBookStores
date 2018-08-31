@@ -65,6 +65,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	public String  mainpage(){
 		return "index";
 	}
-	
+	public String test(){
+		return "top";
+	}
 
 }

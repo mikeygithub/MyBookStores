@@ -80,19 +80,25 @@ body, p, ul, ol, li, dl, dt, dd, input, h1, h2, h3, h4, form, hr {
         border-right-width: 0px;
 
 }
-  a:link {
+#guidances #guidance-child .clearfix .firstli  a:link {
 	color: #FFF;
 	text-decoration: none;
 }
-  a:visited {
+
+#guidances #guidance-child .clearfix  a:link {
+	color: #FFF;
+	text-decoration: none;
+}
+
+#guidances #guidance-child .clearfix  a:visited {
 	text-decoration: none;
 	color: #FFF;
 }
-a:hover {
+#guidances #guidance-child .clearfix a:hover {
 	text-decoration: none;
 	color: #FFF;
 }
-a:active {
+#guidances #guidance-child .clearfix a:active {
 	text-decoration: none;
 	color: #FFF;
 }
