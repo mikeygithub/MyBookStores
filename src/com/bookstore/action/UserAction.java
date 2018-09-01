@@ -47,17 +47,18 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return "Register";
 	}
 	
-	public String confirmRegister(){//确认注册
-		
+	public String ConfirmRegister(){//确认注册
+		System.out.println(model.getUemail()+model.getUpw());
 		this.userService.saveUser(model);
-		return null;
+		
+		return "";
 	}
 	public String loginUI(){//登入界面
 		
 		return "loginUI";
 	}
 	public String sureLogin(){//登入
-
+System.out.println(model.getUemail());
 		this.userService.login(model);
 		return "loginsuccess";
 	}

@@ -21,9 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <!--<script type="text/javascript" src="../js/user.js" charset="UTF-8"></script>-->
- <script src="js/jquery-1.4.2.js" type="text/javascript"></script>
+ <!--<script src="/js/jquery-1.4.2.js" type="text/javascript"></script>-->
   </head>
   
   <body>
@@ -39,11 +39,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</tr>
 					<tr>
 						<td class="field">登录密码：</td>
-						<td><input class="text" type="upw" id="upw" name="upw" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span></td>
+						<td><input class="text" type="password" id="upw" name="upw" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">确认密码：</td>
-						<td><input class="text" type="upw" name="reupw" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td><input class="text" type="password" name="reupw" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">验证码：</td>
@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</form>
 <script type="text/javascript">
 $().ready(function(){
-	
+	alert("jquery");
 })
 function CheckItem(obj)
 {
@@ -80,10 +80,10 @@ function CheckItem(obj)
 				return false;
 			}else{
 			
-	var json={"uemail":$("#uemail").val()};//获取uuemail
+	var json={uemail:$("#uemail").val()};//获取uuemail
 	
 	$.ajax({//执行异步交互
-		url:"UserAction_Checkuuemail.action",
+		url:"UserAction_CheckuEmail.action",
 		type:"post",
 		async:true,
 		data:json,
@@ -129,7 +129,7 @@ function CheckItem(obj)
 
 function checkForm()//检查全部信息
 {
-	var els =$("#input");alert("666666");
+	var els =$("#input");
 	for(var i=0; i<els.length; i++) {
 		if(!CheckItem(els[i])) {
 			return false;}
@@ -151,18 +151,22 @@ function regnewuser(){
 		upw:$("#upw").val(),
 		uemail:$("#uemail").val()
 	}
+	alert($("#uname").val());alert($("#upw").val());alert($("#uemail").val());
 	$.ajax({
-		url:"UserAction_confirmRegister.action",
+		url:"UserAction_ConfirmRegister.action",
 		type:"post",
+		async:true,
 		data:json,
-		success:function(){
+		success:function(data){
 	$("input[type=submit]").attr('disabled',false)
 		},
-	error: function(){
+	error:function(){
 		$("input[type=submit]").attr('disabled',false)
 }
 
 })
+	}else{
+		$("input[type=submit]").attr('disabled',true)
 	}
 }
 </script>

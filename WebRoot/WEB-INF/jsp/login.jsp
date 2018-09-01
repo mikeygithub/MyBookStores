@@ -20,8 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
-<script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<!--<script type="text/javascript" src="/js/jquery-1.4.2.js"></script>-->
   
   <style type="text/css">
   #logincontainer {
@@ -34,23 +34,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 <div id="logincontainer">
 <form action="">
-	<table style="width: 60%;margin:auto">
+	<table style="margin:auto">
 		<tr>
   			<td align="right" valign="bottom">登入邮箱</td>
   			<td>
-  				<input type="text" name="uemail" id="uemail" /><td></td><span id="s1"></span>
+  				<input type="text" class="text" name="uemail1" id="uemail1" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span>
   			</td>
   		</tr>
   		<tr>
   			<td align="right" valign="bottom">登入密码</td>
   			<td>
-  				<input type="password" name="upw" id="upw" /><td></td><span id="s2"></span>
+  				<input type="password" class="text" name="upw1" id="upw1" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span>
   			</td>
   		</tr>
   		<tr>
   			<td align="right" valign="bottom">验证码</td>
   			<td>
-  				<input type="text"  id="veryCode" /><td><img id="veryCode" src="" /></td><span id="s3"></span>
+  				<input type="text" class="text verycode" id="veryCode1" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><td><img id="veryCode" src="" /></td><span></span>
   			</td>
   		</tr>
   		<tr>
@@ -64,6 +64,74 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
   </body>
   <script type="text/javascript">
+  function CheckItem(obj)
+{
+	var msgBox = obj.parentNode.getElementsByTagName("span")[0];
+	var re = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+	//var un=^[0-9a-zA-Z_]{1,}$;由数字、26个英文字母或者下划线组成的字符串:
+	switch(obj.name) {
+		case "uemail":
+			if(obj.value == "") {
+				msgBox.innerHTML = "邮箱不能为空";
+				return false;
+			}else if(!re.test(obj.value)){alert("2222222");
+				msgBox.innerHTML = "邮箱格式错误";
+				return false;
+			}else{
+			
+	var json={"uemail":obj.value};//获取uuemail
+	
+	$.ajax({//执行异步交互
+		url:"UserAction_Checkuuemail.action",
+		type:"post",
+		async:true,
+		data:json,
+		success:function(data){
+			if(data=="false"){
+				msgBox.innerHTML = "该邮箱已注册";
+				return false;
+			}else{
+				msgBox.innerHTML = "该邮箱可用";
+				return true;
+			}
+		},
+		error:function(XMLHttpRequest, textStatus, errorThrown){
+			alert("异步请求错误");
+		}
+	})
+			}
+			break;
+		case "upw":
+			if(obj.value == "") {
+				msgBox.innerHTML = "密码不能为空";				
+				return false;
+			}
+			break;
+		case "veryCode":
+			if(obj.value == "") {
+				msgBox.innerHTML = "验证码不能为空";
+				return false;
+			}
+			break;
+	}
+	return true;
+}
+
+function checkForm()//检查全部信息
+{
+	var els =$("#input");
+	for(var i=0; i<els.length; i++) {
+		if(!CheckItem(els[i])) {
+			return false;}
+	}
+	return true;
+}
+function FocusItem(obj)
+{
+	obj.parentNode.parentNode.className = "current";
+	var msgBox = obj.parentNode.getElementsByTagName("span")[0];
+	msgBox.innerHTML = "";
+}
   	function login(){
   		$("#surelogin").attr('disabled',true).attr('value',"正在登入");		
 	//if(checkForm()){

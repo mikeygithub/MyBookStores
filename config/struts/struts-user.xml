@@ -12,9 +12,5 @@
 			<result name="index">WEB-INF/jsp/index.jsp</result>
 		</action>
 	</package>
-	<package  name="comman" namespace="/" extends="struts-default">
-		<action name="Page_*" method="{1}" class="com.bookstore.action.UserAction">
-			<result name="index">WEB-INF/jsp/index.jsp</result>
-		</action>
-	</package>
+	
 </struts>

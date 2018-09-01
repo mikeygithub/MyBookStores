@@ -53,9 +53,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	display: none;
 	position: absolute;
 	top: 20%;
-	left: 20%;
-	width: 55%;
-	height: 55%;
+	left: 30%;
+	width: 35%;
+	height: 40%;
 	padding: 20px;
 	border: 10px solid orange;
 	background-color: white;
