@@ -18,7 +18,7 @@
         <action name="JsonAction_*" method="{1}" class="com.bookstore.action.JsonAction">
             <result name="success" type="json">
                 <!--root是ognl表达式的一部分不能更换  -->
-                <param name="root">varycode</param>
+                <param name="root">result</param>
             </result>
         </action>
     </package>

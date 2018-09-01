@@ -134,18 +134,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				var json={varycode:obj.value}
 				alert(obj.value);
 		$.ajax({//÷¥––“Ï≤ΩΩªª•
-			url:"jsonAction_CheckuVaryCode.action",
+			url:"JsonAction_CheckuVaryCode.action",
 			type:"post",
 			async:true,
 			data:json,
 			success:function(data){
-				if(data=="false"){
+				/*if(data=="false"){
 					msgBox.innerHTML = "";
 					return false;
 				}else{
 					msgBox.innerHTML = "∏√” œ‰Œ¥◊¢≤·";
 					return true;
-				}
+				}*/
+				alert(data);
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("“Ï≤Ω«Î«Û¥ÌŒÛ");
