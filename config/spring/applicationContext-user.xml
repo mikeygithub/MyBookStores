@@ -24,4 +24,7 @@
 			<ref bean="suerService"/>
 		</property>
 	</bean>
+	<bean id="JsonAction" 
+		class="com.bookstore.action.JsonAction" scope="prototype">
+	</bean>
 </beans>

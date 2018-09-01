@@ -3,6 +3,7 @@ package com.bookstore.action;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -16,7 +17,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	
 	private User model=new User();
-	
+	private String verycode;
 	private UserService userService;
 
 	public void setUserService(UserService userService) {
@@ -31,6 +32,18 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	public void setModel(User model) {
 		this.model = model;
+	}
+
+	public String getVerycode() {
+		return verycode;
+	}
+
+	public void setVerycode(String verycode) {
+		this.verycode = verycode;
+	}
+
+	public UserService getUserService() {
+		return userService;
 	}
 
 	public void CheckuEmail() throws IOException {//邮箱是否已经注册
@@ -59,12 +72,19 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return "loginUI";
 	}
 	public String sureLogin(){//登入
-System.out.println(model.getUemail());
+		System.out.println(model.getUemail());
 		User user=this.userService.login(model);
 		ActionContext.getContext().put("user", user);//将用户信息放入值栈
 		return "loginsuccess";
 	}
-
+	
+//	public String CheckuVaryCode(){//检查验证码
+//		
+//		HttpSession session = ServletActionContext.getRequest().getSession(); 
+//		
+//		return null;
+//	}
+	
 	public String  mainpage(){
 		return "index";
 	}

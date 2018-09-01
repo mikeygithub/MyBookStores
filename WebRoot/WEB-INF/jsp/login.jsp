@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			if(obj.value == "") {
 				msgBox.innerHTML = "邮箱不能为空";
 				return false;
-			}else if(!re.test(obj.value)){alert("2222222");
+			}else if(!re.test(obj.value)){
 				msgBox.innerHTML = "邮箱格式错误";
 				return false;
 			}else{
@@ -131,6 +131,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				msgBox.innerHTML = "填写验证码";
 				return false;
 			}else{//进行验证码验证
+				var json={varycode:obj.value}
+				alert(obj.value);
+		$.ajax({//执行异步交互
+			url:"jsonAction_CheckuVaryCode.action",
+			type:"post",
+			async:true,
+			data:json,
+			success:function(data){
+				if(data=="false"){
+					msgBox.innerHTML = "";
+					return false;
+				}else{
+					msgBox.innerHTML = "该邮箱未注册";
+					return true;
+				}
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("异步请求错误");
+			}
+		})
 				
 			}
 			break;
