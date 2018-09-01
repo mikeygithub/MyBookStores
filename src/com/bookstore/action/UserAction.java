@@ -73,7 +73,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			 * */
 			HttpServletResponse response=ServletActionContext.getResponse();
 			response.setCharacterEncoding("UTF-8");
-			response.getWriter().write("loginfalse");
+			response.getWriter().write("false");
 			
 			return null;
 		}else{

@@ -185,8 +185,9 @@ function FocusItem(obj)
 		type:"post",
 		data:json,
 		success:function(data){
-			if(data!=null){
+			if(data=="false"){
 				$("#tip").text("ÃÜÂë´íÎó");
+				$("#surelogin").attr('disabled',false);
 			}else{
 			window.location.href="${pageContext.request.contextPath}/index.jsp";
 		}},
