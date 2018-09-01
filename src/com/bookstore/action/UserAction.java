@@ -8,6 +8,7 @@ import org.apache.struts2.ServletActionContext;
 
 import com.bookstore.domain.User;
 import com.bookstore.service.UserService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -48,7 +49,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 	
 	public String ConfirmRegister(){//确认注册
-		System.out.println(model.getUemail()+model.getUpw());
+		//System.out.println(model.getUemail()+model.getUpw());
 		this.userService.saveUser(model);
 		
 		return "";
@@ -59,7 +60,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 	public String sureLogin(){//登入
 System.out.println(model.getUemail());
-		this.userService.login(model);
+		User user=this.userService.login(model);
+		ActionContext.getContext().put("user", user);//将用户信息放入值栈
 		return "loginsuccess";
 	}
 

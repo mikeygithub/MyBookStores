@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</form>
 <script type="text/javascript">
 $().ready(function(){
-	alert("jquery");
+	//alert("jquery");
 })
 function CheckItem(obj)
 {

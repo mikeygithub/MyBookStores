@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'login.jsp' starting page</title>
+    <title>login page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -27,31 +27,50 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   #logincontainer {
   	border-top: 2px solid #fbaa62;
   	margin: 0 auto;
+  	padding-top:50px;
+  	width: 400px;
   }
+  #logincontainer form table tr td span {
+	color: #F00;    
+}
+#logincontainer form table tr td #randImage {
+	padding-top: 10px;
+}
+
   </style>
   </head>
   
   <body>
 <div id="logincontainer">
-<form action="">
-	<table style="margin:auto">
+<form >
+	<table >
 		<tr>
-  			<td align="right" valign="bottom">登入邮箱</td>
-  			<td>
-  				<input type="text" class="text" name="uemail1" id="uemail1" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span>
-  			</td>
+  			<td align="right" valign="bottom" nowrap="nowrap">登入邮箱</td>
+  			<td nowrap="nowrap" ><input type="text" class="text" name="uemail1" id="uemail1" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span></td>
   		</tr>
   		<tr>
-  			<td align="right" valign="bottom">登入密码</td>
-  			<td>
+  			<td align="right" valign="bottom" nowrap="nowrap">登入密码</td>
+  			<td nowrap="nowrap">
   				<input type="password" class="text" name="upw1" id="upw1" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span>
   			</td>
   		</tr>
   		<tr>
-  			<td align="right" valign="bottom">验证码</td>
-  			<td>
-  				<input type="text" class="text verycode" id="veryCode1" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><td><img id="veryCode" src="" /></td><span></span>
+  		<td nowrap="nowrap" align="right" valign="bottom"></td>
+  			<td nowrap="nowrap" align="left" valign="bottom">
+  				<img src="${pageContext.request.contextPath}/tools/image.jsp " alt=""  name="randImage" id="randImage" title="换一张试试" onclick="javascript:loadimage();">
+  				<a href="javascript:void(0)" onclick="loadimage()" valign="top">看不清楚？点击刷新</a>
   			</td>
+  		</tr>
+  		<tr>
+  			<td nowrap="nowrap" align="right" valign="bottom">输入验证码</td>
+  			<td nowrap="nowrap">
+  				<input type="text" class="text verycode" name="veryCode1" id="veryCode1" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span>
+  			</td>
+  			
+  		</tr>
+  		<tr>
+  			<td></td>
+  			<td width="200px"><input type="text" style="display: none;"/><span></span></td>
   		</tr>
   		<tr>
   			<td></td>
@@ -70,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	var re = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
 	//var un=^[0-9a-zA-Z_]{1,}$;由数字、26个英文字母或者下划线组成的字符串:
 	switch(obj.name) {
-		case "uemail":
+		case "uemail1":
 			if(obj.value == "") {
 				msgBox.innerHTML = "邮箱不能为空";
 				return false;
@@ -82,16 +101,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	var json={"uemail":obj.value};//获取uuemail
 	
 	$.ajax({//执行异步交互
-		url:"UserAction_Checkuuemail.action",
+		url:"UserAction_CheckuEmail.action",
 		type:"post",
 		async:true,
 		data:json,
 		success:function(data){
 			if(data=="false"){
-				msgBox.innerHTML = "该邮箱已注册";
+				msgBox.innerHTML = "";
 				return false;
 			}else{
-				msgBox.innerHTML = "该邮箱可用";
+				msgBox.innerHTML = "该邮箱未注册";
 				return true;
 			}
 		},
@@ -101,16 +120,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	})
 			}
 			break;
-		case "upw":
+		case "upw1":
 			if(obj.value == "") {
 				msgBox.innerHTML = "密码不能为空";				
 				return false;
 			}
 			break;
-		case "veryCode":
+		case "veryCode1":
 			if(obj.value == "") {
-				msgBox.innerHTML = "验证码不能为空";
+				msgBox.innerHTML = "填写验证码";
 				return false;
+			}else{//进行验证码验证
+				
 			}
 			break;
 	}
@@ -134,7 +155,7 @@ function FocusItem(obj)
 }
   	function login(){
   		$("#surelogin").attr('disabled',true).attr('value',"正在登入");		
-	//if(checkForm()){
+	if(checkForm()){
 	var json={
 		upw:$("#upw").val(),
 		uemail:$("#uemail").val()
@@ -151,7 +172,10 @@ function FocusItem(obj)
 }
 
 })
-	}
- //}
+	}}
+function loadimage(){  
+        document.getElementById("randImage").src = "${pageContext.request.contextPath}/tools/image.jsp?"+Math.random(); 
+    }
+
   </script>
 </html>

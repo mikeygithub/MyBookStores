@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 
 <style type="text/css">
-	.hidebox {width: 90%;margin: auto;padding: 28px;height: 82%;border: 1px none #111;background-color: #FFF;}
+	.hidebox {width: 90%;margin: auto;padding: 10px;height: 82%;border: 1px none #111;background-color: #FFF;}
 
 .hidebox .x {
 	font-size: 15px;
