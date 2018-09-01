@@ -51,7 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<tr>
   			<td align="right" valign="bottom" nowrap="nowrap">登入密码</td>
   			<td nowrap="nowrap">
-  				<input type="password" class="text" name="upw1" id="upw1" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span>
+  				<input type="password" class="text" name="upw1" id="upw1" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span id="tip"></span>
   			</td>
   		</tr>
   		<tr>
@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</tr>
   		<tr>
   			<td></td>
-  			<td width="200px"><input type="text" style="display: none;"/><span></span></td>
+  			<td width="250px"><input type="text" style="display: none;"/><span></span></td>
   		</tr>
   		<tr>
   			<td></td>
@@ -132,21 +132,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				return false;
 			}else{//进行验证码验证
 				var json={varycode:obj.value}
-				alert(obj.value);
+				
 		$.ajax({//执行异步交互
 			url:"JsonAction_CheckuVaryCode.action",
 			type:"post",
 			async:true,
 			data:json,
 			success:function(data){
-				/*if(data=="false"){
-					msgBox.innerHTML = "";
+				msgBox.innerHTML =data;
+				if(data=="验证码输入错误"){
 					return false;
 				}else{
-					msgBox.innerHTML = "该邮箱未注册";
 					return true;
-				}*/
-				alert(data);
+				}
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误");
@@ -161,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 function checkForm()//检查全部信息
 {
-	var els =$("#input");
+	var els =$("input");
 	for(var i=0; i<els.length; i++) {
 		if(!CheckItem(els[i])) {
 			return false;}
@@ -175,25 +173,30 @@ function FocusItem(obj)
 	msgBox.innerHTML = "";
 }
   	function login(){
-  		$("#surelogin").attr('disabled',true).attr('value',"正在登入");		
+  				
 	if(checkForm()){
+	$("#surelogin").attr('disabled',true).attr('value',"正在登入");
 	var json={
-		upw:$("#upw").val(),
-		uemail:$("#uemail").val()
+		upw:$("#upw1").val(),
+		uemail:$("#uemail1").val()
 	}
 	$.ajax({
 		url:"UserAction_sureLogin.action",
 		type:"post",
 		data:json,
-		success:function(){
-	$("#surelogin").attr('disabled',false)
+		success:function(data){
+			window.location.href="${pageContext.request.contextPath}/index.jsp";
 		},
 	error: function(){
 		$("#surelogin").attr('disabled',false)
 }
 
 })
-	}}
+	}else{
+		
+	}
+	
+	}
 function loadimage(){  
         document.getElementById("randImage").src = "${pageContext.request.contextPath}/tools/image.jsp?"+Math.random(); 
     }

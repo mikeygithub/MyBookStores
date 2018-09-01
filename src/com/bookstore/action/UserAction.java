@@ -17,7 +17,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	
 	private User model=new User();
-	private String verycode;
+	
 	private UserService userService;
 
 	public void setUserService(UserService userService) {
@@ -32,14 +32,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	public void setModel(User model) {
 		this.model = model;
-	}
-
-	public String getVerycode() {
-		return verycode;
-	}
-
-	public void setVerycode(String verycode) {
-		this.verycode = verycode;
 	}
 
 	public UserService getUserService() {
@@ -72,18 +64,18 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return "loginUI";
 	}
 	public String sureLogin(){//登入
-		System.out.println(model.getUemail());
+		System.out.println("登入的邮箱："+model.getUemail());
 		User user=this.userService.login(model);
+		if(!user.getUemail().equals(model.getUemail())||!user.getUpw().equals(model.getUpw())){//判断邮箱和密码是否正确
+			System.out.println("登入失败");
+			return "loginfail";
+		}else{
+		System.out.println("登入成功");
 		ActionContext.getContext().put("user", user);//将用户信息放入值栈
 		return "loginsuccess";
+		
+		}
 	}
-	
-//	public String CheckuVaryCode(){//检查验证码
-//		
-//		HttpSession session = ServletActionContext.getRequest().getSession(); 
-//		
-//		return null;
-//	}
 	
 	public String  mainpage(){
 		return "index";

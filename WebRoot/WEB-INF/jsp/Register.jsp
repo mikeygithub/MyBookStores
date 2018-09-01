@@ -129,7 +129,7 @@ function CheckItem(obj)
 
 function checkForm()//检查全部信息
 {
-	var els =$("#input");
+	var els =$("input");
 	for(var i=0; i<els.length; i++) {
 		if(!CheckItem(els[i])) {
 			return false;}
