@@ -185,8 +185,11 @@ function FocusItem(obj)
 		type:"post",
 		data:json,
 		success:function(data){
+			if(data!=null){
+				$("#tip").text("ÃÜÂë´íÎó");
+			}else{
 			window.location.href="${pageContext.request.contextPath}/index.jsp";
-		},
+		}},
 	error: function(){
 		$("#surelogin").attr('disabled',false)
 }

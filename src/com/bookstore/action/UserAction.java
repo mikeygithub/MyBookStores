@@ -63,12 +63,19 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		
 		return "loginUI";
 	}
-	public String sureLogin(){//登入
+	public String sureLogin() throws IOException{//登入
 		System.out.println("登入的邮箱："+model.getUemail());
 		User user=this.userService.login(model);
-		if(!user.getUemail().equals(model.getUemail())||!user.getUpw().equals(model.getUpw())){//判断邮箱和密码是否正确
+		if(user==null||!user.getUemail().equals(model.getUemail())||!user.getUpw().equals(model.getUpw())){//判断邮箱和密码是否正确
 			System.out.println("登入失败");
-			return "loginfail";
+			/*
+			 * 处理登入密码错误
+			 * */
+			HttpServletResponse response=ServletActionContext.getResponse();
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write("loginfalse");
+			
+			return null;
 		}else{
 		System.out.println("登入成功");
 		ActionContext.getContext().put("user", user);//将用户信息放入值栈
