@@ -84,10 +84,6 @@ border-top-right-radius:5px;
     color: black;
     background-color: #fc7e31;
 }
-
-
-
-
 </style>
   </head>
   
@@ -119,16 +115,18 @@ border-top-right-radius:5px;
     	
     	function logins(){
     		//$("#inputbox").empty();
-    		$("#inputbox").load("login.jsp");
-    		document.getElementById('light2').style.display='block';
-    		document.getElementById('fade').style.display='block';
+    		//$("#inputbox").load("login.jsp");
+    		$("#inputbox").load("UserAction_loginUI.action");
+    		$('#light2').css("display","block");
+    		$('#fade').css("display","block");
+    		
     	}
     	
     	function regiter(){
-    		//$("#inputbox").empty();
-    		$("#inputbox").load('Register.jsp');
-    		document.getElementById('light2').style.display='block';
-    		document.getElementById('fade').style.display='block'
+    		$("#inputbox").empty();
+    		$("#inputbox").load('UserAction_Register.action');
+    		$('#light2').css("display","block");
+    		$('#fade').css("display","block");
     	}
     	
     	function buycar(){

@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)"
 								onclick="document.getElementById('light2').style.display='none';document.getElementById('fade').style.display='none'">关闭窗口</a>
 							<div id='inputbox' class="hidebox">
-								<jsp:include page="login.jsp" flush="true"></jsp:include>
+								
 							</div>
 						</div>
 	<div id="fade" class="black_overlay"></div>
