@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="../../css/style-navbar.css">-->
 	
 <style type="text/css">
@@ -95,10 +95,10 @@ border-top-right-radius:5px;
     <div id="header" class="wrap">
     	<div id="logo"><img alt="" src="${pageContext.servletContext.contextPath}/images/logo.jpg"></div>
     	<div class="help">
-    		<a href="javascript:void(0)" onclick="document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">购物车</a>
-    		<a href="javascript:void(0)" onclick="document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">登录</a>
-    		<a href="javascript:void(0)" onclick="document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">注册</a>
-    		<a href="javascript:void(0)" onclick="document.getElementById('light2').style.display='block';document.getElementById('fade').style.display='block'">留言</a>
+    		<a href="javascript:void(0)" onclick="buycar()">购物车</a>
+    		<a href="javascript:void(0)" onclick="logins()">登录</a>
+    		<a href="javascript:void(0)" onclick="regiter()">注册</a>
+    		<a href="javascript:void(0)" onclick="loginout()">注销</a>
     	</div>
     	<div class="nav"><ul>
   <li><a class="active" href="#home">主页</a></li>
@@ -109,5 +109,42 @@ border-top-right-radius:5px;
     	
 </div>
     </div>
+    <script type="text/javascript">
+    	function checkalreadylogin(){
+    		 if($.trim("${sessionScope.usermessage}") == ""){
+    		 	return false;
+    		 }
+    		 return true;
+    	}
+    	
+    	function logins(){
+    		//$("#inputbox").empty();
+    		$("#inputbox").load("login.jsp");
+    		document.getElementById('light2').style.display='block';
+    		document.getElementById('fade').style.display='block';
+    	}
+    	
+    	function regiter(){
+    		//$("#inputbox").empty();
+    		$("#inputbox").load('Register.jsp');
+    		document.getElementById('light2').style.display='block';
+    		document.getElementById('fade').style.display='block'
+    	}
+    	
+    	function buycar(){
+    		if(checkalreadylogin()){
+    			alert("购物车");
+    		}else{
+    			alert("请先登入");
+    		}
+    	}
+    	function loginout(){
+    		if(checkalreadylogin()){
+    			alert("注销成功");
+    		}else{
+    			alert("你还未登入哦");
+    		}
+    	}
+    </script>
   </body>
 </html>

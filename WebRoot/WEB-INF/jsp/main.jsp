@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -30,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 }
   #mains #showbook1 {
 	float: left;
-	width: 594px;
+	width: 590px;
 	height:500px;
 	border: 1px solid #c3c3c3;
 }
@@ -124,6 +125,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	border-bottom: 2px solid #fbaa62;
 	padding-left: 25px;
 }
+  #mains #usermessage table {
+	font-size: 12px;
+	height: 95%;
+	width: 95%;
+	overflow: hidden;
+}
   </style>
   </head>
   
@@ -151,7 +158,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	<h2>今日特价</h2>
     </div>
     <div id="usermessage"><h2>用户信息</h2>
-    	
+    	<table>
+    		<tr><td height="40%" nowrap="nowrap"></td><td><img alt="" src="${pageContext.servletContext.contextPath}/images/userheadimage.jpg"></td><td></td></tr>
+    		<tr><td nowrap="nowrap" align="right">用户名:</td><td><s:property value="#session.usermessage.uname"/></td><td></td></tr>
+    		<tr><td nowrap="nowrap"><a href="javascript:void(0)" onclick="">修改资料</a></td><td nowrap="nowrap"><a href="javascript:void(0)" onclick="">物流跟踪</a></td>
+    		<td nowrap="nowrap"><a href="javascript:void(0)" onclick="">我的订单</a></td></tr>
+    		<tr></tr>
+    	</table>
     	</div>
     <div id="news"><h2>最新活动</h2></div>
     

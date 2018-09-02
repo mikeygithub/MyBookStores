@@ -78,7 +78,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			return null;
 		}else{
 		System.out.println("登入成功");
-		ActionContext.getContext().put("user", user);//将用户信息放入值栈
+//		ActionContext.getContext().getSession().put("user", user);//将用户信息放入值栈session域
+		ActionContext.getContext().getSession().put("usermessage", user);
 		return "loginsuccess";
 		
 		}

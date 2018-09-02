@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 <style type="text/css">
 	.hidebox {width: 90%;margin: auto;padding: 10px;height: 82%;border: 1px none #111;background-color: #FFF;}
 
@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<a href="javascript:void(0)"
 								onclick="document.getElementById('light2').style.display='none';document.getElementById('fade').style.display='none'">关闭窗口</a>
 							<div id='inputbox' class="hidebox">
-								<jsp:include page="login.jsp"></jsp:include>
+								<jsp:include page="login.jsp" flush="true"></jsp:include>
 							</div>
 						</div>
 	<div id="fade" class="black_overlay"></div>
