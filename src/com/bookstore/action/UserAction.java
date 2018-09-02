@@ -91,5 +91,9 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	public String test(){
 		return "top";
 	}
+	public String buycar(){
+		return "buycar";
+	}
+
 
 }

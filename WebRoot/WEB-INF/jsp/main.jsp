@@ -141,15 +141,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<h2>书籍分类</h2>
   		<dl>
 				<dt>科技类</dt>
-				<dd><a href="product-list.html">图书</a></dd>
-				<dd><a href="product-list.html">音乐</a></dd>
-				<dt>百货</dt>
-				<dd><a href="product-list.html">家居</a></dd>
-				<dd><a href="product-list.html">鞋包</a></dd>
-				<dd><a href="product-list.html">家电</a></dd>
-				<dd><a href="product-list.html">电脑办公</a></dd>
-				<dd><a href="product-list.html">玩具文具</a></dd>
-				<dd><a href="product-list.html">汽车用品</a></dd>
+				<dd><a href="product-list.html">科学技术</a></dd>
+				<dd><a href="product-list.html">航天科学</a></dd>
+				<dd><a href="product-list.html">科文商科</a></dd>
+				<dd><a href="product-list.html">网络技术</a></dd>
+				<dd><a href="product-list.html">计算机类</a></dd>
+				<dt>百科类</dt>
+				<dd><a href="product-list.html">心理健康</a></dd>
+				<dd><a href="product-list.html">历史文化</a></dd>
+				<dd><a href="product-list.html">考试资料</a></dd>
+				<dd><a href="product-list.html">医学书籍</a></dd>
+				<dd><a href="product-list.html">法律资料</a></dd>
+				<dd><a href="product-list.html">汽车指南</a></dd>
+				<dt>其他类</dt>
 			</dl>
 		</div>
 		<div id="recently" ><h2>最近浏览</h2></div>
