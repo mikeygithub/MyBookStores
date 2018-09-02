@@ -128,10 +128,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   #mains #usermessage table {
 	font-size: 12px;
 	height: 95%;
-	width: 95%;
+	width: 100%;
 	overflow: hidden;
 }
-  </style>
+.pager { margin-top:15px; margin: 0 auto;}
+.pager ul { float:right; }
+.pager ul li { float:left; border:1px solid #eee; line-height:18px; padding:0 3px; margin:0 1px; display:inline; }
+.pager ul li.current { font-weight:bold; color:#630; }
+
+#mains #showbook1 ul li{
+width: 172px;
+height: 240px;
+line-height: 22px;
+font-size: 14px;
+overflow: hidden;
+}
+#mains #showbook1 ul li dl dt{
+text-align: center;}
+
+#mains #showbook1 ul li dl .price {
+text-align: center;
+color: #c30;
+font-weight: bold;
+ 
+}
+#mains #showbook1 ul li dl .title {
+text-align: center;
+}
+
+
+#mains #showbook2 ul li{
+width: 172px;
+height: 240px;
+line-height: 22px;
+font-size: 14px;
+overflow: hidden;
+}
+#mains #showbook2 ul li dl dt{
+text-align: center;}
+
+#mains #showbook2 ul li dl .price {
+text-align: center;
+color: #c30;
+font-weight: bold;
+ 
+}
+#mains #showbook2 ul li dl .title {
+text-align: center;
+}
+ </style>
   </head>
   
   <body>
@@ -159,7 +204,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="recently" ><h2>最近浏览</h2></div>
   	</div>
     <div id="showbook1">
-    	<h2>今日特价</h2>
+    	<h2>今日特价</h2><!-- 将图书活动的图书进行遍历 -->
+    		<ul>
+    		<li>
+    			<dl>
+						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
+						<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
+						<dd class="price">￥108.0</dd>
+				</dl>
+    		</li></ul>
     </div>
     <div id="usermessage"><h2>用户信息</h2>
     	<table>
@@ -172,7 +225,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	</div>
     <div id="news"><h2>最新活动</h2></div>
     
-    <div id="showbook2"><h2>热卖图书</h2></div>
+    <div id="showbook2"><h2>热卖图书</h2>
+  			<ul>
+  			<li>
+    			<dl>
+						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
+						<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
+						<dd class="price">￥108.0</dd>
+					</dl>
+				</li>
+    		</ul>
+    <div class="pager" align="center">
+				<ul class="clearfix">
+					<li><a href="#">上一页</a></li>
+					<li class="current">1</li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">下一页</a></li>
+				</ul>
+			</div></div>
   </div>
   </body>
 </html>
