@@ -174,9 +174,7 @@ margin-left: 10px;
 margin-top:5px;
 border: 1px solid #c3c3c3;
 }
-#mains #showbook2 div ul li dl dt{
-text-align: center;}
-
+#mains #showbook2 div ul li dl dt{text-align: center;}
 #mains #showbook2  div ul li dl .price {
 text-align: center;
 color: #c30;
@@ -187,11 +185,18 @@ font-weight: bold;
 text-align: center;
 }
 #mains #showbook2 .pager {margin:0 auto; height: 20px; overflow: hidden;}
-#mains #showbook2 .pager ul {}
-#mains #showbook2 .pager ul .up {width: 80px;}
-#mains #showbook2 .pager ul .down {width: 80px;}
-#mains #showbook2 .pager ul li {width: 10px; float:left; border:1px solid #eee; line-height:10px; padding:0 3px; margin:0 1px; display:inline; }
-#mains #showbook2 .pager ul li.current {font-weight:bold; color:#630; }
+#mains #showbook2 .pager ul {display:inline-block;margin-top: 2px;}
+#mains #showbook2 .pager ul .up {width: 80px;padding-top: 3px;font-size: 10px}
+#mains #showbook2 .pager ul .down {width: 80px;padding-top: 3px;font-size: 10px}
+#mains #showbook2 .pager ul li {width: 10px; float:left; border:1px solid #eee; line-height:5px; padding:3 2px; margin:0 1px; display:inline; }
+#mains #showbook2 .pager ul li.current {font-weight:bold; color:#630; padding-top: 3px;}
+
+#mains #showbook1 #show1_chil2{margin:0 auto; height: 20px; overflow: hidden;}
+#mains #showbook1 #show1_chil2 ul {display:inline-block;margin-top: 2px;}
+#mains #showbook1 #show1_chil2 ul .up {width: 80px;padding-top: 3px;font-size: 10px;}
+#mains #showbook1 #show1_chil2 ul .down {width: 80px;padding-top: 3px;font-size: 10px}
+#mains #showbook1 #show1_chil2 ul li {width: 10px; float:left; border:1px solid #eee; line-height:5px; padding:3 2px; margin:0 1px; display:inline; }
+#mains #showbook1 #show1_chil2 ul li.current {font-weight:bold; color:#630; padding-top: 3px;}
 
  </style>
   </head>
@@ -287,10 +292,19 @@ text-align: center;
 						<dd class="price">￥108.0</dd>
 				</dl>
     		</li>
-    		</ul></div>
-    		<div id="show1_chil2"><!-- 分页按钮 -->
-    		1111111111111111111111111
-    		</div>
+    		</ul>
+    	</div>
+    	<div id="show1_chil2" align="center" style="margin-top: 445px;margin-bottom:0px;border: 1px solid yellow;clear: both;"><!-- 分页按钮 -->
+    		<ul>
+					<li class="up"><a href="#">上一页</a></li>
+					<li class="current">1</li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li class="down"><a href="#">下一页</a></li>
+				</ul>
+    	</div>
     </div>
     <div id="usermessage"><h2>用户信息</h2>
     	<table>
@@ -304,7 +318,7 @@ text-align: center;
     <div id="news"><h2>最新活动</h2></div>
     
     <div id="showbook2"><h2>热卖图书</h2>
-  			<div style="overflow: hidden; height: 150px; border:1px solid black; ">
+  			<div style="overflow: hidden; height: 140px; ">
   				<ul>
   							<li>
     						<dl>
@@ -317,7 +331,7 @@ text-align: center;
 			</div>
 			
 			<div class="pager" align="center">
-				<ul class="clearfix">
+				<ul>
 					<li class="up"><a href="#">上一页</a></li>
 					<li class="current">1</li>
 					<li><a href="#">2</a></li>
