@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
@@ -41,6 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	border: 1px solid #c3c3c3;
 	width: 180px;
 	height: 500px;
+	overflow: hidden;
 }
   #mains #usermessage {
 	float: right;
@@ -64,7 +66,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 }
 #mains #left-context #con-child dl dd {
     margin-left: 10px;
-    background: url(../images/bg.png) -232px -82px no-repeat;
     padding-left: 25px;
 }
 #mains #left-context #con-child dl dd {
@@ -80,18 +81,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	clear: left;
 	width: 180px;
 	height: 150px;
+	overflow: hidden;
 }
 #mains #left-context #recently h2 {
     background: #fff0d9;
     font-size: 14px;
     color: #853200;
-    padding: 2px 8px;
-    width: 180xp;
+    
+    width: 180xp;border-bottom: 2px solid #fbaa62;
 }
 #mains #showbook1 #show1_chil1 h2 {
 	font-size: 14px;
 	line-height: 30px;
-	background: url(../images/bg.png) -230px -100px no-repeat;
 	border-bottom: 2px solid #fbaa62;
 	padding-left: 25px;
 }
@@ -104,14 +105,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     font-size: 14px;
     color: #853200;
     padding: 2px 8px;
-    width: 180xp;
+    width: 180xp;border-bottom: 2px solid #fbaa62;
  }
  #mains #news h2{
  	 background: #fff0d9;
     font-size: 14px;
     color: #853200;
     padding: 2px 8px;
-    width: 180xp;
+    width: 180xp;border-bottom: 2px solid #fbaa62;
  }
    #mains #showbook2 {
 	float: left;
@@ -122,7 +123,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 #mains #showbook2 h2 {
 	font-size: 14px;
 	line-height: 30px;
-	background: url(../images/bg.png) -230px -100px no-repeat;
 	border-bottom: 2px solid #fbaa62;
 	padding-left: 25px;
 }
@@ -159,31 +159,24 @@ text-align: center;
 height: 20px;
 }
 #mains #showbook1 #show1_chil1 {
-	border: 1px solid #c3c3c3;
+	
 }
 
 #mains #showbook2 div ul li{
-width: 147px;
+width: 140px;
 height: 130px;
 line-height: 15px;
 font-size: 14px;
 overflow: hidden;
 float:left;
-margin-right:10px;
+margin-right:5px;
 margin-left: 10px;
 margin-top:5px;
 border: 1px solid #c3c3c3;
 }
 #mains #showbook2 div ul li dl dt{text-align: center;}
-#mains #showbook2  div ul li dl .price {
-text-align: center;
-color: #c30;
-font-weight: bold;
- 
-}
-#mains #showbook2 div ul li dl .title {
-text-align: center;
-}
+#mains #showbook2  div ul li dl .price {text-align: center;color: #c30;font-weight: bold;}
+#mains #showbook2 div ul li dl .title {text-align: center;}
 #mains #showbook2 .pager {margin:0 auto; height: 20px; overflow: hidden;}
 #mains #showbook2 .pager ul {display:inline-block;margin-top: 2px;}
 #mains #showbook2 .pager ul .up {width: 80px;padding-top: 3px;font-size: 10px}
@@ -197,7 +190,11 @@ text-align: center;
 #mains #showbook1 #show1_chil2 ul .down {width: 80px;padding-top: 3px;font-size: 10px}
 #mains #showbook1 #show1_chil2 ul li {width: 10px; float:left; border:1px solid #eee; line-height:5px; padding:3 2px; margin:0 1px; display:inline; }
 #mains #showbook1 #show1_chil2 ul li.current {font-weight:bold; color:#630; padding-top: 3px;}
-
+#mains #left-context #con-child dl dd a {font-size: 15px;font-family: "Times New Roman", Times, serif;}
+#mains #left-context #con-child dl dd a:link {color: #999;}
+#mains #left-context #con-child dl dd a:visited {color: #999;}
+#mains #left-context #con-child dl dd a:hover {color: #999;}
+#mains #left-context #con-child dl dd a:active {color: #999;}
  </style>
   </head>
   
@@ -221,6 +218,7 @@ text-align: center;
 				<dd><a href="product-list.html">法律资料</a></dd>
 				<dd><a href="product-list.html">汽车指南</a></dd>
 				<dt>其他类</dt>
+				<dd><a href="product-list.html">工具书籍</a></dd>
 			</dl>
 		</div>
 		<div id="recently" ><h2>最近浏览</h2></div>
@@ -228,73 +226,19 @@ text-align: center;
     <div id="showbook1">
     	<div id="show1_chil1">
     	<h2>今日特价</h2><!-- 将图书活动的图书进行遍历 -->
-    		<ul>
+    		<ul style="margin-top: 5px;">
+    		<c:forEach var="product" items="${activeproductList}" begin="1"  end="12"><!-- 开始遍历商品 -->
     		<li>
     			<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
-						<dd class="price">￥108.0</dd>
+						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/${product.bimage}.jpg" /></a></dt>
+						<dd class="title"><a href="product-view.html" target="_blank">${product.bname}</a></dd>
+						<dd class="price">￥${product.bprice}</dd>
 				</dl>
     		</li>
-    		<li>
-    			<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
-						<dd class="price">￥108.0</dd>
-				</dl>
-    		</li>
-    		<li>
-    			<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
-						<dd class="price">￥108.0</dd>
-				</dl>
-    		</li>
-    		<li>
-    			<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
-						<dd class="price">￥108.0</dd>
-				</dl>
-    		</li>
-    		<li>
-    			<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
-						<dd class="price">￥108.0</dd>
-				</dl>
-    		</li>
-    		<li>
-    			<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
-						<dd class="price">￥108.0</dd>
-				</dl>
-    		</li>
-    		<li>
-    			<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
-						<dd class="price">￥108.0</dd>
-				</dl>
-    		</li>
-    		<li>
-    			<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
-						<dd class="price">￥108.0</dd>
-				</dl>
-    		</li>
-    		<li>
-    			<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
-						<dd class="price">￥108.0</dd>
-				</dl>
-    		</li>
+    		</c:forEach>
     		</ul>
     	</div>
-    	<div id="show1_chil2" align="center" style="margin-top: 445px;margin-bottom:0px;border: 1px solid yellow;clear: both;"><!-- 分页按钮 -->
+    	<div id="show1_chil2" align="center" style="margin-top: 445px;margin-bottom:0px;clear: both;"><!-- 分页按钮 -->
     		<ul>
 					<li class="up"><a href="#">上一页</a></li>
 					<li class="current">1</li>
@@ -320,13 +264,15 @@ text-align: center;
     <div id="showbook2"><h2>热卖图书</h2>
   			<div style="overflow: hidden; height: 140px; ">
   				<ul>
-  							<li>
+  					<c:forEach var="product" items="${hotproductList}" begin="1"  end="6"><!-- 开始遍历商品 -->
+    					<li>
     						<dl>
-							<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" /></a></dt>
-							<dd class="title"><a href="product-view.html" target="_blank">会说英语</a></dd>
-							<dd class="price">￥108.0</dd>
+						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/${product.bimage}.jpg" /></a></dt>
+						<dd class="title"><a href="product-view.html" target="_blank">${product.bname}</a></dd>
+						<dd class="price">￥${product.bprice}</dd>
 							</dl>
-							</li>
+    					</li>
+    				</c:forEach>
     			</ul>
 			</div>
 			

@@ -1,12 +1,14 @@
 package com.bookstore.dao.impl;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bookstore.dao.UserDao;
+import com.bookstore.domain.Book;
 import com.bookstore.domain.User;
 
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
@@ -68,6 +70,11 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 			e.printStackTrace();
 			throw new RuntimeException("执行hql语句失败");
 		}
+	}
+
+	public Collection<Book> getSpecialBook(Integer begin, Integer end) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

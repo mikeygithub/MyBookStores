@@ -1,7 +1,9 @@
 package com.bookstore.dao;
 
 import java.io.Serializable;
+import java.util.Collection;
 
+import com.bookstore.domain.Book;
 import com.bookstore.domain.User;
 
 public interface UserDao {
@@ -12,5 +14,5 @@ public interface UserDao {
 	public User findUserById(Serializable id);//查找
 	public Boolean findUserByUsm(String usm);//用户名查找，用于异步交互
 	public Boolean findUserReeEmail(String email);//检测邮箱是否已经注册
-
+	public Collection<Book> getSpecialBook(Integer begin,Integer end);
 }
