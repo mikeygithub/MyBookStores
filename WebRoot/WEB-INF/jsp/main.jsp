@@ -231,7 +231,7 @@ border: 1px solid #c3c3c3;
     		<li>
     			<dl>
 						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/${product.bimage}.jpg" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">${product.bname}</a></dd>
+						<dd class="title"><a href="javascript:void(0)" onclick="bookdetails(${product.bid})" target="_blank">${product.bname}</a></dd>
 						<dd class="price">￥${product.bprice}</dd>
 				</dl>
     		</li>
@@ -289,5 +289,28 @@ border: 1px solid #c3c3c3;
 			</div>
 	</div>
   </div>
+  <script type="text/javascript">
+  	function bookdetails(bid){
+  		alert(bid);
+  		var json={	bid:bid}
+  		$.ajax({//执行异步交互
+			url:"JsonAction_CheckuVaryCode.action",
+			type:"post",
+			async:true,
+			data:json,
+			success:function(data){
+				msgBox.innerHTML =data;
+				if(data=="验证码输入错误"){
+					return false;
+				}else{
+					return true;
+				}
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("异步请求错误");
+			}
+		})
+  	}
+  </script>
   </body>
 </html>

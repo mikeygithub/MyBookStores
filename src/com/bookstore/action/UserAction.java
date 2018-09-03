@@ -7,7 +7,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.bookstore.domain.Book;
 import com.bookstore.domain.User;
+import com.bookstore.service.BookService;
 import com.bookstore.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -19,7 +21,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	private User model=new User();
 	
 	private UserService userService;
-
+	
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
@@ -29,7 +31,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return this.model;
 	}
 	
-
 	public void setModel(User model) {
 		this.model = model;
 	}

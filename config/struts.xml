@@ -7,4 +7,5 @@
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<constant name="struts.devMode" value="true"/>
 	<include file="struts/struts-user.xml"></include>
+	<include file="struts/struts-book.xml"></include>
 </struts>

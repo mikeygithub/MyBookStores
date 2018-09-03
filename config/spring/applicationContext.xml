@@ -10,4 +10,5 @@
            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 	<import resource="applicationContext-db.xml"/>
 	<import resource="applicationContext-user.xml"/>
+	<import resource="applicationContext-book.xml"/>
 </beans>
