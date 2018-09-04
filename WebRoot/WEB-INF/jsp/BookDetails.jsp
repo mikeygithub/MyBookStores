@@ -37,10 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 }
 #showbookdetails #showbookdetails_chil2 #product .infos .thumb { float:left; width:380px; text-align:center;height: 300px; overflow: hidden;
-	padding-top:75px; 
-	padding-bottom: 75px;
-	padding-left: 115px;
-	padding-right: 115px;
+	
 }
 #showbookdetails #showbookdetails_chil2 #product h2 {font-weight: bold;font-size: 20px;}
 #showbookdetails #showbookdetails_chil2 #product .infos .buy { float:left; width:200px; line-height:40px; height: 300px; overflow: hidden;}
@@ -58,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<div id="product" class="main">
 				<h2>铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</h2>
 					<div class="infos">
-						<div class="thumb" style="border: 2px solid #fbaa62; overflow: hidden;"><img src="${pageContext.request.contextPath }/images/product/speak1.jpg" />
+						<div class="thumb" style="border: 2px solid #fbaa62; overflow: hidden;"><img src="${pageContext.request.contextPath }/images/product/speak.jpg" />
 						</div>
 						<div class="buy" style="border: 2px solid #fbaa62;">
 							<p>商城价：<span class="price">￥99.00</span></p>
