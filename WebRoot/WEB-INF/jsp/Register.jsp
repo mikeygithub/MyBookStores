@@ -24,37 +24,54 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <!--<script type="text/javascript" src="../js/user.js" charset="UTF-8"></script>-->
  <!--<script src="/js/jquery-1.4.2.js" type="text/javascript"></script>-->
+ <style type="text/css">
+ 	#regdiv {
+ 		margin: 0 auto;
+ 		width: 550px;
+ 		border: 1px solid red;
+ 	}
+ 	#regdiv #regForm table tr td span {
+ 		color: red;
+ 	}
+ </style>
   </head>
-  
   <body>
+  <div id="regdiv" > 
     <form id="regForm">
+    <h2 style="border-bottom: 1px dashed #cfcfcf;" align="center">新用户注册</h2>
 				<table>
+				<tr>
+  				<td></td>
+  				<td width="300px"><input type="text" style="display: none;"/><span></span></td>
+  				</tr>
 					<tr>
 						<td class="field">用户名：</td>
-						<td><input class="text" type="text" id="uname" name="uname" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span ></span></td>
+						<td nowrap="nowrap"><input class="text" type="text" id="uname" name="uname" onfocus="FocusItem(this)" onblur="CheckItem(this); n" /><span ></span></td>
 					</tr>
 					<tr>
 						<td class="field">注册邮箱：</td>
-						<td><input class="text" type="text" name="uemail" id="uemail" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td nowrap="nowrap"><input class="text" type="text" name="uemail" id="uemail" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">登录密码：</td>
-						<td><input class="text" type="password" id="upw" name="upw" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span></td>
+						<td nowrap="nowrap"><input class="text" type="password" id="upw" name="upw" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">确认密码：</td>
-						<td><input class="text" type="password" name="reupw" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td nowrap="nowrap"><input class="text" type="password" name="reupw" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">验证码：</td>
-						<td><input class="text verycode" type="text" name="veryCode" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><img id="veryCode" src="" /><span></span></td>
+						<td nowrap="nowrap"><input class="text verycode" type="text" name="veryCode" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><img id="veryCode" src="" /><span></span></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><label class="ui-green"><input type="submit" name="submit" value="提交注册" onclick="regnewuser()"/></label></td>
+						<td nowrap="nowrap"><label class="ui-green"><input type="submit" name="submit" value="提交注册" onclick="regnewuser()"/></label></td>
 					</tr>
+			
 				</table>
 			</form>
+			</div>
 <script type="text/javascript">
 $().ready(function(){
 	//alert("jquery");
