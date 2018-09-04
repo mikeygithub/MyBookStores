@@ -6,7 +6,7 @@
 <struts>
 	<package name="book" namespace="/" extends="struts-default">
 		<action name="BookAction_*" method="{1}" class="com.bookstore.action.BookAction">
-			<result name="BookDetails">WEB-INF/jsp/BookDetails.jsp</result>
+			<result name="BookDetailsUI">WEB-INF/jsp/BookDetails.jsp</result>
 		</action>
 	</package>
 </struts>

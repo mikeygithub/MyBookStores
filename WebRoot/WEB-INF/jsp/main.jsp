@@ -292,19 +292,16 @@ border: 1px solid #c3c3c3;
   <script type="text/javascript">
   	function bookdetails(bid){
   		alert(bid);
-  		var json={	bid:bid}
+  		var json={bid:bid}
   		$.ajax({//执行异步交互
-			url:"JsonAction_CheckuVaryCode.action",
+			url:"BookAction_BookDetails.action",
 			type:"post",
 			async:true,
 			data:json,
-			success:function(data){
-				msgBox.innerHTML =data;
-				if(data=="验证码输入错误"){
-					return false;
-				}else{
-					return true;
-				}
+			success:function(){
+			$("#inputbox").empty();
+			$("#showbook1").load('BookAction_BookDetailsUI.action');
+			
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误");

@@ -24,7 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <style type="text/css">
 	#showbookdetails {
 	margin:0 auto;
-	float: left;
 	width: 590px;
 	height:500px;
 	border: 1px solid #c3c3c3;
@@ -34,10 +33,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	font-size: 14px;color: #F60;
 	line-height: 30px;
 	border-bottom: 2px solid #fbaa62;
-	
+	overflow: hidden;
 }
-#showbookdetails #showbookdetails_chil2 #product .infos .thumb { float:left; width:380px; text-align:center;height: 300px; overflow: hidden;
-	
+#showbookdetails #showbookdetails_chil2 #product .infos .thumb { float:left; 
+width:160px; text-align:center;
+height: 230px; overflow: hidden;
+	padding-top: 35px;
+	padding-bottom: 35px;
+	padding-left: 110px;
+	padding-right: 110px;
 }
 #showbookdetails #showbookdetails_chil2 #product h2 {font-weight: bold;font-size: 20px;}
 #showbookdetails #showbookdetails_chil2 #product .infos .buy { float:left; width:200px; line-height:40px; height: 300px; overflow: hidden;}
@@ -55,7 +59,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<div id="product" class="main">
 				<h2>铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</h2>
 					<div class="infos">
-						<div class="thumb" style="border: 2px solid #fbaa62; overflow: hidden;"><img src="${pageContext.request.contextPath }/images/product/speak.jpg" />
+						<div class="thumb" style="border: 2px solid #fbaa62; overflow: hidden;"><img src="${pageContext.request.contextPath}/images/product/spark.jpg" width="146" height="149"
+						 onmouseup="" onmouseover=""/>
 						</div>
 						<div class="buy" style="border: 2px solid #fbaa62;">
 							<p>商城价：<span class="price">￥99.00</span></p>
@@ -65,12 +70,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<p>库存：有货</p>
 						</div>
 						<div class="buttons" style="clear:both; border: 3px solid red; height:40px;" align="right" >
-							<input type="button" name="button" value="" onclick="goBuy(1)" style=" width:145px; height:40px;  border:0; background:url(../images/buy.jpg) no-repeat left top" />
-								<a href="#" style="">放入购物车</a>
+							<input type="button" name="button" value="" onclick="goBuy(${product.bid})" style=" width:145px; height:40px;  border:1; background:url(../../images/buy.jpg);" />
+								<a href="javascript:void(0)" onclick="putInBuyCar(${product.bid})">放入购物车</a>
 						</div>
 					</div>
 		</div>
   	  </div>
   	</div>
+  	<script type="text/javascript">
+  		function putInBuyCar(bid){
+  			alert(bid);
+  		}
+  		function goBuy(bid){
+  			alert(bid);
+  		}
+  	</script>
   </body>
 </html>
