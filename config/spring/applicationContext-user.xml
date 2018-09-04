@@ -27,15 +27,4 @@
 	<bean id="JsonAction" 
 		class="com.bookstore.action.JsonAction" scope="prototype">
 	</bean>
-	
-	<bean id="bookDao" class="com.bookstore.dao.impl.BookDaoImpl">
-		<property name="sessionFactory">
-			<ref bean="sessionFactory"/>
-		</property>
-	</bean>
-	<bean id="bookService" class="com.bookstore.service.impl.BookServiceImpl">
-		<property name="bookDao">
-			<ref bean="bookDao"/>
-		</property>
-	</bean>
 </beans>
