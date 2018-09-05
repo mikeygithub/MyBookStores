@@ -1,6 +1,8 @@
 package com.bookstore.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -87,7 +89,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 	
 	public String JumpPage(){
-		
+		List<String> jme=new ArrayList<String>();
+		jme.add("恭喜：注册成功！");
+		jme.add("正在进入首页...");
+		ActionContext.getContext().getSession().put("jumpmessage",jme);
 		return "JumpPage";
 	}
 	

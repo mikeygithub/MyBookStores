@@ -1,4 +1,6 @@
-<%@ page language="java" import="java.util.*" contentType="text/html; charset=gbk"%>
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'MyJsp.jsp' starting page</title>
+    <title>My JSP 'jumpPage.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -20,22 +22,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-<style type="text/css">
-</style>
 
-</style>
   </head>
   
   <body>
-<div id="hhh">
-
-<h1 onclick="f()">布丁足迹;秒后自动跳转……</h1>
-<a></a>
-</div>
-</body>
-<script type="text/javascript">
-function f(){
-	$("#hhh h1").text("enen")
-	}
-</script>
+	<div id="msgs" style="margin: 0 auto;">
+				<h1><s:property value="#session.jumpmessage[0]"/></h1>
+				<h3><s:property value="#session.jumpmessage[1]"/></h3>
+	</div>
+	
+	<script type="text/javascript">
+		$().ready(function(){
+})
+	</script>
+  </body>
 </html>
