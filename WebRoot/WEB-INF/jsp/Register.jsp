@@ -28,7 +28,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	#regdiv {
  		margin: 0 auto;
  		width: 550px;
- 		border: 1px solid red;
+ 		/*border: 1px solid red;*/
  	}
  	#regdiv #regForm table tr td span {
  		color: red;
@@ -42,31 +42,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<table>
 				<tr>
   				<td></td>
-  				<td width="300px"><input type="text" style="display: none;"/><span></span></td>
+  				<td width="350px"><span></span></td>
   				</tr>
 					<tr>
 						<td class="field">用户名：</td>
-						<td nowrap="nowrap"><input class="text" type="text" id="uname" name="uname" onfocus="FocusItem(this)" onblur="CheckItem(this); n" /><span ></span></td>
+						<td nowrap="nowrap"><input value="" class="text" type="text" id="uname" name="uname" onfocus="FocusItem(this)" onblur="CheckItem(this); n" /><span ></span></td>
 					</tr>
 					<tr>
 						<td class="field">注册邮箱：</td>
-						<td nowrap="nowrap"><input class="text" type="text" name="uemail" id="uemail" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td nowrap="nowrap"><input value="" class="text" type="text" name="uemail" id="uemail" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">登录密码：</td>
-						<td nowrap="nowrap"><input class="text" type="password" id="upw" name="upw" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span></td>
+						<td nowrap="nowrap"><input  value="" class="text" type="password" id="upw" name="upw" onfocus="FocusItem(this)" onblur="CheckItem(this);"/><span></span></td>
 					</tr>
 					<tr>
 						<td class="field">确认密码：</td>
-						<td nowrap="nowrap"><input class="text" type="password" name="reupw" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
+						<td nowrap="nowrap"><input value="" class="text" type="password" name="reupw" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
 					</tr>
 					<tr>
+						<td class="field"></td>
+						<td nowrap="nowrap"><img src="${pageContext.request.contextPath}/tools/image.jsp " alt=""  name="randImage" id="randImage" title="换一张试试" onclick="javascript:loadimage();">
+						<a href="javascript:void(0)" onclick="loadimage()" >看不清楚？点击刷新</a><span></span></td>
+					</tr>
+					
+					<tr>
 						<td class="field">验证码：</td>
-						<td nowrap="nowrap"><input class="text verycode" type="text" name="veryCode" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><img id="veryCode" src="" /><span></span></td>
+						<td nowrap="nowrap"><input value="" class="text veryCode2" type="text" name="veryCode2" onfocus="FocusItem(this)" onblur="CheckItem(this);" /><span></span></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td nowrap="nowrap"><label class="ui-green"><input type="submit" name="submit" value="提交注册" onclick="regnewuser()"/></label></td>
+						<td nowrap="nowrap"><label  class="ui-green"><input type="button" name="button" value="提交注册" onclick="regnewuser()"/></label></td>
 					</tr>
 			
 				</table>
@@ -134,10 +140,30 @@ function CheckItem(obj)
 				return false;
 			}
 			break;
-		case "veryCode":
-			if(obj.value == "") {
+		case "veryCode2":
+			if(obj.value == ""||obj.value.length<1) {
 				msgBox.innerHTML = "验证码不能为空";
 				return false;
+			}else{//进行验证码验证
+				var json={varycode:obj.value}
+				
+		$.ajax({//执行异步交互
+			url:"JsonAction_CheckuVaryCode.action",
+			type:"post",
+			async:true,
+			data:json,
+			success:function(data){
+				msgBox.innerHTML =data;
+				if(data=="验证码输入错误"){
+					return false;
+				}else{
+					return true;
+				}
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("异步请求错误");
+			}
+		})	
 			}
 			break;
 	}
@@ -148,8 +174,9 @@ function checkForm()//检查全部信息
 {
 	var els =$("input");
 	for(var i=0; i<els.length; i++) {
-		if(!CheckItem(els[i])) {
-			return false;}
+		if(!CheckItem(els[i])) {alert("验证不通过：input"+i+"/"+els.length);
+			return false;
+			}
 	}
 	return true;
 }
@@ -161,8 +188,9 @@ function FocusItem(obj)
 }
 function regnewuser(){
 
-	$("input[type=submit]").attr('disabled',true)
+	$("input[type=button]").attr('disabled',true);
 	if(checkForm()){
+	
 	var json={
 		uname:$("#uname").val(),
 		upw:$("#upw").val(),
@@ -175,17 +203,24 @@ function regnewuser(){
 		async:true,
 		data:json,
 		success:function(data){
-	$("input[type=submit]").attr('disabled',false)
+	$("input[type=button]").attr('disabled',false);alert("注册成功");
+	$("#inputbox").empty();//注册成功提示
+    $("#inputbox").load('UserAction_Register.action');
 		},
 	error:function(){
-		$("input[type=submit]").attr('disabled',false)
+		$("input[type=button]").attr('disabled',false);
+		alert("异步注册出错");
 }
 
 })
 	}else{
-		$("input[type=submit]").attr('disabled',true)
+		$("input[type=button]").attr('disabled',false);
 	}
 }
+function loadimage(){  
+        document.getElementById("randImage").src = "${pageContext.request.contextPath}/tools/image.jsp?"+Math.random(); 
+    }
+
 </script>
   </body>
 </html>

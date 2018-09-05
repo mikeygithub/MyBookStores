@@ -56,7 +56,7 @@ public class JsonAction extends ActionSupport implements ModelDriven<User> {
 			System.out.println("验证码正确");
 			this.setResult(VALIDATE_SUCC);
 		}else{
-			System.out.println("验证码正确");
+			System.out.println("验证码错误");
 			this.setResult(VALIDATE_FAIL);
 		}
 		return SUCCESS;
