@@ -205,7 +205,14 @@ function regnewuser(){
 		success:function(data){
 	$("input[type=button]").attr('disabled',false);alert("注册成功");
 	$("#inputbox").empty();//注册成功提示
-    $("#inputbox").load('UserAction_Register.action');
+	
+	$("#msgs h1").text("恭喜：注册成功！");
+	$("#msgs h3").text("正在进入首页...");
+	
+	//$("#inputbox").load('jumpPage.jsp');
+	$("#inputbox").load('UserAction_JumpPage.action');
+	setTimeout("location.href='index.jsp'", 3000);
+    
 		},
 	error:function(){
 		$("input[type=button]").attr('disabled',false);

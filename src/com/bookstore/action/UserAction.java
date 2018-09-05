@@ -86,9 +86,12 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		}
 	}
 	
+	public String JumpPage(){
+		
+		return "JumpPage";
+	}
+	
 	public String  mainpage(){
-		
-		
 		return "index";
 	}
 	public String test(){
