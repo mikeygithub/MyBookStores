@@ -31,18 +31,15 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
 	
 	public int getTotalRecords(String tablesName) {//查询总记录条数
 		// TODO Auto-generated method stub
-		System.out.println("from "+tablesName);
-		Query query = this.getSession().createQuery("from "+tablesName);
-		//得到滚动结果集
-		ScrollableResults scroll = query.scroll();
-		//滚动到最后一行
-		scroll.last();
-		System.out.println("总计路数：" + scroll.getRowNumber() + 1);
-		return scroll.getRowNumber()+1;
+		String hql = "select count(*) from "+tablesName;   
+		return ((Long)getHibernateTemplate().iterate(hql).next()).intValue();
 	}
 
 	public List getPageBook(int start, int end,String tablesName) {//获取分页的记录
 		// TODO Auto-generated method stub
+		
+		System.out.println("Message="+start+"//"+end+"//"+tablesName);
+		
 		Query query = this.getSession().createQuery("from "+tablesName);
 		query.setFirstResult(start);
 		query.setMaxResults(end);
@@ -72,7 +69,7 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
 
 	public List<HotBook> getAllHotBook() {//获取全部热卖图书
 		// TODO Auto-generated method stub
-		return this.getHibernateTemplate().find("from HotBook");
+		return (List)this.getHibernateTemplate().find("from HotBook");
 	}
 
 	public void deleteHotBook(Long hotBookId) {//删除热卖图书

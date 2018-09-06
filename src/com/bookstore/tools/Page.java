@@ -19,10 +19,10 @@ public class Page {
 	public void setParament(String tableName,int currentPageNum,int totalRecords,int pageSize,BookService bookService){
 		this.currentPageNum=currentPageNum;
 		this.totalPage=totalRecords;
-		this.pageSize=pageSize;
+		this.pageSize=pageSize;			
 		totalPage=totalRecords%pageSize==0?totalRecords/pageSize:(totalRecords/pageSize+1);
-		startIndex=(currentPageNum-1)*pageSize;
-		this.records=bookService.getPageBook(startIndex, startIndex+12, tableName);
+		startIndex=(currentPageNum-1)*pageSize;System.out.println("66666"+startIndex);
+		this.records=bookService.getPageBook(startIndex, startIndex+pageSize, tableName);
 	}
 
 	public List getRecords() {

@@ -47,9 +47,9 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 
 	public String loadHotBookAndSpecialBook(){//加载特价模块图书和热门图书
 		
-		Page page1=new Page();Page page2=new Page();
+		Page page1=new Page();Page page2=new Page();int crruentPageNum1=1;
 		
-		page1.setParament("SpecialBook",crruentPageNum,this.bookService.getTotalRecords("SpecialBook"), 12,this.bookService);
+		page1.setParament("SpecialBook",crruentPageNum1,this.bookService.getTotalRecords("SpecialBook"),12,this.bookService);
 		page2.setParament("HotBook",crruentPageNum,this.bookService.getTotalRecords("HotBook"),6,this.bookService);
 		
 		ActionContext.getContext().getSession().put("page1",page1);//将信息放入session
