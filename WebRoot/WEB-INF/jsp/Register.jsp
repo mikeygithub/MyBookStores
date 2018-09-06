@@ -203,7 +203,7 @@ function regnewuser(){
 		async:true,
 		data:json,
 		success:function(data){
-	$("input[type=button]").attr('disabled',false);alert("注册成功");
+	$("input[type=button]").attr('disabled',false);
 	$("#inputbox").empty();//注册成功提示
 	
 	$("#inputbox").load('UserAction_JumpPage.action');

@@ -114,8 +114,6 @@ border-top-right-radius:5px;
     	}
     	
     	function logins(){
-    		//$("#inputbox").empty();
-    		//$("#inputbox").load("login.jsp");
     		$("#inputbox").load("UserAction_loginUI.action");
     		$('#light2').css("display","block");
     		$('#fade').css("display","block");
@@ -133,14 +131,26 @@ border-top-right-radius:5px;
     		if(checkalreadylogin()){
     			alert("购物车");
     		}else{
-    			alert("请先登入");
+    		$("#inputbox").empty();
+    		$("#inputbox").load('UserAction_buyCarNullJumpPage.action');
+    		$('#light2').css("display","block");
+    		$('#fade').css("display","block");
     		}
     	}
     	function loginout(){
     		if(checkalreadylogin()){
-    			alert("注销成功");
+    			//alert("注销成功");
+    		$("#inputbox").empty();
+    		$("#inputbox").load('UserAction_loginout.action');
+    		$('#light2').css("display","block");
+    		$('#fade').css("display","block");
+    		setTimeout("location.href='index.jsp'", 3000);
+    			
     		}else{
-    			alert("你还未登入哦");
+    		$("#inputbox").empty();
+    		$("#inputbox").load('UserAction_buyCarNullJumpPage.action');
+    		$('#light2').css("display","block");
+    		$('#fade').css("display","block");
     		}
     	}
     </script>

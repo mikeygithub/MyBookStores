@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</tr>
 	</table>
 </form>
-</div>
+</div><s:debug></s:debug>
   </body>
   <script type="text/javascript">
   function CheckItem(obj)
@@ -189,10 +189,15 @@ function FocusItem(obj)
 				$("#tip").text("√‹¬Î¥ÌŒÛ");
 				$("#surelogin").attr('disabled',false);
 			}else{
-			window.location.href="${pageContext.request.contextPath}/index.jsp";
+			
+			$("#inputbox").empty();
+    		$("#inputbox").load('UserAction_loginsuccesstip.action');
+    		$('#light2').css("display","block");
+    		$('#fade').css("display","block");
+			setTimeout("location.href='index.jsp'", 3000);
 		}},
 	error: function(){
-		$("#surelogin").attr('disabled',false)
+		$("#surelogin").attr('disabled',false);
 }
 
 })

@@ -2,7 +2,9 @@ package com.bookstore.action;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -73,6 +75,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			System.out.println("登入失败");
 			/*
 			 * 处理登入密码错误
+			 * 
 			 * */
 			HttpServletResponse response=ServletActionContext.getResponse();
 			response.setCharacterEncoding("UTF-8");
@@ -81,19 +84,49 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 			return null;
 		}else{
 		System.out.println("登入成功");
-//		ActionContext.getContext().getSession().put("user", user);//将用户信息放入值栈session域
+		//将用户信息放入值栈session域
 		ActionContext.getContext().getSession().put("usermessage", user);
 		return "loginsuccess";
 		
 		}
 	}
+	public String loginout(){//退出登入
+		ActionContext.getContext().getSession().remove("usermessage");//将用户信息从session域中移除
+		Map<String,String> jme=new HashMap<String,String>();
+		jme.put("ms1","注销成功！");
+		jme.put("ms2", "正在进入首页...");
+		ActionContext.getContext().getValueStack().push(jme);
+		
+		return "JumpPage";
+	}
+	
+	public String loginsuccesstip(){//登入成功提示
+		Map<String,String> jme=new HashMap<String,String>();
+		jme.put("ms1","登入成功！");
+		jme.put("ms2", "正在进入首页...");
+		ActionContext.getContext().getValueStack().push(jme);
+		
+		return "JumpPage";
+	}
 	
 	public String JumpPage(){
-		List<String> jme=new ArrayList<String>();
-		jme.add("恭喜：注册成功！");
-		jme.add("正在进入首页...");
-		ActionContext.getContext().getSession().put("jumpmessage",jme);
+		Map<String,String> jme=new HashMap<String,String>();
+		jme.put("ms1","恭喜：注册成功！");
+		jme.put("ms2", "正在进入首页...");
+		ActionContext.getContext().getValueStack().push(jme);
+		
 		return "JumpPage";
+	}
+	public String buyCarNullJumpPage(){
+		Map<String,String> jme=new HashMap<String,String>();
+		jme.put("ms1","请先登入哦！");
+		jme.put("ms2", "你还未登入呢...");
+		ActionContext.getContext().getValueStack().push(jme);
+		
+		return "JumpPage";
+	}
+	public String buyCar(){
+		return "buycar";
 	}
 	
 	public String  mainpage(){

@@ -27,8 +27,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
 	<div id="msgs" style="margin: 0 auto;">
-				<h1><s:property value="#session.jumpmessage[0]"/></h1>
-				<h3><s:property value="#session.jumpmessage[1]"/></h3>
+				<h1><s:property value="ms1"/></h1>
+				<h3><s:property value="ms2"/></h3>
 	</div>
 	
 	<script type="text/javascript">
