@@ -33,3 +33,17 @@ public class Page {
 	}
 
 }
+Query query = session.createQuery("from Monkey");
+
+//得到滚动结果集
+ScrollableResults scroll = query.scroll();
+//滚动到最后一行
+scroll.last();
+int i = scroll.getRowNumber() + 1;
+System.out.println("总计路数：" + i);
+
+//设置分页位置
+query.setFirstResult(0);
+query.setMaxResults(3);
+
+System.out.println(query.list());
