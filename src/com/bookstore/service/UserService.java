@@ -1,7 +1,10 @@
 package com.bookstore.service;
 
 import java.io.Serializable;
+import java.util.List;
 
+import com.bookstore.domain.HotBook;
+import com.bookstore.domain.SpecialBook;
 import com.bookstore.domain.User;
 
 public interface UserService {
@@ -13,5 +16,7 @@ public interface UserService {
 	public User findUserById(Serializable id);//查找
 	public Boolean findUserByUsm(String usm);//用户名查找，用于异步交互
 	public Boolean findUserReeEmail(String email);//检测邮箱是否已经注册
+
+
 
 }

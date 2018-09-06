@@ -1,5 +1,7 @@
 package com.Test;
 
+import org.hibernate.Query;
+import org.hibernate.ScrollableResults;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.classic.Session;
@@ -64,5 +66,18 @@ public class TestUserDao extends SpringUtils{
 		
 		userService.deleteUser(1l);
 		
+	}
+	@Test
+	public int getTotalRecords(String tablesName) {//查询总记录条数
+		// TODO Auto-generated method stub
+		SessionFactory sessionFactory=(SessionFactory) context.getBean("sessionFactory");
+		Session s=sessionFactory.openSession();
+		Query query = s.createQuery("from "+tablesName);
+		//得到滚动结果集
+		ScrollableResults scroll = query.scroll();
+		//滚动到最后一行
+		scroll.last();
+		System.out.println("总计路数：" + scroll.getRowNumber() + 1);
+		return scroll.getRowNumber()+1;
 	}
 }

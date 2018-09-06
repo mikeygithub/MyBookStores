@@ -34,3 +34,26 @@ insert into booktype value(33,'医学');
 insert into booktype value(34,'原版书');
 insert into booktype value(35,'科学技术');
 insert into booktype value(36,'科文商科教材');
+
+insert into specialbook value(1,1,'阿姆斯特朗',100,66);/*主键对应book表中book的id*/
+insert into specialbook value(2,2,'设计中的设计',100,99);
+insert into specialbook value(3,3,'小王子',100,22);
+insert into specialbook value(4,4,'破茧成蝶2',100,77);
+insert into specialbook value(5,5,'大破局',100,59);
+insert into specialbook value(6,6,'读书少时',100,21);
+insert into specialbook value(7,7,'解忧杂货店',100,19);
+insert into specialbook value(8,8,'JavaWeb高级编程',100,79);
+insert into specialbook value(9,9,'编译系统透视',100,44);
+insert into specialbook value(10,10,'一九八四',100,11);
+insert into specialbook value(11,11,'爱上Python',100,14);
+insert into specialbook value(12,12,'JS实例教程',100,65);
+insert into specialbook value(13,13,'汤姆索亚历险记',100,78);
+insert into specialbook value(14,14,'摆渡人',100,66);
+insert into specialbook value(15,15,'谁的青春不曾落寞',100,55);
+insert into specialbook value(16,16,'青春妮敦道',100,66);
+insert into specialbook value(17,17,'青春电影手册',100,33);
+insert into specialbook value(18,18,'把青春唱完',100,22);
+insert into specialbook value(19,19,'如光如影常在',100,77);
+insert into specialbook value(20,20,'一日一花',100,64);
+insert into specialbook value(21,21,'忘记书名了',100,46);
+insert into specialbook value(22,22,'小说与小说杂论',100,166);

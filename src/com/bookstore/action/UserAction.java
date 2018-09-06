@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 
 import com.bookstore.domain.User;
+import com.bookstore.service.BookService;
 import com.bookstore.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -126,7 +127,9 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return "myBuyCar";
 	}
 	
-	public String  mainpage(){
+	public String  index(){//加载入口
+//		userService.
+		
 		return "index";
 	}
 	public String test(){
