@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <style type="text/css">
-.wrap { width:960px; margin:0 auto; }
+.wraps { width:580px; height:490px; margin:0 auto; overflow: hidden;}
 #shopping { }
 #shopping table { width:100%; line-height:24px; border-top:2px solid #dfc9b2; border-bottom:2px solid #dfc9b2; }
 #shopping table th { background:#f7f4eb; color:#8a7152; }
@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 #shopping table td.number dl dt { float:left; display:inline; width:25px; text-align:center; margin:0 4px; }
 #shopping table td.number dl dt input { width:20px; border:1px solid #c9c9c9; padding:2px; text-align:center; }
 #shopping table td.number dl dd { float:left; width:28px; margin:3px 0; text-align:center; line-height:20px; height:19px; overflow:hidden; border:1px solid #c9c9c9; cursor:pointer; }
-#shopping .button { text-align:right; padding:10px 0; }
+#shopping .button { text-align:right; padding:10px 0; border: 1px solid red;}
 #shopping .button div input{
     border-radius: 5px;
     background: -webkit-linear-gradient(top, #66B5E6, #fc7e31);
@@ -45,25 +45,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     float: right;
 }
 #shopping .shadow { width:500px; margin:50px auto; }
-.wrap #shopping form .button div {
+.wraps #shopping form .button div {
 	float: left;
 }
-.wrap #shopping form .button #confirmsubmitorder {
+.wraps #shopping form .button #confirmsubmitorder {
 	float: right;
 }
+.wraps  h2 {
+	font-size: 20px;
+	line-height: 30px;
+	border-bottom: 2px solid #fbaa62;
+	/*padding-left: 25px;*/
+}
+.wraps #shopping form #button div #resultmoney{ color:#c00; font-weight:bold; font-size:20px; }
 </style>
   </head>
   
   <body>
-    <div class="wrap">
+    <div class="wraps" style="border: 1px solid red;">
+    <h2>我的购物车</h2>
 	<div id="shopping">
-		<form action="shopping-result.html">
+		<form>
+		<div style="height: 380px;border: 1px solid yellow;">
 			<table>
 				<tr>
 					<th>商品名称</th>
 					<th>商品价格</th>
 					<th>购买数量</th>
 					<th>操作</th>
+			</tr><!-- 进行将购物车的商品遍历  6行-->
+				<tr id="product_id_1">
+					<td class="thumb"><img src="images/product/0_tiny.gif" /><a href="product-view.html">哈利波特与死亡圣器</a></td>
+					<td class="price" id="price_id_1">
+						<span>￥99.00</span>
+						<input type="hidden" value="99" />
+					</td>
+					<td class="number">
+						<input type="button" value="-" onclick="reduceproductnumber()"/>
+						1
+							<input type="button" value="+"/>
+					</td>
+					<td class="delete"><a href="javascript:delShopping(1);">删除</a></td>
+				</tr>
+				<!-- 测试视图 -->
+				<tr id="product_id_1">
+					<td class="thumb"><img src="images/product/0_tiny.gif" /><a href="product-view.html">哈利波特与死亡圣器</a></td>
+					<td class="price" id="price_id_1">
+						<span>￥99.00</span>
+						<input type="hidden" value="99" />
+					</td>
+					<td class="number">
+						<input type="button" value="-" onclick="reduceproductnumber()"/>
+						1
+							<input type="button" value="+"/>
+					</td>
+					<td class="delete"><a href="javascript:delShopping(1);">删除</a></td>
 				</tr>
 				<tr id="product_id_1">
 					<td class="thumb"><img src="images/product/0_tiny.gif" /><a href="product-view.html">哈利波特与死亡圣器</a></td>
@@ -78,10 +114,51 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</td>
 					<td class="delete"><a href="javascript:delShopping(1);">删除</a></td>
 				</tr>
-			</table>
+				<tr id="product_id_1">
+					<td class="thumb"><img src="images/product/0_tiny.gif" /><a href="product-view.html">哈利波特与死亡圣器</a></td>
+					<td class="price" id="price_id_1">
+						<span>￥99.00</span>
+						<input type="hidden" value="99" />
+					</td>
+					<td class="number">
+						<input type="button" value="-" onclick="reduceproductnumber()"/>
+						1
+							<input type="button" value="+"/>
+					</td>
+					<td class="delete"><a href="javascript:delShopping(1);">删除</a></td>
+				</tr>
+				<tr id="product_id_1">
+					<td class="thumb"><img src="images/product/0_tiny.gif" /><a href="product-view.html">哈利波特与死亡圣器</a></td>
+					<td class="price" id="price_id_1">
+						<span>￥99.00</span>
+						<input type="hidden" value="99" />
+					</td>
+					<td class="number">
+						<input type="button" value="-" onclick="reduceproductnumber()"/>
+						1
+							<input type="button" value="+"/>
+					</td>
+					<td class="delete"><a href="javascript:delShopping(1);">删除</a></td>
+				</tr>
+				<tr id="product_id_1">
+					<td class="thumb"><img src="images/product/0_tiny.gif" /><a href="product-view.html">哈利波特与死亡圣器</a></td>
+					<td class="price" id="price_id_1">
+						<span>￥99.00</span>
+						<input type="hidden" value="99" />
+					</td>
+					<td class="number">
+						<input type="button" value="-" onclick="reduceproductnumber()"/>
+						1
+							<input type="button" value="+"/>
+					</td>
+					<td class="delete"><a href="javascript:delShopping(1);">删除</a></td>
+				</tr>
+				<!-- 测试视图 -->
+		</table>
+	</div>
 			<div class="button">
 				<div>
-				结算金额：<span id="resultmoney"></span>￥
+					结算金额：<span id="resultmoney">￥</span>
 				</div>
 				<div id="confirmsubmitorder"><input type="submit" value="提交订单"/>
 				</div>
@@ -90,7 +167,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 <script type="text/javascript">
-		document.write("Cookie中记录的购物车商品ID："+ getCookie("product") + "，可以在动态页面中进行读取");
 		function reduceproductnumber(){//减少商品数量
 			
 		}

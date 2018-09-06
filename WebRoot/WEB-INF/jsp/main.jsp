@@ -240,6 +240,7 @@ border: 1px solid #c3c3c3;
     	</div>
     	<div id="show1_chil2" align="center" style="margin-top: 445px;margin-bottom:0px;clear: both;"><!-- 分页按钮 -->
     		<ul>
+    				<li class="up"><a href="#">首页</a></li>
 					<li class="up"><a href="#">上一页</a></li>
 					<li class="current">1</li>
 					<li><a href="#">2</a></li>
@@ -247,6 +248,7 @@ border: 1px solid #c3c3c3;
 					<li><a href="#">4</a></li>
 					<li><a href="#">5</a></li>
 					<li class="down"><a href="#">下一页</a></li>
+					<li class="up"><a href="#">尾页</a></li>
 				</ul>
     	</div>
     </div>
@@ -278,6 +280,7 @@ border: 1px solid #c3c3c3;
 			
 			<div class="pager" align="center">
 				<ul>
+					<li class="up"><a href="#">首页</a></li>
 					<li class="up"><a href="#">上一页</a></li>
 					<li class="current">1</li>
 					<li><a href="#">2</a></li>
@@ -285,6 +288,7 @@ border: 1px solid #c3c3c3;
 					<li><a href="#">4</a></li>
 					<li><a href="#">5</a></li>
 					<li class="down"><a href="#">下一页</a></li>
+					<li class="down"><a href="#">尾页</a></li>
 				</ul>
 			</div>
 	</div>

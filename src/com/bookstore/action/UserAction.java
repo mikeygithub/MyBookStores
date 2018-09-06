@@ -1,19 +1,13 @@
 package com.bookstore.action;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import org.apache.struts2.ServletActionContext;
 
-import com.bookstore.domain.Book;
 import com.bookstore.domain.User;
-import com.bookstore.service.BookService;
 import com.bookstore.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,9 +16,11 @@ import com.opensymphony.xwork2.ModelDriven;
 public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	
-	private User model=new User();
+	private User model=new User();//模型驱动
 	
-	private UserService userService;
+	private UserService userService;//接口编程
+	
+	Map<String,String> jme=new HashMap<String,String>();//jump page message
 	
 	public void setUserService(UserService userService) {
 		this.userService = userService;
@@ -45,7 +41,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 
 	public void CheckuEmail() throws IOException {//邮箱是否已经注册
 		// TODO Auto-generated method stub
-		System.out.println("uEmail===="+model.getUemail());
+		//System.out.println("uEmail===="+model.getUemail());
 		
 		HttpServletResponse response=ServletActionContext.getResponse();
 		response.setCharacterEncoding("UTF-8");
@@ -92,7 +88,6 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 	public String loginout(){//退出登入
 		ActionContext.getContext().getSession().remove("usermessage");//将用户信息从session域中移除
-		Map<String,String> jme=new HashMap<String,String>();
 		jme.put("ms1","注销成功！");
 		jme.put("ms2", "正在进入首页...");
 		ActionContext.getContext().getValueStack().push(jme);
@@ -101,7 +96,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 	
 	public String loginsuccesstip(){//登入成功提示
-		Map<String,String> jme=new HashMap<String,String>();
+		
 		jme.put("ms1","登入成功！");
 		jme.put("ms2", "正在进入首页...");
 		ActionContext.getContext().getValueStack().push(jme);
@@ -110,7 +105,7 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 	}
 	
 	public String JumpPage(){
-		Map<String,String> jme=new HashMap<String,String>();
+		
 		jme.put("ms1","恭喜：注册成功！");
 		jme.put("ms2", "正在进入首页...");
 		ActionContext.getContext().getValueStack().push(jme);
@@ -118,15 +113,17 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return "JumpPage";
 	}
 	public String buyCarNullJumpPage(){
-		Map<String,String> jme=new HashMap<String,String>();
+		
 		jme.put("ms1","请先登入哦！");
 		jme.put("ms2", "你还未登入呢...");
 		ActionContext.getContext().getValueStack().push(jme);
 		
 		return "JumpPage";
 	}
-	public String buyCar(){
-		return "buycar";
+	
+	public String myBuyCar(){//购物车
+		
+		return "myBuyCar";
 	}
 	
 	public String  mainpage(){

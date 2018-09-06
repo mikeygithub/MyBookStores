@@ -27,11 +27,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-<div id="hhh">
-
-<h1 onclick="f()">布丁足迹;秒后自动跳转……</h1>
-<a></a>
-</div>
+<input type="text" style="width: 10px;">
 </body>
 <script type="text/javascript">
 function f(){

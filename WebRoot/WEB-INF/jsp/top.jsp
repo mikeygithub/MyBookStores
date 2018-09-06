@@ -113,45 +113,43 @@ border-top-right-radius:5px;
     		 return true;
     	}
     	
-    	function logins(){
-    		$("#inputbox").load("UserAction_loginUI.action");
-    		$('#light2').css("display","block");
-    		$('#fade').css("display","block");
-    		
+    	function logins(){//登入界面
+    		jumps("UserAction_loginUI.action");
     	}
     	
-    	function regiter(){
-    		$("#inputbox").empty();
-    		$("#inputbox").load('UserAction_Register.action');
-    		$('#light2').css("display","block");
-    		$('#fade').css("display","block");
+    	function regiter(){//注册页面
+    		jumps("UserAction_Register.action");
     	}
     	
-    	function buycar(){
+    	function buycar(){//购物车
     		if(checkalreadylogin()){
-    			alert("购物车");
+    		//	alert("购物车");
+    		//$("#showbook1").empty();
+    		$("#showbook1").load("UserAction_myBuyCar.action");
     		}else{
-    		$("#inputbox").empty();
-    		$("#inputbox").load('UserAction_buyCarNullJumpPage.action');
-    		$('#light2').css("display","block");
-    		$('#fade').css("display","block");
+    		jumps("UserAction_buyCarNullJumpPage.action");
     		}
     	}
-    	function loginout(){
+    	function loginout(){//注销
     		if(checkalreadylogin()){
     			//alert("注销成功");
-    		$("#inputbox").empty();
-    		$("#inputbox").load('UserAction_loginout.action');
-    		$('#light2').css("display","block");
-    		$('#fade').css("display","block");
+    			jumps("UserAction_loginout.action");
     		setTimeout("location.href='index.jsp'", 3000);
     			
     		}else{
-    		$("#inputbox").empty();
+    		
+    		jumps("UserAction_buyCarNullJumpPage.action");
+    		/*$("#inputbox").empty();
     		$("#inputbox").load('UserAction_buyCarNullJumpPage.action');
     		$('#light2').css("display","block");
-    		$('#fade').css("display","block");
+    		$('#fade').css("display","block");*/
     		}
+    	}
+    	function jumps(url){
+    		$("#inputbox").empty();
+    		$("#inputbox").load(url);
+    		$('#light2').css("display","block");
+    		$('#fade').css("display","block");
     	}
     </script>
   </body>
