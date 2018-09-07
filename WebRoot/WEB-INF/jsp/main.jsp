@@ -230,9 +230,10 @@ border: 1px solid #c3c3c3;
     		<s:iterator value="#session.specialpage" var="sp">
     		<li>
     			<dl>
-					<dt><a href="product-view.html" target="_blank">
-					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg'
-					 /></a></dt>
+					<dt>
+					<a href="product-view.html" target="_blank">
+					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg'/></a>
+					</dt>
 					<dd class="title"><a href="javascript:void(0)" onclick="'bookdetails(<s:property value="%{#sp.bid}"/>')" target="_blank"><s:property value="var.bname"></s:property></a></dd>
 					<dd class="price">￥<s:property value="var.bspecialprice"></s:property></dd>
 				</dl>

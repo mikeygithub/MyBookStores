@@ -1,6 +1,9 @@
 package com.bookstore.action;
 
+import java.util.List;
+
 import com.bookstore.domain.Book;
+import com.bookstore.domain.SpecialBook;
 import com.bookstore.service.BookService;
 import com.bookstore.tools.Page;
 import com.opensymphony.xwork2.ActionContext;
@@ -68,6 +71,10 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		specialpage.setParament(specialcrruentPageNum,this.bookService.getTotalRecords("SpecialBook"),12);
 		specialpage.setRecords(bookService.getPageBook(specialpage.startIndex,specialpage.pageSize,"SpecialBook"));
 		ActionContext.getContext().getSession().put("specialpage",specialpage);
+		List<SpecialBook> s=specialpage.getRecords();
+		for(SpecialBook ss:s){
+			System.out.println("特价信息："+ss.getBname());
+		}
 		return null;
 	}
 	
