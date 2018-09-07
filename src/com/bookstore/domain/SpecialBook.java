@@ -7,6 +7,7 @@ public class SpecialBook {
 
 	private Long specialBook;// 主键
 	private Long bid;// 书籍id
+	private String bimage;//images
 	private String bname;// 书籍名称
 	private float bprice;// 书籍原价
 	private float bspecialprice;// 特价
@@ -25,6 +26,14 @@ public class SpecialBook {
 
 	public void setBid(Long bid) {
 		this.bid = bid;
+	}
+
+	public String getBimage() {
+		return bimage;
+	}
+
+	public void setBimage(String bimage) {
+		this.bimage = bimage;
 	}
 
 	public String getBname() {

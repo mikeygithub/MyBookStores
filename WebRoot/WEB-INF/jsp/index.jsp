@@ -87,4 +87,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 	<div id="fade" class="black_overlay"></div>
   </body>
+  <script type="text/javascript">
+  $().ready(function(){
+  	getSpecialpage();//当页面加载的时候将两个模块的book加载进值栈的session
+	getHotpage();
+})
+function getHotpage(){
+	var json={hotcrruentPageNum:$("#pagehot").val()}//获取当前页码
+	$.ajax({//执行异步交互
+			url:"BookAction_loadHotBook.action",
+			type:"post",
+			async:true,
+			data:json,
+			success:function(){},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("异步请求错误");
+			}
+		})
+}
+function getSpecialpage(){
+	var json={specialcrruentPageNum:$("#pagespecial").val()}//获取当前页码
+	alert("当前特价页码"+$("#pagespecial").val());
+	$.ajax({//执行异步交互
+			url:"BookAction_loadSpecialBook.action",
+			type:"post",
+			async:true,
+			data:json,
+			success:function(){},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("异步请求错误");
+			}
+		})
+}
+
+  </script>
 </html>

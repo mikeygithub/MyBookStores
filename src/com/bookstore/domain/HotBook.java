@@ -7,6 +7,7 @@ public class HotBook {
 	
 	private Long hotBook;//主键
 	private Long bid;
+	private String bimage;//images
 	private String bname;
 	private float bprice;
 
@@ -24,6 +25,14 @@ public class HotBook {
 
 	public void setBid(Long bid) {
 		this.bid = bid;
+	}
+
+	public String getBimage() {
+		return bimage;
+	}
+
+	public void setBimage(String bimage) {
+		this.bimage = bimage;
 	}
 
 	public String getBname() {

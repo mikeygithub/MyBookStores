@@ -10,6 +10,7 @@
 		<property name="bname" type="java.lang.String" length="20"></property>
 		<property name="bprice" length="10"></property>
 		<property name="bspecialprice" length="10"></property>
+		<property name="bimage" type="java.lang.String" length="50"></property>
 		
 		<many-to-one name="bid" class="com.bookstore.domain.Book" column="bid"></many-to-one>
 		

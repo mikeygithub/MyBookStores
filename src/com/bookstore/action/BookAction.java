@@ -11,7 +11,8 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 
 	
 	private Book model=new Book();
-	private int crruentPageNum;//当前的页码
+	private int hotcrruentPageNum;//当前的页码
+	private int specialcrruentPageNum;
 	private BookService bookService;
 
 	public void setBookService(BookService bookService) {
@@ -28,12 +29,20 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		this.model = model;
 	}
 
-	public int getCrruentPageNum() {
-		return crruentPageNum;
+	public int getHotcrruentPageNum() {
+		return hotcrruentPageNum;
 	}
 
-	public void setCrruentPageNum(int crruentPageNum) {
-		this.crruentPageNum = crruentPageNum;
+	public void setHotcrruentPageNum(int hotcrruentPageNum) {
+		this.hotcrruentPageNum = hotcrruentPageNum;
+	}
+
+	public int getSpecialcrruentPageNum() {
+		return specialcrruentPageNum;
+	}
+
+	public void setSpecialcrruentPageNum(int specialcrruentPageNum) {
+		this.specialcrruentPageNum = specialcrruentPageNum;
 	}
 
 	public String BookDetails(){//将书籍的详细信息通过id查询出来
@@ -42,22 +51,27 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		return SUCCESS;
 	}
 	public String BookDetailsUI(){
-	return "BookDetailsUI";
+		return "BookDetailsUI";
 	}
 
-	public String loadHotBookAndSpecialBook(){//加载特价模块图书和热门图书
+	public String loadHotBook(){//加载特价模块图书和热门图书
+		Page hotpage=new Page();
+		hotpage.setParament(hotcrruentPageNum,this.bookService.getTotalRecords("HotBook"),6);
+//		System.out.println("page message="+hotpage.startIndex+hotpage.pageSize+"SpecialBook");
+		hotpage.setRecords(bookService.getPageBook(hotpage.startIndex,hotpage.pageSize,"HotBook"));
+		ActionContext.getContext().getSession().put("hotpage",hotpage);//将信息放入session
 		
-		Page page1=new Page();Page page2=new Page();int crruentPageNum1=1;
-		
-		page1.setParament(crruentPageNum1,this.bookService.getTotalRecords("SpecialBook"),12);
-		System.out.println("page message="+page1.startIndex+page1.pageSize+"SpecialBook");
-		page1.setRecords(bookService.getPageBook(page1.startIndex,page1.pageSize,"SpecialBook"));
-		
-		page2.setParament(crruentPageNum,this.bookService.getTotalRecords("HotBook"),6);
-		page2.setRecords(bookService.getPageBook(page1.startIndex,page1.pageSize,"HotBook"));
-		
-		ActionContext.getContext().getSession().put("page1",page1);//将信息放入session
-		ActionContext.getContext().getSession().put("page2",page2);
+		return null;
+	}
+	public String loadSpecialBook(){
+		Page specialpage=new Page();
+		specialpage.setParament(specialcrruentPageNum,this.bookService.getTotalRecords("SpecialBook"),12);
+		specialpage.setRecords(bookService.getPageBook(specialpage.startIndex,specialpage.pageSize,"SpecialBook"));
+		ActionContext.getContext().getSession().put("specialpage",specialpage);
+		return null;
+	}
+	
+	public String Lookdebug(){
 		return "test";
 	}
 }

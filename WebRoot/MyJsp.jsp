@@ -30,6 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
 <input type="text" style="width: 10px;">
+<s:debug></s:debug>
 </body>
 <script type="text/javascript">
 function f(){
