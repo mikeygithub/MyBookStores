@@ -37,8 +37,8 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 	}
 
 	public String BookDetails(){//将书籍的详细信息通过id查询出来
-//		Book book=bookService.findBookById(model.getBid());
-//		ActionContext.getContext().getSession().put("detailsbook", book);//将信息放入session
+		Book book=bookService.findBookById(model.getBid());
+		ActionContext.getContext().getSession().put("detailsbook", book);//将信息放入session
 		return SUCCESS;
 	}
 	public String BookDetailsUI(){
@@ -49,8 +49,12 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		
 		Page page1=new Page();Page page2=new Page();int crruentPageNum1=1;
 		
-		page1.setParament("SpecialBook",crruentPageNum1,this.bookService.getTotalRecords("SpecialBook"),12,this.bookService);
-		page2.setParament("HotBook",crruentPageNum,this.bookService.getTotalRecords("HotBook"),6,this.bookService);
+		page1.setParament(crruentPageNum1,this.bookService.getTotalRecords("SpecialBook"),12);
+		System.out.println("page message="+page1.startIndex+page1.pageSize+"SpecialBook");
+		page1.setRecords(bookService.getPageBook(page1.startIndex,page1.pageSize,"SpecialBook"));
+		
+		page2.setParament(crruentPageNum,this.bookService.getTotalRecords("HotBook"),6);
+		page2.setRecords(bookService.getPageBook(page1.startIndex,page1.pageSize,"HotBook"));
 		
 		ActionContext.getContext().getSession().put("page1",page1);//将信息放入session
 		ActionContext.getContext().getSession().put("page2",page2);

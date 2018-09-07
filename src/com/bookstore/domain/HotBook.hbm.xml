@@ -6,8 +6,11 @@
 		<id name="hotBook" type="java.lang.Long" length="10">
 			<generator class="increment"></generator>
 		</id>
-		<property name="bid" type="java.lang.Long" length="20"></property>
+		
 		<property name="bname" type="java.lang.String" length="20"></property>
 		<property name="bprice" length="5"></property>
+	
+	<many-to-one name="bid" class="com.bookstore.domain.Book" column="bid"></many-to-one>
+		
 	</class>
 </hibernate-mapping>
