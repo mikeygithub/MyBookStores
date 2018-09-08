@@ -23,4 +23,8 @@
 			<ref bean="bookService"/>
 		</property>
 	</bean>
+	<bean id="hotBook" class="com.bookstore.domain.HotBook" scope="prototype"></bean>
+	<bean id="specialBook" class="com.bookstore.domain.SpecialBook" scope="prototype"></bean>
+	<bean id="hotpage" class="com.bookstore.tools.Page" scope="prototype"></bean>
+	<bean id="specialpage" class="com.bookstore.tools.Page" scope="prototype"></bean>
 </beans>

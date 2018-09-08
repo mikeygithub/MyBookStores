@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -72,9 +73,5 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		}
 	}
 
-	public Collection<Book> getSpecialBook(Integer begin, Integer end) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

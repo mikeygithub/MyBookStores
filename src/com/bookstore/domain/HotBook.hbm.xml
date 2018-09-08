@@ -11,7 +11,7 @@
 		<property name="bprice" length="5"></property>
 		<property name="bimage" type="java.lang.String" length="50"></property>
 		
-	<many-to-one name="bid" class="com.bookstore.domain.Book" column="bid"></many-to-one>
+		<property name="bid" type="java.lang.Long" length="10"></property>
 		
 	</class>
 </hibernate-mapping>

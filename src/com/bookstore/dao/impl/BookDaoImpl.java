@@ -8,7 +8,9 @@ import com.bookstore.dao.BookDao;
 import com.bookstore.domain.Book;
 import com.bookstore.domain.HotBook;
 import com.bookstore.domain.SpecialBook;
+import com.bookstore.domain.User;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.ScrollableResults;
 public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
@@ -25,30 +27,31 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
 	}
 
 	public void addBook(Book book) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		this.getHibernateTemplate().save(book);
-	}
+	} 
 	
 	public int getTotalRecords(String tablesName) {//查询总记录条数
 		// TODO Auto-generated method stub
 		String hql = "select count(*) from "+tablesName;   
+		
+		
 		return ((Long)getHibernateTemplate().iterate(hql).next()).intValue();
 	}
 
 	public List getPageBook(int start, int end,String tablesName) {//获取分页的记录
 		// TODO Auto-generated method stub
-		
-		System.out.println("Message="+start+"//"+end+"//"+tablesName);
-		
+		System.out.println("Message=开始记录="+start+"//结束记录="+end+"//表名="+tablesName);
 		Query query = this.getSession().createQuery("from "+tablesName);
 		query.setFirstResult(start);
 		query.setMaxResults(end);
+		
 		return query.list();
 	}
 
 	public void addSpecialBook(SpecialBook specialBook) {//添加特价图书
 		// TODO Auto-generated method stub
-		
+		this.getHibernateTemplate().save(specialBook);
 	}
 
 	public List<SpecialBook> getAllSpecialBook() {//获取全部特价图书

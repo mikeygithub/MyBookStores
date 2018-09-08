@@ -190,6 +190,7 @@ border: 1px solid #c3c3c3;
 #mains #showbook1 #show1_chil2 ul .down {width: 80px;padding-top: 10px;font-size: 10px}
 #mains #showbook1 #show1_chil2 ul li {width: 20px; float:left; border:1px solid #eee; line-height:5px; padding:3 2px; margin:0 1px; display:inline; }
 #mains #showbook1 #show1_chil2 ul li.current {font-weight:bold; color:#630; padding-top: 3px;}
+#mains #left-context #con-child {overflow: hidden;}
 #mains #left-context #con-child dl dd a {font-size: 15px;font-family: "Times New Roman", Times, serif;}
 #mains #left-context #con-child dl dd a:link {color: #999;}
 #mains #left-context #con-child dl dd a:visited {color: #999;}
@@ -227,15 +228,15 @@ border: 1px solid #c3c3c3;
     	<div id="show1_chil1">
     	<h2>今日特价</h2><!-- 将图书活动的图书进行遍历 -->
     		<ul style="margin-top: 5px;">
-    		<s:iterator value="#session.specialpage" var="sp">
+    		<s:iterator value="#session.specialpage.records" var="sp">
     		<li>
     			<dl>
 					<dt>
 					<a href="product-view.html" target="_blank">
 					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg'/></a>
 					</dt>
-					<dd class="title"><a href="javascript:void(0)" onclick="'bookdetails(<s:property value="%{#sp.bid}"/>')" target="_blank"><s:property value="var.bname"></s:property></a></dd>
-					<dd class="price">￥<s:property value="var.bspecialprice"></s:property></dd>
+					<dd class="title"><a href="javascript:void(0)" onclick="'bookdetails(<s:property value="%{#sp.bid}"/>')"><s:property value="%{#sp.bname}"></s:property></a></dd>
+					<dd class="price">￥<s:property value="%{#sp.bspecialprice}"></s:property></dd>
 				</dl>
     		</li>
     		</s:iterator>
@@ -265,7 +266,7 @@ border: 1px solid #c3c3c3;
     <div id="showbook2"><h2>热卖图书</h2>
   			<div style="overflow: hidden; height: 140px; ">
   				<ul>
-  					<c:forEach var="product" items="${hotproductList}" begin="1"  end="6"><!-- 开始遍历商品 -->
+  					<c:forEach var="product" items="${hotpage.records}" begin="0"  end="6"><!-- 开始遍历商品 -->
     					<li>
     						<dl>
 						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/${product.bimage}.jpg" /></a></dt>

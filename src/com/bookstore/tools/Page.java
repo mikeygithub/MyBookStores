@@ -18,17 +18,18 @@ public class Page {
 	
 	public void setParament(int currentPageNum,int totalRecords,int pageSize){
 		this.currentPageNum=currentPageNum;
-		this.totalPage=totalRecords;
+		this.totalPage=totalRecords;System.out.println("总记录条数："+totalRecords);
 		this.pageSize=pageSize;			
 		totalPage=totalRecords%pageSize==0?totalRecords/pageSize:(totalRecords/pageSize+1);
-		startIndex=(currentPageNum-1)*pageSize;System.out.println("66666"+startIndex);
+		startIndex=(currentPageNum-1)*pageSize;
 	}
 
 	public List getRecords() {
 		return records;
 	}
 
-	public void setRecords(List records) {System.out.println("setRecords method");
+	public void setRecords(List records) {
+		System.out.println("setRecords method");
 		this.records = records;
 	}
 
