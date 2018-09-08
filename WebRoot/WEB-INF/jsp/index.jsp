@@ -107,7 +107,7 @@ function getHotpage(){
 }
 function getSpecialpage(){
 	var json={"specialcrruentPageNum":$("#pagespecial").val()}//获取当前页码
-	alert("当前特价页码"+$("#pagespecial").val());
+	
 	$.ajax({//执行异步交互
 			url:"BookAction_loadSpecialBook.action",
 			type:"post",

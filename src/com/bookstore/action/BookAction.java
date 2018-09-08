@@ -61,6 +61,7 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		return SUCCESS;
 	}
 	public String BookDetailsUI(){
+		
 		return "BookDetailsUI";
 	}
 

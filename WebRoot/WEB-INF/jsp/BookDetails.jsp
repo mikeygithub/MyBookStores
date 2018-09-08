@@ -87,26 +87,27 @@ display: none;
   <body>
   	<div id="showbookdetails">
   		<div id="showbookdetails_chil1">
-  			<h2>商品详情信息</h2>
+  			<h2>商品详情信息></h2>
   		</div>
   		<div id="showbookdetails_chil2">
   			<div id="product" class="main">
 				<h2>铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</h2>
 					<div class="infos">
-						<div class="thumb" ><img src="${pageContext.request.contextPath}/images/product/spark.jpg" width="146" height="149"
+						<div class="thumb" ><img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#session.detailsbook.bimage}"/>.jpg' width="146" height="149"
 						 onmouseout="hide()" onmouseover="show()"/>
 						</div>
 						<div id="apDiv1">
 							<div id="APDIV2">
-								<img alt="" src="${pageContext.request.contextPath}/images/DetailImages/qc1.jpg" height="300px" width="300px;">
+								<img alt="" src='${pageContext.request.contextPath}/images/product/<s:property value="%{#session.detailsbook.bimage}"/>.jpg' height="300px" width="300px;">
 							</div>
 						</div>
 						<div class="buy">
-							<p>商城价：<span class="price">￥99.00</span></p>
-							<p>类别：青春</p>
-							<p>库存：有货</p>
-							<p>作者：阿姆斯特朗</p>
-							<p>库存：有货</p>
+							<p>商城价：<span class="price">￥<s:property value="#session.detailsbook.bprice"/></span></p>
+							<p>名称：<s:property value="#session.detailsbook.bname"/></p>
+							<p>折扣：<s:property value="#session.detailsbook.bpress"/>折</p>
+							<p>库存：<s:property value="#session.detailsbook.bnumber"/>本</p>
+							<p>作者：<s:property value="#session.detailsbook.bprice"/></p>
+							
 						</div>
 						<div class="buttons" style="clear:both; height:40px;" align="right" >
 							<input type="button" name="button" value="立即购买" onclick="goBuy(${product.bid})" align="middle"/>

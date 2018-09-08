@@ -97,7 +97,7 @@ border-top-right-radius:5px;
     		<a href="javascript:void(0)" onclick="loginout()">注销</a>
     	</div>
     	<div class="nav"><ul>
-  <li><a class="active" href="#home">主页</a></li>
+  <li><a class="active" href="index.jsp">主页</a></li>
   <li><a href="#news">新闻</a></li>
   <li><a href="#contact">联系</a></li>
   <li><a href="#about">关于</a></li>

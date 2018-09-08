@@ -232,10 +232,10 @@ border: 1px solid #c3c3c3;
     		<li>
     			<dl>
 					<dt>
-					<a href="product-view.html" target="_blank">
+					<a href="javascript:void(0)" onclick="bookdetails('<s:property value="%{#sp.bid}"/>')">
 					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg'/></a>
 					</dt>
-					<dd class="title"><a href="javascript:void(0)" onclick="'bookdetails(<s:property value="%{#sp.bid}"/>')"><s:property value="%{#sp.bname}"></s:property></a></dd>
+					<dd class="title"><a href="javascript:void(0)" onclick="bookdetails('<s:property value="%{#sp.bid}"/>')"><s:property value="%{#sp.bname}"></s:property></a></dd>
 					<dd class="price">￥<s:property value="%{#sp.bspecialprice}"></s:property></dd>
 				</dl>
     		</li>
@@ -244,11 +244,12 @@ border: 1px solid #c3c3c3;
     	</div>
     	<div id="show1_chil2" align="center" style="margin-top: 445px;margin-bottom:0px;clear: both;"><!-- 分页按钮 -->
     		<ul>
-    				<li class="up"><a href="#">首页</a></li>
+    				<li class="up"><a href="javascript:void(0)" onclick="getSpecialpage()">首页</a></li>
 					<li class="up"><a href="#">上一页</a></li>
 					<li class="middleinput2"><input id="pagespecial" align="middle" type="text" value="1" style="text-align:center;padding-top:0px;margin-top:0px; height: 20px;width: 20px;"></li>
 					<li class="down"><a href="#">下一页</a></li>
 					<li class="up"><a href="#">尾页</a></li>
+					<li class="down"><a>共<s:property value="%{#session.specialpage.totalPage}"/>页</a></li>
 				</ul>
     	</div>
     </div>
@@ -269,8 +270,9 @@ border: 1px solid #c3c3c3;
   					<c:forEach var="product" items="${hotpage.records}" begin="0"  end="6"><!-- 开始遍历商品 -->
     					<li>
     						<dl>
-						<dt><a href="product-view.html" target="_blank"><img src="${pageContext.request.contextPath}/images/product/${product.bimage}.jpg" /></a></dt>
-						<dd class="title"><a href="product-view.html" target="_blank">${product.bname}</a></dd>
+						<dt><a href="javascript:void(0)" onclick="bookdetails('${product.bid}')">
+						<img src="${pageContext.request.contextPath}/images/product/${product.bimage}.jpg" /></a></dt>
+						<dd class="title"><a href="javascript:void(0)" onclick="bookdetails('${product.bid}')">${product.bname}</a></dd>
 						<dd class="price">￥${product.bprice}</dd>
 							</dl>
     					</li>
@@ -280,12 +282,12 @@ border: 1px solid #c3c3c3;
 			
 			<div class="pager" align="center">
 				<ul>
-					<li class="up"><a href="#">首页</a></li>
+					<li class="up"><a href="javascript:void(0)" onclick="getHotpage()">首页</a></li>
 					<li class="up"><a href="#">上一页</a></li>
 					<li class="middleinput1"><input id=pagehot align="middle" type="text" value="1" style="text-align:center;padding-top:0px;margin-top:0px; height: 20px;width: 20px;"></li>
 					<li class="down"><a href="#">下一页</a></li>
 					<li class="down"><a href="#">尾页</a></li>
-					<li class="down"><a>共页</a></li>
+					<li class="down"><a>共<s:property value="%{#session.hotpage.totalPage}"/>页</a></li>
 				</ul>
 			</div>
 	</div>
@@ -302,7 +304,6 @@ border: 1px solid #c3c3c3;
 			success:function(){
 			$("#inputbox").empty();
 			$("#showbook1").load('BookAction_BookDetailsUI.action');
-			
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误");
