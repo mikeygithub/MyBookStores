@@ -77,7 +77,7 @@ public class BookServiceImpl implements BookService {
 		return this.bookDao.getTotalRecordsByType(typeId);
 	}
 
-	public List getPageBookByType(int startIndex, int pageSize, int i) {
+	public List getPageBookByType(int startIndex, int pageSize, Long i) {
 		// TODO Auto-generated method stub
 		return this.bookDao.getPageBookByType(startIndex, pageSize, i);
 	}

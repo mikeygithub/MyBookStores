@@ -30,14 +30,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
 <input type="text" style="width: 10px;"title="换一张试试">
+<h2 id="h2"></h2>
 <s:debug></s:debug>
 </body>
 <script type="text/javascript">
 function f(){
 	$("#hhh h1").text("enen")
 	}
+	
 	$().ready(function(){
-		alert("jquery");
-	})
+	alert("jquery");
+	$("#h2").text("Hello world");
+	
+})
 </script>
 </html>

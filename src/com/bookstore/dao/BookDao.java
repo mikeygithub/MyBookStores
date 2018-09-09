@@ -29,6 +29,6 @@ public interface BookDao {
 	public List<SpecialBook> getAllSpecialBook();//获取全部特价图书
 	public void deleteSpecialBook(Long specialBookId);//删除特价图书
 	public int getTotalRecordsByType(Long typeId);
-	public List getPageBookByType(int startIndex, int pageSize, int i);
+	public List getPageBookByType(int startIndex, int pageSize, Long i);
 	
 }

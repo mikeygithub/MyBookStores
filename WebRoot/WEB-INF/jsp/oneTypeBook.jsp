@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	font-size: 14px;
 	line-height: 30px;
 	border-bottom: 2px solid #fbaa62;
-	padding-left: 25px;
+	padding-left: 20px;
 }
 #showtypebook #sh_chil1 ul li{
 width: 125px;
@@ -75,7 +75,7 @@ height: 20px;
   <body>
     <div id="showtypebook">
     	<div id="sh_chil1">
-    	<h2>今日特价<s:property value="%{#sp.bid}"/></h2><!-- 将某一类的图书进行遍历 -->
+    	<h2>当前书籍类型：<span  id="sometitle"></span></h2><!-- 将某一类的图书进行遍历 -->
     		<ul style="margin-top: 5px;">
     		<s:iterator value="#session.sometypepage.records" var="sp">
     		<li>
@@ -107,6 +107,33 @@ height: 20px;
     	/*
     	进行分页显示
     	*/
+    	function loadpagesometype(json){
+    	
+    	$.ajax({//执行异步交互
+			url:"BookAction_getSomeTypeBook.action",
+			type:"post",
+			async:false,
+			data:json,
+			success:function(){
+				setTimeout("location.href='index.jsp'",0);
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("异步请求错误");
+			}
+		})
+		}
+    	function firstpagesometype(){
+    		
+    	}
+    	function endpagesometype(){}
+    	function nextpagesometype(){
+    	if(parseInt($("#pagesometypebook").val())==$.trim("${sessionScope.sometypepage.totalPage}")){alert("已到末页");return;}
+    	else{
+    	var json={sometypecrruentPageNum:parseInt($("#pagesometypebook").val())+1}
+    		loadpagesometype(json);
+    	
+    	}
+    	function uppagesometype(){}
     </script>
   </body>
 </html>

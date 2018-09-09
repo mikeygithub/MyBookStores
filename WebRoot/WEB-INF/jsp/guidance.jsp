@@ -113,26 +113,26 @@ body, p, ul, ol, li, dl, dt, dd, input, h1, h2, h3, h4, form, hr {
   	<div id="guidance-child">
     <ul class="clearfix">
         <li class="firstli"><a href="javascript:findBookByType(1)">青春</a></li>
-        <li><a href="javascript:findBookByType(2)">				  小说</a></li>
-        <li><a href="javascript:findBookByType(3)">				  文学</a></li>
-        <li><a href="javascript:findBookByType(4)">				  艺术</a></li>
-        <li><a href="javascript:findBookByType(5)">				  动漫</a></li>
-        <li><a href="javascript:findBookByType(6)">				  娱乐</a></li>
-        <li><a href="javascript:findBookByType(7)">				  旅游</a></li>
-        <li><a href="javascript:findBookByType(8)">				  地理</a></li>
-        <li><a href="javascript:findBookByType(9)">				  生活</a></li>
-        <li><a href="javascript:findBookByType(10)">				  婚恋</a></li>
-        <li><a href="javascript:findBookByType(11)">				  成长</a></li>
-        <li><a href="javascript:findBookByType(12)">				  保健</a></li>
-        <li><a href="javascript:findBookByType(13)">				  体育</a></li>
-        <li><a href="javascript:findBookByType(14)">				  励志</a></li>
-        <li class="last"><a href="javascript:findBookByType(15)">	  管理</a></li>
+        <li><a href="javascript:findBookByType(2)">小说</a></li>
+        <li><a href="javascript:findBookByType(3)">文学</a></li>
+        <li><a href="javascript:findBookByType(4)">艺术</a></li>
+        <li><a href="javascript:findBookByType(5)">动漫</a></li>
+        <li><a href="javascript:findBookByType(6)">娱乐</a></li>
+        <li><a href="javascript:findBookByType(7)">旅游</a></li>
+        <li><a href="javascript:findBookByType(8)">地理</a></li>
+        <li><a href="javascript:findBookByType(9)">生活</a></li>
+        <li><a href="javascript:findBookByType(10)">婚恋</a></li>
+        <li><a href="javascript:findBookByType(11)">成长</a></li>
+        <li><a href="javascript:findBookByType(12)">保健</a></li>
+        <li><a href="javascript:findBookByType(13)">体育</a></li>
+        <li><a href="javascript:findBookByType(14)">励志</a></li>
+        <li class="last"><a href="javascript:findBookByType(15)">管理</a></li>
     	</ul>
     </div>
   </div>
   <script type="text/javascript">
   	function findBookByType(typeId){
-  		alert(typeId);
+  		//alert(typeId);
   		var json={typeid:typeId,sometypecrruentPageNum:$("#pagesometypebook").val()}
   		$.ajax({//执行异步交互
 			url:"BookAction_getSomeTypeBook.action",
@@ -141,6 +141,7 @@ body, p, ul, ol, li, dl, dt, dd, input, h1, h2, h3, h4, form, hr {
 			data:json,
 			success:function(){
 				$("#showbook1").load("BookAction_getSomeTypeBookUI.action");
+				$("#sometitle").text("类");//标题栏
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误");

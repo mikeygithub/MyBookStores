@@ -23,6 +23,6 @@ public interface BookService {
 	public int getTotalRecords(String tablesName);//获取总的记录条数
 	public List getPageBook(int start,int end,String tablesName);//获取分页的图书
 	public int getTotalRecordsByType(Long typeId);
-	public List getPageBookByType(int startIndex, int pageSize, int i);
+	public List getPageBookByType(int startIndex, int pageSize, Long i);
 
 }

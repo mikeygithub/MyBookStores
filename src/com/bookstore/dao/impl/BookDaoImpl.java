@@ -94,10 +94,10 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
  * (non-Javadoc)
  * @see com.bookstore.dao.BookDao#getPageBookByType(int, int, int)
  */
-	public List getPageBookByType(int startIndex, int pageSize, int i) {//带条件的分页查询
+	public List getPageBookByType(int startIndex, int pageSize, Long i) {//带条件的分页查询
 		// TODO Auto-generated method stub
 		Query query=this.getSession().createQuery("from Book where typeid=?");//带查询条件的分页hql语句
-        query.setParameter(0,1l);
+        query.setParameter(0,i);
         query.setFirstResult(startIndex);//从第几条数据开始查询
         query.setMaxResults(pageSize);//每页显示多少条数据
         System.out.println("messsage=开始"+startIndex+"条数="+pageSize+"typeId="+i);
