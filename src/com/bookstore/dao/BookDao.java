@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 import com.bookstore.domain.Book;
+import com.bookstore.domain.BookType;
 import com.bookstore.domain.HotBook;
 import com.bookstore.domain.SpecialBook;
 
@@ -27,5 +28,7 @@ public interface BookDao {
 	public void addSpecialBook(SpecialBook specialBook);//添加特价图书
 	public List<SpecialBook> getAllSpecialBook();//获取全部特价图书
 	public void deleteSpecialBook(Long specialBookId);//删除特价图书
+	public int getTotalRecordsByType(Long typeId);
+	public List getPageBookByType(int startIndex, int pageSize, int i);
 	
 }

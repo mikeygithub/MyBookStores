@@ -1,14 +1,9 @@
 package com.bookstore.tools;
 
+import java.io.Serializable;
 import java.util.List;
 
-import org.hibernate.ScrollableResults;
-
-import com.bookstore.dao.UserDao;
-import com.bookstore.domain.Book;
-import com.bookstore.service.BookService;
-
-public class Page {
+public class Page implements Serializable{
 	public List records;//存放分页记录DAO层查出来
 	public int currentPageNum;//当前页码，页面传过来
 	public int totalRecords;//总记录数DAO层查出来
@@ -18,6 +13,7 @@ public class Page {
 	
 	public void setParament(int currentPageNum,int totalRecords,int pageSize){
 		this.currentPageNum=currentPageNum;
+		System.out.println("--------------------------------");
 		this.totalPage=totalRecords;System.out.println("总记录条数："+totalRecords);
 		this.pageSize=pageSize;			
 		totalPage=totalRecords%pageSize==0?totalRecords/pageSize:(totalRecords/pageSize+1);

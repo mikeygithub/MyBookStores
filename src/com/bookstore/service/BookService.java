@@ -3,6 +3,7 @@ package com.bookstore.service;
 import java.util.List;
 
 import com.bookstore.domain.Book;
+import com.bookstore.domain.BookType;
 import com.bookstore.domain.HotBook;
 import com.bookstore.domain.SpecialBook;
 
@@ -21,5 +22,7 @@ public interface BookService {
 	
 	public int getTotalRecords(String tablesName);//获取总的记录条数
 	public List getPageBook(int start,int end,String tablesName);//获取分页的图书
+	public int getTotalRecordsByType(Long typeId);
+	public List getPageBookByType(int startIndex, int pageSize, int i);
 
 }

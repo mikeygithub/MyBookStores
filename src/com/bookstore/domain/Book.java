@@ -11,7 +11,7 @@ public class Book  implements Serializable {
 	private Integer bnumber;//存货
 	private String bdescription;//简介
 	private String bimage;//封面
-	private BookType booktype;//类型
+	private Long typeid;//类型
 	private Integer specialoffer;//是否是特价商品
 	private Integer hotbook;//是否为热销售价
 	public Long getBid() {
@@ -62,11 +62,11 @@ public class Book  implements Serializable {
 	public void setBimage(String bimage) {
 		this.bimage = bimage;
 	}
-	public BookType getBooktype() {
-		return booktype;
+	public Long getTypeid() {
+		return typeid;
 	}
-	public void setBooktype(BookType booktype) {
-		this.booktype = booktype;
+	public void setTypeid(Long typeid) {
+		this.typeid = typeid;
 	}
 	public Integer getSpecialoffer() {
 		return specialoffer;

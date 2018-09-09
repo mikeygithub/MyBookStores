@@ -13,12 +13,8 @@
 		<property name="bpress" type="java.lang.Double" length="10"></property>
 		<property name="bprice" type="java.lang.Double" length="10"></property>
 		<property name="bnumber" type="java.lang.Integer" length="10"></property>
-		<many-to-one name="booktype" column="typeid" class="com.bookstore.domain.BookType" cascade="save-update"></many-to-one>
-		<property name="specialoffer" type="java.lang.Integer" length="2" >
-			<column name="specialoffer" not-null="true" default="0"/>
-		</property>
-		<property name="hotbook" type="java.lang.Integer" length="2" >
-			<column name="hotbook" not-null="true" default="0"/>
-		</property>
+		<property name="typeid" type="java.lang.Long" length="10"></property>
+		<property name="specialoffer" type="java.lang.Integer" length="2" ></property>
+		<property name="hotbook" type="java.lang.Integer" length="2" ></property>
 	</class>
 </hibernate-mapping>

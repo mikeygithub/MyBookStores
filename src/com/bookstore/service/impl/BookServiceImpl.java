@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.bookstore.dao.BookDao;
 import com.bookstore.domain.Book;
+import com.bookstore.domain.BookType;
 import com.bookstore.domain.HotBook;
 import com.bookstore.domain.SpecialBook;
 import com.bookstore.service.BookService;
@@ -69,6 +70,16 @@ public class BookServiceImpl implements BookService {
 	public List getPageBook(int start, int end, String tablesName) {
 		// TODO Auto-generated method stub
 		return this.bookDao.getPageBook(start,end,tablesName);
+	}
+
+	public int getTotalRecordsByType(Long typeId) {
+		// TODO Auto-generated method stub
+		return this.bookDao.getTotalRecordsByType(typeId);
+	}
+
+	public List getPageBookByType(int startIndex, int pageSize, int i) {
+		// TODO Auto-generated method stub
+		return this.bookDao.getPageBookByType(startIndex, pageSize, i);
 	}
 
 }

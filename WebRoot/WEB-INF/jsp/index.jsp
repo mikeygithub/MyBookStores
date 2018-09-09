@@ -158,7 +158,6 @@ function hotendpage(){
 	var json={"hotcrruentPageNum":$.trim("${sessionScope.hotpage.totalPage}")};
 	getHotpage(json);
 }
-
 function specialnextpage(){//热卖图书下一页
 	//进下页码判断是否超出范围
 	

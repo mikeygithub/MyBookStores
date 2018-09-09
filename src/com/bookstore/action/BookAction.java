@@ -13,11 +13,14 @@ import com.opensymphony.xwork2.ModelDriven;
 public class BookAction extends ActionSupport implements ModelDriven<Book> {
 
 	
-	private Book model=new Book();
-	private int hotcrruentPageNum;//当前的页码
+	private Book model=new Book();//模型驱动
+	private int hotcrruentPageNum;//当前的页码由前端传来
 	private int specialcrruentPageNum;
-	private BookService bookService;
-	Page hotpage;Page specialpage;
+	private int sometypecrruentPageNum;
+	private BookService bookService;//接口编程
+	Page hotpage;//热门图书分页
+	Page specialpage;//特价图书分页
+	Page sometypepage;//某一类型图书分页
 	
 	public void setHotpage(Page hotpage) {
 		this.hotpage = hotpage;
@@ -26,6 +29,10 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		this.specialpage = specialpage;
 	}
 
+	
+	public void setSometypepage(Page sometypepage) {
+		this.sometypepage = sometypepage;
+	}
 	public void setBookService(BookService bookService) {
 		this.bookService = bookService;
 	}
@@ -55,6 +62,12 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		this.specialcrruentPageNum = specialcrruentPageNum;
 	}
 
+	public int getSometypecrruentPageNum() {
+		return sometypecrruentPageNum;
+	}
+	public void setSometypecrruentPageNum(int sometypecrruentPageNum) {
+		this.sometypecrruentPageNum = sometypecrruentPageNum;
+	}
 	public String BookDetails(){//将书籍的详细信息通过id查询出来
 		Book book=bookService.findBookById(model.getBid());
 		ActionContext.getContext().getSession().put("detailsbook", book);//将信息放入session
@@ -85,7 +98,6 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 
 		ActionContext.getContext().getSession().put("hotpage",hotpage);//将信息放入session
 		
-//		System.out.println("获取完毕");
 		return SUCCESS;
 	}
 	public String loadSpecialBook(){
@@ -101,6 +113,22 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		ActionContext.getContext().getSession().put("specialpage",specialpage);
 		
 		return SUCCESS;
+	}
+	/*
+	 * 获取某一个类型的图书
+	 */
+	public String getSomeTypeBook(){
+		if(sometypecrruentPageNum==0)sometypecrruentPageNum=1;
+		sometypepage.setParament(sometypecrruentPageNum, this.bookService.getTotalRecordsByType(1l),12);//获取该类 图书的总条数
+		sometypepage.setRecords(this.bookService.getPageBookByType(sometypepage.startIndex, sometypepage.pageSize, 1));
+		ActionContext.getContext().getSession().put("sometypepage",sometypepage);//将查询出来的某类图书放入session
+		return SUCCESS;
+	}
+	/*
+	 * 返回获取某个分类图书的界面
+	 */
+	public String getSomeTypeBookUI(){
+		return "TypeBookUI";
 	}
 	
 	public String Lookdebug(){
