@@ -65,7 +65,18 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		return "BookDetailsUI";
 	}
 
+	public String index(){//第一次加载页面的时候将两个模块的信息放入session
+		
+		loadHotBook();
+		loadSpecialBook();
+		
+		return "index";
+	}
+	
 	public String loadHotBook(){//加载特价模块图书和热门图书
+		
+		if(hotcrruentPageNum==0)hotcrruentPageNum=1;
+		
 		hotpage.setParament(hotcrruentPageNum,this.bookService.getTotalRecords("HotBook"),6);
 		
 		hotpage.setRecords(bookService.getPageBook(hotpage.startIndex,hotpage.pageSize,"HotBook"));
@@ -74,13 +85,16 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 
 		ActionContext.getContext().getSession().put("hotpage",hotpage);//将信息放入session
 		
-		System.out.println("获取完毕");
+//		System.out.println("获取完毕");
 		return SUCCESS;
 	}
 	public String loadSpecialBook(){
+		
+		if(specialcrruentPageNum==0)specialcrruentPageNum=1;
+		
 		specialpage.setParament(specialcrruentPageNum,this.bookService.getTotalRecords("SpecialBook"),12);
 		
-		System.out.println("page message="+specialpage.startIndex+specialpage.pageSize+"*总页：*"+specialpage.totalPage+"SpecialBook");
+//		System.out.println("page message="+specialpage.startIndex+specialpage.pageSize+"*总页：*"+specialpage.totalPage+"SpecialBook");
 		
 		specialpage.setRecords(bookService.getPageBook(specialpage.startIndex,specialpage.pageSize,"SpecialBook"));
 		

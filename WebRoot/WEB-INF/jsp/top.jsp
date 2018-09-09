@@ -89,7 +89,7 @@ border-top-right-radius:5px;
   
   <body>
     <div id="header" class="wrap">
-    	<div id="logo"><img alt="" src="${pageContext.servletContext.contextPath}/images/logo.jpg"></div>
+    	<div id="logo"><img alt="" src="${pageContext.servletContext.contextPath}/images/logo.jpg" title="欢迎来到网上书店"></div>
     	<div class="help">
     		<a href="javascript:void(0)" onclick="buycar()">购物车</a>
     		<a href="javascript:void(0)" onclick="logins()">登录</a>

@@ -89,35 +89,105 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
   <script type="text/javascript">
   $().ready(function(){
-  	getSpecialpage();//当页面加载的时候将两个模块的book加载进值栈的session
-	getHotpage();
+  	
+/*  var json1={"hotcrruentPageNum":$("#pagehot").val()}//获取当前页码
+  	
+	var json2={"specialcrruentPageNum":$("#pagespecial").val()}//获取当前页码
+*/  	
+	/*var json1={"hotcrruentPageNum":1}alert("hello");
+	var json2={"specialcrruentPageNum":1}
+  	getSpecialpage(json2);//当页面加载的时候将两个模块的book加载进值栈的session
+	getHotpage(json1);*/
 })
-function getHotpage(){
-	var json={"hotcrruentPageNum":$("#pagehot").val()}//获取当前页码
+function getHotpage(json){
+	
 	$.ajax({//执行异步交互
 			url:"BookAction_loadHotBook.action",
 			type:"post",
-			async:true,
+			async:false,
 			data:json,
-			success:function(){},
+			success:function(){
+				setTimeout("location.href='index.jsp'",0);
+			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误");
 			}
 		})
 }
-function getSpecialpage(){
-	var json={"specialcrruentPageNum":$("#pagespecial").val()}//获取当前页码
-	
+function getSpecialpage(json){	
 	$.ajax({//执行异步交互
 			url:"BookAction_loadSpecialBook.action",
 			type:"post",
-			async:true,
+			async:false,
 			data:json,
-			success:function(){},
+			success:function(){
+				setTimeout("location.href='index.jsp'",0);
+			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误");
 			}
 		})
+}
+function hotnextpage(){//热卖图书下一页
+	//进下页码判断是否超出范围
+	
+	var nowpage=parseInt($("#pagehot").val());
+	if(nowpage+1>$.trim("${sessionScope.hotpage.totalPage}")){
+		alert("已经到尾页");
+		return;
+	}else{
+	var json1={"hotcrruentPageNum":nowpage+1}//获取当前页码+1
+	getHotpage(json1);//更新page
+	
+	}
+}
+function hotuppage(){//热卖图书上一页
+	//进下页码判断是否超出范围
+	
+	var nowpage=parseInt($("#pagehot").val());
+	if(nowpage-1<1){
+		alert("已经到首页");
+		return;
+	}else{
+	var json1={"hotcrruentPageNum":nowpage-1}//获取当前页码+1
+	getHotpage(json1);//更新session中的page
+	
+	}
+}
+function hotendpage(){
+	var json={"hotcrruentPageNum":$.trim("${sessionScope.hotpage.totalPage}")};
+	getHotpage(json);
+}
+
+function specialnextpage(){//热卖图书下一页
+	//进下页码判断是否超出范围
+	
+	var nowpage=parseInt($("#pagespecial").val());
+	if(nowpage+1>$.trim("${sessionScope.specialpage.totalPage}")){
+		alert("已经到尾页");
+		return;
+	}else{
+	var json1={"specialcrruentPageNum":nowpage+1}//获取当前页码+1
+	getSpecialpage(json1);//更新page
+	
+	}
+}
+function specialuppage(){//热卖图书上一页
+	//进下页码判断是否超出范围
+	
+	var nowpage=parseInt($("#pagespecial").val());
+	if(nowpage-1<1){
+		alert("已经到首页");
+		return;
+	}else{
+	var json1={"specialcrruentPageNum":nowpage-1}//获取当前页码+1
+	getSpecialpage(json1);//更新session中的page
+	
+	}
+}
+function specialendpage(){
+	var json={"specialcrruentPageNum":$.trim("${sessionScope.specialpage.totalPage}")};
+	getSpecialpage(json);
 }
 
   </script>

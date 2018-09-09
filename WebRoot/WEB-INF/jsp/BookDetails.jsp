@@ -91,7 +91,7 @@ display: none;
   		</div>
   		<div id="showbookdetails_chil2">
   			<div id="product" class="main">
-				<h2>铁三角 Audio-Technica ATH-EQ300M-SV 银色 挂耳式耳机</h2>
+				<h2>阿姆斯特朗回旋喷气式反重力阿姆斯特朗炮</h2>
 					<div class="infos">
 						<div class="thumb" ><img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#session.detailsbook.bimage}"/>.jpg' width="146" height="149"
 						 onmouseout="hide()" onmouseover="show()"/>
