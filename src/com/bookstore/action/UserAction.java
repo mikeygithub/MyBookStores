@@ -122,10 +122,10 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return "JumpPage";
 	}
 	
-	public String myBuyCar(){//购物车
-		
-		return "myBuyCar";
-	}
+//	public String myBuyCar(){//购物车
+//		
+//		return "myBuyCar";
+//	}
 	
 	public String  index(){//加载入口
 //		userService.

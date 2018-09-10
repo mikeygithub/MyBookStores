@@ -3,6 +3,7 @@ package com.bookstore.action;
 import java.util.List;
 
 import com.bookstore.domain.Book;
+import com.bookstore.domain.OrderProduct;
 import com.bookstore.domain.SpecialBook;
 import com.bookstore.service.BookService;
 import com.bookstore.tools.Page;
@@ -131,7 +132,13 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 	public String getSomeTypeBookUI(){
 		return "TypeBookUI";
 	}
-	
+	/*
+	 * 将图书放入购物车
+	 */
+	public String putBookInToBuyCar(){
+		OrderProduct op;
+		return "PUTSUCCESS";
+	}
 	public String Lookdebug(){
 		return "test";
 	}

@@ -125,7 +125,7 @@ border-top-right-radius:5px;
     		if(checkalreadylogin()){
     		//	alert("¹ºÎï³µ");
     		//$("#showbook1").empty();
-    		$("#showbook1").load("UserAction_myBuyCar.action");
+    		$("#showbook1").load("BuyCarAction_myBuyCarUI.action");
     		}else{
     		jumps("UserAction_buyCarNullJumpPage.action");
     		}

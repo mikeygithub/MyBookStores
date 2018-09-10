@@ -32,8 +32,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	overflow: hidden;
 }
 #showbookdetails #showbookdetails_chil1 h2 {
-	font-size: 14px;color: #F60;display : inline
-	line-height: 30px;
+	font-size: 18px;color: #F60;display : inline
+	line-height: 50px;
 	border-bottom: 2px solid #fbaa62;
 	overflow: hidden;
 }
@@ -45,9 +45,8 @@ height: 215px; overflow: hidden;
 	padding-left: 70px;
 	padding-right: 110px;
 }
-#showbookdetails #showbookdetails_chil2 #product h2 {font-weight: bold;font-size: 20px;border-bottom: 1px dashed #cfcfcf;overflow: hidden;display : inline
-	}
-#showbookdetails #showbookdetails_chil2 #product .infos .buy { float:left; width:250px; line-height:40px; height: 350px; overflow: hidden;}
+#showbookdetails #showbookdetails_chil2 #product h2 {font-weight: bold;font-size: 20px;border-bottom: 1px dashed #cfcfcf;overflow: hidden;display : inline}
+#showbookdetails #showbookdetails_chil2 #product .infos .buy { float:left; width:200px; line-height:40px; height: 250px; overflow: hidden; padding-top: 50px;margin-left: 70px;}
 #showbookdetails #showbookdetails_chil2 #product .infos .buy .price { color:#c00; font-weight:bold; font-size:24px; }
 #showbookdetails #showbookdetails_chil2 #product .infos .buttons input {
 	height:40px;
@@ -74,7 +73,7 @@ display: none;
 }
 #apDiv1 #APDIV2{
 	position: absolute;
-	top:80px;
+	top:200px;
 	left: -80px;
 	width: 300px;
 	height: 300px;
@@ -87,7 +86,7 @@ display: none;
   <body>
   	<div id="showbookdetails">
   		<div id="showbookdetails_chil1">
-  			<h2>商品详情信息></h2>
+  			<h2>商品详情信息页></h2>
   		</div>
   		<div id="showbookdetails_chil2">
   			<div id="product" class="main">
@@ -106,23 +105,50 @@ display: none;
 							<p>名称：<s:property value="#session.detailsbook.bname"/></p>
 							<p>折扣：<s:property value="#session.detailsbook.bpress"/>折</p>
 							<p>库存：<s:property value="#session.detailsbook.bnumber"/>本</p>
-							<p>作者：<s:property value="#session.detailsbook.bprice"/></p>
-							
+							<p>作者：<s:property value="#session.detailsbook.bauthor"/></p>
+						</div>
+						<!-- 图书的简介 -->
+						<div  id="description" style="text-overflow: ellipsis; width: 580px;overflow: hidden;height: 100px;clear: both;">
+							<h4 style="f"><strong>书籍简介：</strong></h4>
+							<p style="text-indent:2em;overflow: hidden;"><s:property value="#session.detailsbook.bdescription"/></p>
 						</div>
 						<div class="buttons" style="clear:both; height:40px;" align="right" >
-							<input type="button" name="button" value="立即购买" onclick="goBuy(${product.bid})" align="middle"/>
-								<a href="javascript:void(0)" onclick="putInBuyCar(${product.bid})">放入购物车</a>
+							<input type="button" name="button" value="立即购买" onclick="goBuy()" align="middle"/>
+								<a href="javascript:putInBuyCar()">放入购物车</a>
 						</div>
 					</div>
 		</div>
   	  </div>
   	</div>
   	<script type="text/javascript">
-  		function putInBuyCar(bid){
-  			alert(bid);
+  		function putInBuyCar(){
+  		if(checkalreadylogin()){
+  			var json={opnum:1}//封装图书信息
+    		alert("添加中！")//
+    		
+    		$.ajax({//执行异步交互添加到购物车
+			url:"BuyCarAction_addBookToBuyCar.action",
+			type:"post",
+			async:false,
+			data:json,
+			success:function(){
+				alert("添加成功！");
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("异步请求错误");
+			}
+		})
+    		}else{
+    			jumps("UserAction_buyCarNullJumpPage.action");
+    		}
+  			
   		}
-  		function goBuy(bid){
-  			alert(bid);
+  		function goBuy(){
+  		if(checkalreadylogin()){
+    		$("#showbook1").load("UserAction_myBuyCar.action");//跳转到购买界面  直接生成订单
+    		}else{
+  				jumps("UserAction_buyCarNullJumpPage.action");
+  			}
   		}
   		function show(){
   			$("#apDiv1").show();

@@ -33,6 +33,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <h2 id="h2"></h2>
 <s:debug></s:debug>
 <span style="color:#F00">测试文字 ThinkCSS</span>
+
+
+<p style="text-indent:2em">
+<font color='ff0000'>这是一个测试</font></p>
+
+
+<div style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+width:100px;">双宽带+无线WiFi 网速升3倍 WiFi手机设置无线上网的方法</div>
 </body>
 <script type="text/javascript">
 function f(){
