@@ -255,9 +255,9 @@ border: 1px solid #c3c3c3;
     	</div>
     </div>
     <div id="usermessage"><h2>用户信息</h2>
-    	<div style="height: 148px; width:178px; float: left;padding-left:64px;padding-top: 49px;overflow: hidden;"><img alt="" src="${pageContext.servletContext.contextPath}/images/userheadimage.jpg" title="快戳我,查看个人信息"></div>
-    	<div style="height:50px;width:178px;clear: left;padding-top: 15;padding-left: 20px;overflow: hidden;">
-    		用户名：<s:property value="#session.usermessage.uname"/><span id="usernames"></span>
+    	<div style="height: 84px; width:178px; float: left;padding-left:64px;padding-top: 49px;overflow: hidden;"><img alt="" src="${pageContext.servletContext.contextPath}/images/userheadimage.jpg" title="快戳我,查看个人信息"></div>
+    	<div style="height:35px;width:178px;clear: left;padding-top: 10px;padding-left: 10px;overflow: hidden;">
+    		用户名：<s:property value="#session.usermessage.uname"/><span id="usernames" style="font-size: 12px;"></span>
     		</div>
     	<div style="height: 50px;width:178px;clear: left;"><table>
     	<tr>

@@ -32,6 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <input type="text" style="width: 10px;"title="换一张试试">
 <h2 id="h2"></h2>
 <s:debug></s:debug>
+<span style="color:#F00">测试文字 ThinkCSS</span>
 </body>
 <script type="text/javascript">
 function f(){
