@@ -206,20 +206,20 @@ border: 1px solid #c3c3c3;
   	<h2>书籍分类</h2>
   		<dl>
 				<dt>科技类</dt>
-				<dd><a href="product-list.html">科学技术</a></dd>
-				<dd><a href="product-list.html">航天科学</a></dd>
-				<dd><a href="product-list.html">科文商科</a></dd>
-				<dd><a href="product-list.html">网络技术</a></dd>
-				<dd><a href="product-list.html">计算机类</a></dd>
+				<dd><a href="javascript:findBookByType(2)">科学技术</a></dd>
+				<dd><a href="javascript:findBookByType(2)">航天科学</a></dd>
+				<dd><a href="javascript:findBookByType(2)">科文商科</a></dd>
+				<dd><a href="javascript:findBookByType(2)">网络技术</a></dd>
+				<dd><a href="javascript:findBookByType(2)">计算机类</a></dd>
 				<dt>百科类</dt>
-				<dd><a href="product-list.html">心理健康</a></dd>
-				<dd><a href="product-list.html">历史文化</a></dd>
-				<dd><a href="product-list.html">考试资料</a></dd>
-				<dd><a href="product-list.html">医学书籍</a></dd>
-				<dd><a href="product-list.html">法律资料</a></dd>
-				<dd><a href="product-list.html">汽车指南</a></dd>
+				<dd><a href="javascript:findBookByType(2)">心理健康</a></dd>
+				<dd><a href="javascript:findBookByType(2)">历史文化</a></dd>
+				<dd><a href="javascript:findBookByType(2)">考试资料</a></dd>
+				<dd><a href="javascript:findBookByType(2)">医学书籍</a></dd>
+				<dd><a href="javascript:findBookByType(2)">法律资料</a></dd>
+				<dd><a href="javascript:findBookByType(2)">汽车指南</a></dd>
 				<dt>其他类</dt>
-				<dd><a href="product-list.html">工具书籍</a></dd>
+				<dd><a href="javascript:findBookByType(2)">工具书籍</a></dd>
 			</dl>
 		</div>
 		<div id="recently" ><h2>最近浏览</h2></div>
@@ -255,13 +255,17 @@ border: 1px solid #c3c3c3;
     	</div>
     </div>
     <div id="usermessage"><h2>用户信息</h2>
-    	<table>
-    		<tr><td height="40%" nowrap="nowrap"></td><td><img alt="" src="${pageContext.servletContext.contextPath}/images/userheadimage.jpg" title="快戳我,查看个人信息"></td><td></td></tr>
-    		<tr><td nowrap="nowrap" align="right">用户名:</td><td><s:property value="#session.usermessage.uname"/></td><td></td></tr>
-    		<tr><td nowrap="nowrap"><a href="javascript:void(0)" onclick="">修改资料</a></td><td nowrap="nowrap"><a href="javascript:void(0)" onclick="">物流跟踪</a></td>
-    		<td nowrap="nowrap"><a href="javascript:void(0)" onclick="">我的订单</a></td></tr>
-    		<tr></tr>
-    	</table>
+    	<div style="height: 148px; width:178px; float: left;padding-left:64px;padding-top: 49px;overflow: hidden;"><img alt="" src="${pageContext.servletContext.contextPath}/images/userheadimage.jpg" title="快戳我,查看个人信息"></div>
+    	<div style="height:50px;width:178px;clear: left;padding-top: 15;padding-left: 20px;overflow: hidden;">
+    		用户名：<s:property value="#session.usermessage.uname"/><span id="usernames"></span>
+    		</div>
+    	<div style="height: 50px;width:178px;clear: left;"><table>
+    	<tr>
+    		<td><a href="javascript:void(0)" onclick="">修改资料</a></td>
+    		<td><a href="javascript:void(0)" onclick="">物流跟踪</a></td>
+    		<td><a href="javascript:void(0)" onclick="">我的订单</a></td>
+    	</tr>
+    	</table></div>
     	</div>
     <div id="news"><h2>最新活动</h2></div>
     
@@ -312,6 +316,13 @@ border: 1px solid #c3c3c3;
 			}
 		})
   	}
+  	/*
+  	*判断用户是否已经登入
+  	*/
+$().ready(function(){
+  		if(!checkalreadylogin()){
+  			$("#usernames").text("你还没有登入哦");	}
+  	})
   </script>
   </body>
 </html>
