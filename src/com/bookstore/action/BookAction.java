@@ -121,6 +121,7 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		if(sometypecrruentPageNum==0)sometypecrruentPageNum=1;
 		sometypepage.setParament(sometypecrruentPageNum, this.bookService.getTotalRecordsByType(model.getTypeid()),12);//获取该类 图书的总条数
 		sometypepage.setRecords(this.bookService.getPageBookByType(sometypepage.startIndex, sometypepage.pageSize,model.getTypeid()));
+		sometypepage.setNowbooktypeid(model.getTypeid());
 		ActionContext.getContext().getSession().put("sometypepage",sometypepage);//将查询出来的某类图书放入session
 		return SUCCESS;
 	}

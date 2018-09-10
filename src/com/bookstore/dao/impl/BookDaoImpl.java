@@ -82,12 +82,8 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
 
 	public int getTotalRecordsByType(Long typeId) {//查找某一类型的所有图书
 		// TODO Auto-generated method stub
-		String hql = "select count(*) from Book where typeid="+typeId; 
-
-//		Long a=(long) ((Long)getHibernateTemplate().iterate("select count(*) from Book where typeid=1").next()).intValue();System.out.println("该图书总条数："+a);
-		
-				return ((Long)getHibernateTemplate().iterate(hql).next()).intValue();
-			
+		String hql = "select count(*) from Book where typeid="+typeId; 	
+		return ((Long)getHibernateTemplate().iterate(hql).next()).intValue();	
 	}
 /*
  * 查询指定类型id的book
@@ -102,11 +98,10 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
         query.setMaxResults(pageSize);//每页显示多少条数据
         System.out.println("messsage=开始"+startIndex+"条数="+pageSize+"typeId="+i);
         try {
-       	List list=query.list();
+			List list=query.list();
 		} catch (HibernateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
 		}
         return query.list();
 	}

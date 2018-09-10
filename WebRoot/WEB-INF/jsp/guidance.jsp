@@ -133,7 +133,8 @@ body, p, ul, ol, li, dl, dt, dd, input, h1, h2, h3, h4, form, hr {
   <script type="text/javascript">
   	function findBookByType(typeId){
   		//alert(typeId);
-  		var json={typeid:typeId,sometypecrruentPageNum:$("#pagesometypebook").val()}
+//  		var json={typeid:typeId,sometypecrruentPageNum:$("#pagesometypebook").val()}
+		var json={typeid:typeId,sometypecrruentPageNum:1}
   		$.ajax({//执行异步交互
 			url:"BookAction_getSomeTypeBook.action",
 			type:"post",

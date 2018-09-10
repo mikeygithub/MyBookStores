@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
   <style type="text/css">
  #showtypebook {
 	float: left;
@@ -85,7 +85,7 @@ height: 20px;
 					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg' title="快把我带回家"/></a>
 					</dt>
 					<dd class="title"><a href="javascript:void(0)" onclick="bookdetails('<s:property value="%{#sp.bid}"/>')"><s:property value="%{#sp.bname}"></s:property></a></dd>
-					<dd class="price">￥<s:property value="%{#sp.bspecialprice}"></s:property></dd>
+					<dd class="price">￥<s:property value="%{#sp.bprice}"></s:property></dd>
 				</dl>
     		</li>
     		</s:iterator>
@@ -93,14 +93,14 @@ height: 20px;
     	</div>
     	<div id="sh_chil2" align="center" style="margin-top: 445px;margin-bottom:0px;clear: both;"><!-- 分页按钮 -->
     		<ul>
-    				<li class="up"><a href="javascript:void(0)" onclick="getSpecialpage()">首页</a></li>
-					<li class="up"><a href="javascript:void(0)" onclick="specialuppage()">上一页</a></li>
+    				<li class="up"><a href="javascript:firstpagesometype('<s:property value="%{#session.sometypepage.nowbooktypeid}"/>')">首页</a></li>
+					<li class="up"><a href="javascript:uppagesometype('<s:property value="%{#session.sometypepage.nowbooktypeid}"/>')">上一页</a></li>
 					<li class="middleinput2"><input id="pagesometypebook" align="middle" type="text" value='<s:property value="%{#session.sometypepage.currentPageNum}"/>'
 					style="text-align:center;padding-top:0px;margin-top:0px; height: 20px;width: 20px;"></li>
-					<li class="down"><a href="javascript:void(0)" onclick="specialnextpage()">下一页</a></li>
-					<li class="up"><a href="javascript:void(0)" onclick="specialendpage()">尾页</a></li>
+					<li class="down"><a href="javascript:nextpagesometype('<s:property value="%{#session.sometypepage.nowbooktypeid}"/>')">下一页</a></li>
+					<li class="up"><a href="javascript:endpagesometype('<s:property value="%{#session.sometypepage.nowbooktypeid}"/>')">尾页</a></li>
 					<li class="down"><a>共<s:property value="%{#session.sometypepage.totalPage}"/>页</a></li>
-				</ul>
+			</ul>
     	</div>
     </div>
     <script type="text/javascript">
@@ -115,25 +115,53 @@ height: 20px;
 			async:false,
 			data:json,
 			success:function(){
-				setTimeout("location.href='index.jsp'",0);
+				$("#showbook1").load("BookAction_getSomeTypeBookUI.action");
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误");
 			}
 		})
 		}
-    	function firstpagesometype(){
-    		
-    	}
-    	function endpagesometype(){}
-    	function nextpagesometype(){
-    	if(parseInt($("#pagesometypebook").val())==$.trim("${sessionScope.sometypepage.totalPage}")){alert("已到末页");return;}
-    	else{
-    	var json={sometypecrruentPageNum:parseInt($("#pagesometypebook").val())+1}
+    function firstpagesometype(typeId){
+    	alert("首页");	
+    	var json={
+    		sometypecrruentPageNum:parseInt(1),
+    		typeid:typeId
+    		}
     		loadpagesometype(json);
     	
+    }
+    	function endpagesometype(typeId){alert("尾页");
+    		if(parseInt($("#pagesometypebook").val())==$.trim("${sessionScope.sometypepage.totalPage}")){alert("已到末页");return;}
+    	else{
+    		var json={
+    		sometypecrruentPageNum:parseInt($.trim("${sessionScope.sometypepage.totalPage}")),
+    		typeid:typeId
+    		}
+    		loadpagesometype(json);
+    		}
     	}
-    	function uppagesometype(){}
+    	function nextpagesometype(typeId){
+    	if(parseInt($("#pagesometypebook").val())==$.trim("${sessionScope.sometypepage.totalPage}")){alert("已到末页");return;}
+    	else{
+    		var json={
+    		sometypecrruentPageNum:parseInt($("#pagesometypebook").val())+1,
+    		typeid:typeId
+    		}
+    		loadpagesometype(json);
+    	}}
+    	
+    	function uppagesometype(typeId){alert("上一页");
+    	if(parseInt($("#pagesometypebook").val())==1){alert("已到末页");return;}
+    	else{
+    		var json={
+    		sometypecrruentPageNum:parseInt($("#pagesometypebook").val())-1,
+    		typeid:typeId
+    		}
+    		loadpagesometype(json);
+    	}
+    	}
+    	
     </script>
   </body>
 </html>

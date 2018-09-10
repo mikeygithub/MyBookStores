@@ -11,6 +11,8 @@ public class Page implements Serializable{
 	public int totalPage;//总页数
 	public int startIndex;//每页开始的记录引索
 	
+	public Long nowbooktypeid;//当前book分类对应的bookid
+	
 	public void setParament(int currentPageNum,int totalRecords,int pageSize){
 		this.currentPageNum=currentPageNum;
 		System.out.println("--------------------------------");
@@ -27,6 +29,14 @@ public class Page implements Serializable{
 	public void setRecords(List records) {
 		System.out.println("setRecords method");
 		this.records = records;
+	}
+
+	public Long getNowbooktypeid() {
+		return nowbooktypeid;
+	}
+
+	public void setNowbooktypeid(Long nowbooktypeid) {
+		this.nowbooktypeid = nowbooktypeid;
 	}
 
 	public int getCurrentPageNum() {
