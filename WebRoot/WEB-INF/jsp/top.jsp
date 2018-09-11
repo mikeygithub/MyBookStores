@@ -130,6 +130,7 @@ border-top-right-radius:5px;
     			return;
     		}
     		//$("#showbook1").empty();
+    		getbuycarpagemessage();//先将page数据加载进入session
     		$("#showbook1").load("BuyCarAction_myBuyCarUI.action");
     		}else{
     		jumps("UserAction_buyCarNullJumpPage.action");
@@ -142,6 +143,9 @@ border-top-right-radius:5px;
     		}else{
     			jumps("UserAction_buyCarNullJumpPage.action");
     		}
+    	}
+    	function getbuycarpagemessage(){
+    		$.ajax({url:"BuyCarAction_getBuyCarPage.action",async:false});
     	}
     	function jumps(url){
     		$("#inputbox").empty();

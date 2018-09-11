@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<th>购买数量</th>
 					<th>操作</th>
 			</tr><!-- 进行将 购物车的商品遍历  6行-->
-				<s:iterator value="#session.buycar" var="bc">
+				<s:iterator value="#session.newBuyCarPage.records" var="bc">
 				<tr id="product_id_1">
 					<td align="center" valign="middle"><input type="checkbox" value="checkbox"></td>
 					<td class="thumb">
@@ -193,17 +193,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			changepage(json);
 		}
 		function buycaruppage(nowpagenumber){
-			alert("上一页");
+		//alert("上一页");
 			if(parseInt(nowpagenumber)==1){alert("已到首页");return;}//判断是否已经到首页
 			var json={currentPageNumber:parseInt(nowpagenumber)-1}
 			changepage(json);
 		}
-		function buycarnextpage(nowpagenumber,totalpage){alert("下一页");
+		function buycarnextpage(nowpagenumber,totalpage){
+		//alert("下一页");
 			if(parseInt(nowpagenumber)==parseInt(totalpage)){alert("已到尾页");return;}//判断是否已经到尾页
 			var json={currentPageNumber:parseInt(nowpagenumber)+1}
 			changepage(json);
 		}
-		function buycarendpage(endpage){alert("末页");
+		function buycarendpage(endpage){
+		//alert("末页");
 			var json={currentPageNumber:parseInt(endpage)+1}
 			changepage(json);
 		}
@@ -214,7 +216,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			async:false,
 			data:json,
 			success:function(){
-				alert("删除成功！");
 				$("#showbook1").load("BuyCarAction_myBuyCarUI.action");
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){

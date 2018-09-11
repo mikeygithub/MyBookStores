@@ -136,7 +136,7 @@ public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 		}
 		return SUCCESS;
 	}
-	public String getBuyCarPage(){//分页操作
+	public void getBuyCarPage(){//分页操作
 		if(currentPageNumber==0)currentPageNumber=1;
 		
 		List<OrderProduct> buycar=(List<OrderProduct>) ActionContext.getContext().getSession().get("buycar");//获取购物车
@@ -153,7 +153,6 @@ public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 		
 		ActionContext.getContext().getSession().put("newBuyCarPage", nowBuyCarPage);
 		
-		return SUCCESS;
 	}
 	
 }

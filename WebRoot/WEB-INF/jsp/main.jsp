@@ -300,7 +300,7 @@ border: 1px solid #c3c3c3;
   </div>
   <script type="text/javascript">
   	function bookdetails(bid){
-  		alert(bid);
+  		//alert(bid);
   		var json={bid:bid}
   		$.ajax({//执行异步交互
 			url:"BookAction_BookDetails.action",
