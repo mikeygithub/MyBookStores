@@ -145,7 +145,7 @@ public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 		
 		nowBuyCarPage.setParament(currentPageNumber,buycar.size(), 6);
 		
-		for(int i=nowBuyCarPage.startIndex;i<6&&i<buycar.size();i++){
+		for(int i=nowBuyCarPage.startIndex, j=0;j<6&&i<buycar.size();i++,j++){
 			noworders.add(buycar.get(i));
 		}
 		
