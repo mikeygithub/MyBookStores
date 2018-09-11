@@ -58,4 +58,28 @@ public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 		ActionContext.getContext().getSession().put("buycar",buycar);//存放到session
 		return SUCCESS;
 	}
+	/*
+	 * 确认购买UI
+	 */
+	public String sureBuyUI(){
+		
+		
+		return "SUREBUYUI";
+	}
+	/*
+	 * 删除购物车中的某样商品
+	 */
+	public String reduceBuycarSomeProduct() {
+		@SuppressWarnings("unchecked")
+		List<OrderProduct> buycar=(List<OrderProduct>) ActionContext.getContext().getSession().get("buycar");//获取购物车
+		for(int x=0;x<buycar.size();x++){
+			if(buycar.get(x).getOpbook().getBid()==model.getBid()){//购物车存在相同商品num++
+				buycar.remove(x);
+				ActionContext.getContext().getSession().put("buycar",buycar);//存放到session
+				return SUCCESS;
+			}
+		}
+		return SUCCESS;
+	}
+	
 }
