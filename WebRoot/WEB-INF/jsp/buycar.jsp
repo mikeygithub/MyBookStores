@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 #shopping table td.number dl dt { float:left; display:inline; width:25px; text-align:center; margin:0 4px; }
 #shopping table td.number dl dt input { width:20px; border:1px solid #c9c9c9; padding:2px; text-align:center; }
 #shopping table td.number dl dd { float:left; width:28px; margin:3px 0; text-align:center; line-height:20px; height:19px; overflow:hidden; border:1px solid #c9c9c9; cursor:pointer; }
-#shopping .button { text-align:right; padding:5px 0; border: 1px solid red;height: 20px;}
+#shopping .button { text-align:right; padding:5px 0; /*border: 1px solid red;*/height: 50px;}
 #shopping .button div input{
     border-radius: 5px;
     background: -webkit-linear-gradient(top, #66B5E6, #fc7e31);
@@ -43,13 +43,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     background: linear-gradient(top, #fc7e31, #fc7e31);
     background: -ms-linear-gradient(top, #fc7e31, #fc7e31);
     float: right;
+    height: 40px;
+    width: 80px;
+    
 }
 #shopping .shadow { width:500px; margin:50px auto; }
 .wraps #shopping form .button div {
 	float: left;
 }
 .wraps #shopping form .button #confirmsubmitorder {
-	float: right;
+	float: right;height: 50px;
 }
 .wraps  h2 {
 	font-size: 20px;
@@ -68,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <div class="wraps" style="border: 1px solid red;">
+    <div class="wraps">
     <h2>我的购物车</h2>
 	<div id="shopping">
 		<form>
@@ -92,9 +95,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<input type="hidden" value="99" />
 					</td>
 					<td class="number">
-						<input type="button" value="-" onclick="reduceproductnumber()"/>
+						<input type="button" value="-" onclick="reduceproductnumber('<s:property value="%{#bc.opbook.bid}"/>','<s:property value="%{#bc.opnum}"/>')"/>
 						<s:property value="%{#bc.opnum}"/>
-							<input type="button" value="+"/>
+							<input type="button" value="+" onclick="addproductnumber('<s:property value="%{#bc.opbook.bid}"/>')"/>
 					</td>
 					<td class="delete"><a href="javascript:deleteproduct('<s:property value="%{#bc.opbook.bid}"/>');">删除</a></td>
 				</tr>
@@ -102,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</table>
 	</div>
 	<!-- 购物车分页模块 -->
-		<div id="buyshow1_chil2" align="center" style="margin-bottom:0px;clear: both;"><!-- 分页按钮 -->
+		<div id="buyshow1_chil2" align="center" style="clear: both;"><!-- 分页按钮 -->
     			<ul>
     				<li class="up"><a href="javascript:firstbuycarpage()">首页</a></li>
 					<li class="up"><a href="javascript:buycaruppage()">上一页</a></li>
@@ -116,7 +119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--  -->
 	
 			<div class="button">
-				<div>
+				<div style="margin-top:15px;">
 					结算金额：<span id="resultmoney">￥</span>
 				</div>
 				<div id="confirmsubmitorder"><input type="submit" value="提交订单"/>
@@ -126,13 +129,48 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 <script type="text/javascript">
-		function reduceproductnumber(){//减少商品数量
-			
+		function reduceproductnumber(bid,nownumber){//减少商品数量
+			alert("要减少数量的图书id"+bid+"现在数量="+nownumber);
+			//判断是否为最小值1
+			if(parseInt(nownumber)<2)return;//中断更改
+			//确认增加number
+			var json={bid:bid}
+			$.ajax({//执行异步交互
+			url:"BuyCarAction_reduceBuycarSomeProductNumber.action",
+			type:"post",
+			async:false,
+			data:json,
+			success:function(){
+				alert("删除成功！");
+				$("#showbook1").load("BuyCarAction_myBuyCarUI.action");
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("删除失败！异步请求错误！");
+			}
+		})
+		}
+		
+		function addproductnumber(bid){
+			alert("要增加数量的图书id"+bid);
+			var json={bid:bid}
+			$.ajax({//执行异步交互
+			url:"BuyCarAction_addBuycarSomeProductNumber.action",
+			type:"post",
+			async:false,
+			data:json,
+			success:function(){
+				alert("删除成功！");
+				$("#showbook1").load("BuyCarAction_myBuyCarUI.action");
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("删除失败！异步请求错误！");
+			}
+		})
 		}
 		function deleteproduct(bid){//删除某样商品
 			var json={bid:bid}
 			$.ajax({//执行异步交互
-			url:"BuyCarAction_reduceBuycarSomeProduct.action",
+			url:"BuyCarAction_deleteBuycarSomeProduct.action",
 			type:"post",
 			async:false,
 			data:json,
@@ -148,7 +186,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		/*
 		购物车分页
 		*/
-		function firstbuycarpage(){alert("购物车首页")}
+		function firstbuycarpage(){
+		alert("购物车首页");
+		
+		}
 		function buycaruppage(){alert("上一页")}
 		function buycarnextpage(){alert("下一页")}
 		function buycarendpage(){alert("末页")}

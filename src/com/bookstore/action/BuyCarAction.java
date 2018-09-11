@@ -7,18 +7,38 @@ import java.util.Map;
 
 import com.bookstore.domain.Book;
 import com.bookstore.domain.OrderProduct;
+import com.bookstore.tools.Page;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 
-	Book model=new Book();
+	Book model=new Book();//模型驱动
+	Page nowPage=new Page();//购物车当前page
+	private int currentPageNumber;//当前页
 	
 	public Book getModel() {
 		// TODO Auto-generated method stub
 		return this.model;
 	}
+	
+	public Page getNowPage() {
+		return nowPage;
+	}
+
+	public void setNowPage(Page nowPage) {
+		this.nowPage = nowPage;
+	}
+
+	public int getCurrentPageNumber() {
+		return currentPageNumber;
+	}
+
+	public void setCurrentPageNumber(int currentPageNumber) {
+		this.currentPageNumber = currentPageNumber;
+	}
+
 	public String myBuyCarUI(){//购物车UI
 		
 		return "myBuyCarUI";
@@ -69,12 +89,46 @@ public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 	/*
 	 * 删除购物车中的某样商品
 	 */
-	public String reduceBuycarSomeProduct() {
+	public String deleteBuycarSomeProduct() {
+		@SuppressWarnings("unchecked")
+		List<OrderProduct> buycar=(List<OrderProduct>) ActionContext.getContext().getSession().get("buycar");//获取购物车
+		for(int x=0;x<buycar.size();x++){
+			if(buycar.get(x).getOpbook().getBid()==model.getBid()){//通过判断id
+				buycar.remove(x);
+				ActionContext.getContext().getSession().put("buycar",buycar);//存放到session
+				return SUCCESS;
+			}
+		}
+		return SUCCESS;
+	}
+	/*
+	 * 减少购物车中某样书籍的数量
+	 */
+	public String reduceBuycarSomeProductNumber(){
 		@SuppressWarnings("unchecked")
 		List<OrderProduct> buycar=(List<OrderProduct>) ActionContext.getContext().getSession().get("buycar");//获取购物车
 		for(int x=0;x<buycar.size();x++){
 			if(buycar.get(x).getOpbook().getBid()==model.getBid()){//购物车存在相同商品num++
-				buycar.remove(x);
+				OrderProduct op=buycar.get(x);
+				op.setOpnum(op.getOpnum()-1);//num--
+				buycar.set(x,op);
+				ActionContext.getContext().getSession().put("buycar",buycar);//存放到session
+				return SUCCESS;
+			}
+		}
+		return SUCCESS;
+	}
+	/*
+	 * 增加购物车中某样书籍的数量
+	 */
+	public String addBuycarSomeProductNumber(){
+		@SuppressWarnings("unchecked")
+		List<OrderProduct> buycar=(List<OrderProduct>) ActionContext.getContext().getSession().get("buycar");//获取购物车
+		for(int x=0;x<buycar.size();x++){
+			if(buycar.get(x).getOpbook().getBid()==model.getBid()){//购物车存在相同商品num++
+				OrderProduct op=buycar.get(x);
+				op.setOpnum(op.getOpnum()+1);//num++
+				buycar.set(x,op);
 				ActionContext.getContext().getSession().put("buycar",buycar);//存放到session
 				return SUCCESS;
 			}

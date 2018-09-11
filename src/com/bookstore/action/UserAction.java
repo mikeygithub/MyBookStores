@@ -121,6 +121,13 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		
 		return "JumpPage";
 	}
+	public String buyCarNullproductJumpPage(){
+		jme.put("ms1","你的购物车空空如也！");
+		jme.put("ms2", "赶快浏览商品吧......");
+		ActionContext.getContext().getValueStack().push(jme);
+		
+		return "JumpPage";
+	}
 	
 //	public String myBuyCar(){//购物车
 //		

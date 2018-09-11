@@ -124,6 +124,11 @@ border-top-right-radius:5px;
     	function buycar(){//购物车
     		if(checkalreadylogin()){
     		//	alert("购物车");
+    		
+    		if($.trim("${sessionScope.buycar.size()}") == "0"){
+    			jumps("UserAction_buyCarNullproductJumpPage.action");
+    			return;
+    		}
     		//$("#showbook1").empty();
     		$("#showbook1").load("BuyCarAction_myBuyCarUI.action");
     		}else{
@@ -132,17 +137,10 @@ border-top-right-radius:5px;
     	}
     	function loginout(){//注销
     		if(checkalreadylogin()){
-    			//alert("注销成功");
     			jumps("UserAction_loginout.action");
     		setTimeout("location.href='index.jsp'", 3000);
-    			
     		}else{
-    		
-    		jumps("UserAction_buyCarNullJumpPage.action");
-    		/*$("#inputbox").empty();
-    		$("#inputbox").load('UserAction_buyCarNullJumpPage.action');
-    		$('#light2').css("display","block");
-    		$('#fade').css("display","block");*/
+    			jumps("UserAction_buyCarNullJumpPage.action");
     		}
     	}
     	function jumps(url){
