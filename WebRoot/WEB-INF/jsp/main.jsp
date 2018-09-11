@@ -243,7 +243,7 @@ border: 1px solid #c3c3c3;
     		</ul>
     	</div>
     	<div id="show1_chil2" align="center" style="margin-top: 445px;margin-bottom:0px;clear: both;"><!-- 分页按钮 -->
-    		<ul>
+    			<ul>
     				<li class="up"><a href="javascript:void(0)" onclick="getSpecialpage()">首页</a></li>
 					<li class="up"><a href="javascript:void(0)" onclick="specialuppage()">上一页</a></li>
 					<li class="middleinput2"><input id="pagespecial" align="middle" type="text" value='<s:property value="%{#session.specialpage.currentPageNum}"/>'

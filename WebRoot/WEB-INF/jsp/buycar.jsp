@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 #shopping table td.number dl dt { float:left; display:inline; width:25px; text-align:center; margin:0 4px; }
 #shopping table td.number dl dt input { width:20px; border:1px solid #c9c9c9; padding:2px; text-align:center; }
 #shopping table td.number dl dd { float:left; width:28px; margin:3px 0; text-align:center; line-height:20px; height:19px; overflow:hidden; border:1px solid #c9c9c9; cursor:pointer; }
-#shopping .button { text-align:right; padding:10px 0; border: 1px solid red;}
+#shopping .button { text-align:right; padding:5px 0; border: 1px solid red;height: 20px;}
 #shopping .button div input{
     border-radius: 5px;
     background: -webkit-linear-gradient(top, #66B5E6, #fc7e31);
@@ -58,6 +58,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	/*padding-left: 25px;*/
 }
 .wraps #shopping form #button div #resultmoney{ color:#c00; font-weight:bold; font-size:20px; }
+.wraps #shopping form #buyshow1_chil2{margin:0 auto; height: 25px; overflow: hidden;}
+.wraps #shopping form #buyshow1_chil2 ul {display:inline-block;margin-top: 2px;}
+.wraps #shopping form #buyshow1_chil2 ul .up {width: 80px;padding-top: 10px;font-size: 10px;}
+.wraps #shopping form #buyshow1_chil2 ul .down {width: 80px;padding-top: 10px;font-size: 10px}
+.wraps #shopping form #buyshow1_chil2 ul li {width: 20px; float:left; border:1px solid #eee; line-height:5px; padding:3 2px; margin:0 1px; display:inline; }
+.wraps #shopping form #buyshow1_chil2 ul li.current {font-weight:bold; color:#630; padding-top: 3px;}
 </style>
   </head>
   
@@ -78,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<tr id="product_id_1">
 					<td align="center" valign="middle"><input type="checkbox" value="checkbox"></td>
 					<td class="thumb">
-					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#bc.opbook.bimage}"/>.jpg' title="快把我带回家" style="width:100px;"/>
+					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#bc.opbook.bimage}"/>.jpg' title="快把我带回家" style="width:30px;height: 30px;"/>
 					<a href="javascript:bookdetails('<s:property value="%{#bc.opbook.bid}"/>')"><s:property value="%{#bc.opbook.bname}"/></a>
 					</td>
 					<td class="price" id="price_id_1">
@@ -95,6 +101,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</s:iterator>
 		</table>
 	</div>
+	<!-- 购物车分页模块 -->
+		<div id="buyshow1_chil2" align="center" style="margin-bottom:0px;clear: both;"><!-- 分页按钮 -->
+    			<ul>
+    				<li class="up"><a href="javascript:firstbuycarpage()">首页</a></li>
+					<li class="up"><a href="javascript:buycaruppage()">上一页</a></li>
+					<li class="middleinput2"><input id="pagespecial" align="middle" type="text" value='<s:property value="%{#session.specialpage.currentPageNum}"/>'
+					style="text-align:center;padding-top:0px;margin-top:0px; height: 20px;width: 20px;"></li>
+					<li class="down"><a href="javascript:buycarnextpage()">下一页</a></li>
+					<li class="up"><a href="javascript:buycarendpage()">尾页</a></li>
+					<li class="down"><a>共<s:property value="%{#session.specialpage.totalPage}"/>页</a></li>
+				</ul>
+    	</div>
+	<!--  -->
+	
 			<div class="button">
 				<div>
 					结算金额：<span id="resultmoney">￥</span>
@@ -128,6 +148,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		/*
 		购物车分页
 		*/
+		function firstbuycarpage(){alert("购物车首页")}
+		function buycaruppage(){alert("上一页")}
+		function buycarnextpage(){alert("下一页")}
+		function buycarendpage(){alert("末页")}
+		
 	</script>
 </body>
 </html>
