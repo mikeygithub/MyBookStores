@@ -108,12 +108,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="buyshow1_chil2" align="center" style="clear: both;"><!-- 分页按钮 -->
     			<ul>
     				<li class="up"><a href="javascript:firstbuycarpage()">首页</a></li>
-					<li class="up"><a href="javascript:buycaruppage()">上一页</a></li>
-					<li class="middleinput2"><input id="pagespecial" align="middle" type="text" value='<s:property value="%{#session.specialpage.currentPageNum}"/>'
+					<li class="up"><a href="javascript:buycaruppage(<s:property value="%{#session.newBuyCarPage.currentPageNum}"/>)">上一页</a></li>
+					<li class="middleinput2"><input id="pagespecial" align="middle" type="text" value='<s:property value="%{#session.newBuyCarPage.currentPageNum}"/>'
 					style="text-align:center;padding-top:0px;margin-top:0px; height: 20px;width: 20px;"></li>
-					<li class="down"><a href="javascript:buycarnextpage()">下一页</a></li>
-					<li class="up"><a href="javascript:buycarendpage()">尾页</a></li>
-					<li class="down"><a>共<s:property value="%{#session.specialpage.totalPage}"/>页</a></li>
+					<li class="down"><a href="javascript:buycarnextpage(<s:property value="%{#session.newBuyCarPage.currentPageNum}"/>,
+					<s:property value="%{#session.newBuyCarPage.totalPage}"/>)">下一页</a></li>
+					<li class="up"><a href="javascript:buycarendpage(<s:property value="%{#session.newBuyCarPage.totalPage}"/>)">尾页</a></li>
+					<li class="down"><a>共<s:property value="%{#session.newBuyCarPage.totalPage}"/>页</a></li>
 				</ul>
     	</div>
 	<!--  -->
@@ -187,13 +188,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		购物车分页
 		*/
 		function firstbuycarpage(){
-		alert("购物车首页");
-		
+			alert("购物车首页");
+			var json={currentPageNumber:parseInt(1)}
+			changepage(json);
 		}
-		function buycaruppage(){alert("上一页")}
-		function buycarnextpage(){alert("下一页")}
-		function buycarendpage(){alert("末页")}
-		
+		function buycaruppage(nowpagenumber){
+			alert("上一页");
+			if(parseInt(nowpagenumber)==1){alert("已到首页");return;}//判断是否已经到首页
+			var json={currentPageNumber:parseInt(nowpagenumber)-1}
+			changepage(json);
+		}
+		function buycarnextpage(nowpagenumber,totalpage){alert("下一页");
+			if(parseInt(nowpagenumber)==parseInt(totalpage)){alert("已到尾页");return;}//判断是否已经到尾页
+			var json={currentPageNumber:parseInt(nowpagenumber)+1}
+			changepage(json);
+		}
+		function buycarendpage(endpage){alert("末页");
+			var json={currentPageNumber:parseInt(endpage)+1}
+			changepage(json);
+		}
+		function changepage(json){
+			$.ajax({//执行异步交互
+			url:"BuyCarAction_getBuyCarPage.action",
+			type:"post",
+			async:false,
+			data:json,
+			success:function(){
+				alert("删除成功！");
+				$("#showbook1").load("BuyCarAction_myBuyCarUI.action");
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("删除失败！异步请求错误！");
+			}
+		})
+		}
 	</script>
 </body>
 </html>

@@ -15,20 +15,20 @@ import com.opensymphony.xwork2.ModelDriven;
 public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 
 	Book model=new Book();//模型驱动
-	Page nowPage=new Page();//购物车当前page
+	Page nowBuyCarPage=new Page();//购物车当前page
 	private int currentPageNumber;//当前页
 	
 	public Book getModel() {
 		// TODO Auto-generated method stub
 		return this.model;
 	}
-	
-	public Page getNowPage() {
-		return nowPage;
+
+	public Page getNowBuyCarPage() {
+		return nowBuyCarPage;
 	}
 
-	public void setNowPage(Page nowPage) {
-		this.nowPage = nowPage;
+	public void setNowBuyCarPage(Page nowBuyCarPage) {
+		this.nowBuyCarPage = nowBuyCarPage;
 	}
 
 	public int getCurrentPageNumber() {
@@ -107,6 +107,7 @@ public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 	public String reduceBuycarSomeProductNumber(){
 		@SuppressWarnings("unchecked")
 		List<OrderProduct> buycar=(List<OrderProduct>) ActionContext.getContext().getSession().get("buycar");//获取购物车
+		
 		for(int x=0;x<buycar.size();x++){
 			if(buycar.get(x).getOpbook().getBid()==model.getBid()){//购物车存在相同商品num++
 				OrderProduct op=buycar.get(x);
@@ -133,6 +134,25 @@ public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 				return SUCCESS;
 			}
 		}
+		return SUCCESS;
+	}
+	public String getBuyCarPage(){//分页操作
+		if(currentPageNumber==0)currentPageNumber=1;
+		
+		List<OrderProduct> buycar=(List<OrderProduct>) ActionContext.getContext().getSession().get("buycar");//获取购物车
+		
+		List<OrderProduct> noworders=new ArrayList<OrderProduct>();//需要在当前页显示的orderlist
+		
+		nowBuyCarPage.setParament(currentPageNumber,buycar.size(), 6);
+		
+		for(int i=nowBuyCarPage.startIndex;i<6&&i<buycar.size();i++){
+			noworders.add(buycar.get(i));
+		}
+		
+		nowBuyCarPage.setRecords(noworders);
+		
+		ActionContext.getContext().getSession().put("newBuyCarPage", nowBuyCarPage);
+		
 		return SUCCESS;
 	}
 	
