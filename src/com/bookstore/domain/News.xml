@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bookstore.domain.News">
+		<id name="nid" length="10" type="java.lang.Long">
+			<generator class="increment"></generator>
+		</id>
+		<property name="ntitle" length="50" not-null="true"></property>
+		<property name="ncontext" length="1000" type="java.lang.String"></property>
+		<property name="statics" length="2" type="java.lang.Long"></property>
+	</class>
+
+</hibernate-mapping>

@@ -59,5 +59,6 @@
 	<mapping resource="com/bookstore/domain/Orders.hbm.xml" />
 	<mapping resource="com/bookstore/domain/HotBook.hbm.xml" />
 	<mapping resource="com/bookstore/domain/SpecialBook.hbm.xml" />
+	<mapping resource="com/bookstore/domain/News.xml" />
 </session-factory>
 </hibernate-configuration>
