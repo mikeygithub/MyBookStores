@@ -76,6 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	border: 1px solid #c3c3c3;
 	width: 180px;
 	height: 248px;
+	overflow: hidden;
 }
 #mains #left-context #recently {
 	clear: left;
@@ -222,7 +223,36 @@ border: 1px solid #c3c3c3;
 				<dd><a href="javascript:findBookByType(2)">工具书籍</a></dd>
 			</dl>
 		</div>
-		<div id="recently" ><h2>最近浏览</h2></div>
+		<div id="recently" ><h2>最近浏览</h2>
+		<div id="recentlylook" style="width: 160px;height: 122px;border: 1 solid red;clear: both;background: #fff0d9;
+			padding-top: 5px;padding-left: 20px;">
+			<!-- 迭代最近浏览的商品  最多显示4条-->
+			<form>
+			<!--
+			<table> 
+			<tr>
+				<td><img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#bc.opbook.bimage}"/>.jpg' 
+				title="快把我带回家" style="width:25px;height: 25px;"/></td>
+				<td><s:property value="%{#bc.opbook.bimage}"/></td>
+			</tr></table> -->
+				
+				<table><tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
+				title="快把我带回家" style="width:25px;height: 25px;"/></td>
+				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr>
+				<tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
+				title="快把我带回家" style="width:25px;height: 25px;"/></td>
+				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr>
+				<tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
+				title="快把我带回家" style="width:25px;height: 25px;"/></td>
+				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr>
+				<tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
+				title="快把我带回家" style="width:25px;height: 25px;"/></td>
+				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr></table>
+			
+			</form>
+			<!-- 迭代完成 -->
+		</div>
+		</div>
   	</div>
     <div id="showbook1">
     	<div id="show1_chil1">
@@ -267,7 +297,23 @@ border: 1px solid #c3c3c3;
     	</tr>
     	</table></div>
     	</div>
-    <div id="news"><h2>最新活动</h2></div>
+    <div id="news"><h2>最新活动</h2>
+    	<div style="height: 200px;width: 160px;background: #fff0d9;border:1px sloid yellow; padding: 10px 10px;" >
+    		<table><!-- 迭代活动/新闻目录  8条 -->
+    			<tr>
+    				<td></td>
+    				<td>最新活动</td>
+    			</tr>
+    			<tr><td></td><td>最新活动</td></tr>
+    			<tr><td></td><td>最新活动</td></tr>
+    			<tr><td></td><td>最新活动</td></tr>
+    			<tr><td></td><td>最新活动</td></tr>
+    			<tr><td></td><td>最新活动</td></tr>
+    			<tr><td></td><td>最新活动</td></tr>
+    			<tr><td></td><td>最新活动</td></tr>
+    		</table>
+    	</div>
+    </div>
     
     <div id="showbook2"><h2>热卖图书</h2>
   			<div style="overflow: hidden; height: 140px; ">

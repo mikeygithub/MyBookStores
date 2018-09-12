@@ -177,6 +177,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			data:json,
 			success:function(){
 				alert("É¾³ý³É¹¦£¡");
+				getbuycarpagemessage();
 				$("#showbook1").load("BuyCarAction_myBuyCarUI.action");
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
