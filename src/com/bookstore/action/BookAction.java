@@ -153,9 +153,16 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 			reclentlook=(List<Book>) ActionContext.getContext().getSession().get("reclentlook");
 		}
 		//插入book
-		reclentlook.add(book);//进行栈操作
-		while(reclentlook.size()>4){//超出4个记录进行覆盖
-			
+		//模拟队列的形式,先进先出
+		
+		if(reclentlook.contains(book)){reclentlook.remove(book);}//解决重复显示同一个商品的问题
+		
+		reclentlook.add(0,book);
+		
+		if(reclentlook.size()>4){
+			for(int i=4;i<reclentlook.size();i++){
+				reclentlook.remove(i);
+			}
 		}
 		
 		ActionContext.getContext().getSession().put("reclentlook",reclentlook);//将信息放入session
