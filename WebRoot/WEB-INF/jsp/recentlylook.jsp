@@ -32,33 +32,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="recentlylooks" style="width: 160px;height: 122px;border: 1 solid red;clear: both;background: #fff0d9;
 			padding-top: 2px;padding-left: 15px;margin: 0 auto;">
 			<!-- 迭代最近浏览的商品  最多显示4条-->
-			<form>
-			<!--
-			<table> 
+			<form><table> 
+			<s:iterator value="#session.reclentlook" var="rb">
 			<tr>
-				<td><img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#bc.opbook.bimage}"/>.jpg' 
+				<td><img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#rb.bimage}"/>.jpg' 
 				title="快把我带回家" style="width:25px;height: 25px;"/></td>
-				<td><s:property value="%{#bc.opbook.bimage}"/></td>
-			</tr></table> -->
+				<td><s:property value="%{#rb.bname}"/></td>
+				</tr>
 				
-				<table><tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
-				title="快把我带回家" style="width:25px;height: 25px;"/></td>
-				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr>
-				<tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
-				title="快把我带回家" style="width:25px;height: 25px;"/></td>
-				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr>
-				<tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
-				title="快把我带回家" style="width:25px;height: 25px;"/></td>
-				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr>
-				<tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
-				title="快把我带回家" style="width:25px;height: 25px;"/></td>
-				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr></table>
-			
+					</s:iterator>
+				</table>
 			</form>
 			<!-- 迭代完成 -->
 		</div>
   <script type="text/javascript">
-  	function bookdetails(bid){
+  	function bookdetails02(bid){
   		//alert(bid);
   		var json={bid:bid}
   				//将该商品放进最近浏览模块session

@@ -226,7 +226,8 @@ border: 1px solid #c3c3c3;
 		<div id="recently" >
 		<h2>最近浏览</h2>
 		<div id="recentlylook" style="width: 160px;height: 122px;border: 1 solid red;clear: both;background: #fff0d9;
-			padding-top: 5px;padding-left: 20px;">
+			
+			padding-top: 5px;padding-left: 20px;"><jsp:include page="recentlylook.jsp"></jsp:include>
 		</div>
 		</div>
   	</div>
@@ -322,7 +323,7 @@ border: 1px solid #c3c3c3;
   </div>
   <script type="text/javascript">
   	function bookdetails(bid){
-  		//alert(bid);
+  		alert(bid);
   		var json={bid:bid}
   				//将该商品放进最近浏览模块session
   		putbooktorecently(json);
@@ -345,10 +346,11 @@ border: 1px solid #c3c3c3;
   	//将该商品放进最近浏览模块session
   	*/
   	function putbooktorecently(json){
+  		
   		$.ajax({//执行异步交互将要查看的商品详情放入session
 			url:"BookAction_putbooktorecently.action",
 			type:"post",
-			async:false,
+			async:true,
 			data:json,
 			success:function(){
 			$("#recentlylook").empty();

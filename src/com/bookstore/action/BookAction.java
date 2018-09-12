@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.bookstore.domain.Book;
 import com.bookstore.domain.OrderProduct;
-import com.bookstore.domain.SpecialBook;
 import com.bookstore.service.BookService;
 import com.bookstore.tools.Page;
 import com.opensymphony.xwork2.ActionContext;
@@ -145,16 +144,19 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 	 */
 	@SuppressWarnings("unchecked")
 	public void putbooktorecently(){
+		System.out.println("将id="+model.getBid()+"的书载入session");
 		Book book=this.bookService.findBookById(model.getBid());//获取当前浏览的book
 		List<Book> reclentlook;
-		if(ActionContext.getContext().get("reclentlook")==null){
+		if(ActionContext.getContext().getSession().get("reclentlook")==null){
 			reclentlook=new ArrayList<Book>();
 		}else{
-			reclentlook=(List<Book>) ActionContext.getContext().get("reclentlook");
+			reclentlook=(List<Book>) ActionContext.getContext().getSession().get("reclentlook");
 		}
 		//插入book
 		reclentlook.add(book);//进行栈操作
-		
+		while(reclentlook.size()>4){//超出4个记录进行覆盖
+			
+		}
 		
 		ActionContext.getContext().getSession().put("reclentlook",reclentlook);//将信息放入session
 	}
