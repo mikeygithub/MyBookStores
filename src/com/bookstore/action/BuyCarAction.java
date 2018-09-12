@@ -139,6 +139,7 @@ public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 	public void getBuyCarPage(){//分页操作
 		if(currentPageNumber==0)currentPageNumber=1;
 		
+		@SuppressWarnings("unchecked")
 		List<OrderProduct> buycar=(List<OrderProduct>) ActionContext.getContext().getSession().get("buycar");//获取购物车
 		
 		List<OrderProduct> noworders=new ArrayList<OrderProduct>();//需要在当前页显示的orderlist
@@ -154,5 +155,5 @@ public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 		ActionContext.getContext().getSession().put("newBuyCarPage", nowBuyCarPage);
 		
 	}
-	
+
 }

@@ -1,5 +1,6 @@
 package com.bookstore.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.bookstore.domain.Book;
@@ -138,6 +139,30 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 	public String putBookInToBuyCar(){
 		OrderProduct op;
 		return "PUTSUCCESS";
+	}
+	/*
+	 * 将该商品放进最近浏览模块session
+	 */
+	@SuppressWarnings("unchecked")
+	public void putbooktorecently(){
+		Book book=this.bookService.findBookById(model.getBid());//获取当前浏览的book
+		List<Book> reclentlook;
+		if(ActionContext.getContext().get("reclentlook")==null){
+			reclentlook=new ArrayList<Book>();
+		}else{
+			reclentlook=(List<Book>) ActionContext.getContext().get("reclentlook");
+		}
+		//插入book
+		reclentlook.add(book);//进行栈操作
+		
+		
+		ActionContext.getContext().getSession().put("reclentlook",reclentlook);//将信息放入session
+	}
+	/*
+	 *返回最近浏览的ui界面
+	 */
+	public String getrecentlyUI(){
+		return "getrecentlyUI";
 	}
 	public String Lookdebug(){
 		return "test";

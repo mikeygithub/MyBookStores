@@ -223,34 +223,10 @@ border: 1px solid #c3c3c3;
 				<dd><a href="javascript:findBookByType(2)">工具书籍</a></dd>
 			</dl>
 		</div>
-		<div id="recently" ><h2>最近浏览</h2>
+		<div id="recently" >
+		<h2>最近浏览</h2>
 		<div id="recentlylook" style="width: 160px;height: 122px;border: 1 solid red;clear: both;background: #fff0d9;
 			padding-top: 5px;padding-left: 20px;">
-			<!-- 迭代最近浏览的商品  最多显示4条-->
-			<form>
-			<!--
-			<table> 
-			<tr>
-				<td><img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#bc.opbook.bimage}"/>.jpg' 
-				title="快把我带回家" style="width:25px;height: 25px;"/></td>
-				<td><s:property value="%{#bc.opbook.bimage}"/></td>
-			</tr></table> -->
-				
-				<table><tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
-				title="快把我带回家" style="width:25px;height: 25px;"/></td>
-				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr>
-				<tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
-				title="快把我带回家" style="width:25px;height: 25px;"/></td>
-				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr>
-				<tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
-				title="快把我带回家" style="width:25px;height: 25px;"/></td>
-				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr>
-				<tr><td><img src='${pageContext.request.contextPath}/images/product/1.jpg' 
-				title="快把我带回家" style="width:25px;height: 25px;"/></td>
-				<td style="vertical-align:middle;text-align:center;">阿姆斯特朗</td></tr></table>
-			
-			</form>
-			<!-- 迭代完成 -->
 		</div>
 		</div>
   	</div>
@@ -348,7 +324,10 @@ border: 1px solid #c3c3c3;
   	function bookdetails(bid){
   		//alert(bid);
   		var json={bid:bid}
-  		$.ajax({//执行异步交互
+  				//将该商品放进最近浏览模块session
+  		putbooktorecently(json);
+  		
+  		$.ajax({//执行异步交互将要查看的商品详情放入session
 			url:"BookAction_BookDetails.action",
 			type:"post",
 			async:true,
@@ -356,6 +335,24 @@ border: 1px solid #c3c3c3;
 			success:function(){
 			$("#inputbox").empty();
 			$("#showbook1").load('BookAction_BookDetailsUI.action');
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("异步请求错误");
+			}
+		})
+  	}
+  	/*
+  	//将该商品放进最近浏览模块session
+  	*/
+  	function putbooktorecently(json){
+  		$.ajax({//执行异步交互将要查看的商品详情放入session
+			url:"BookAction_putbooktorecently.action",
+			type:"post",
+			async:false,
+			data:json,
+			success:function(){
+			$("#recentlylook").empty();
+			$("#recentlylook").load('BookAction_getrecentlyUI.action');
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误");

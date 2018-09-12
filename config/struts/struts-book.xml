@@ -10,7 +10,7 @@
 			<result name="test">WEB-INF/jsp/ajax.jsp</result>
 			<result name="index" type="redirect">index.jsp</result>
 			<result name="TypeBookUI">/WEB-INF/jsp/oneTypeBook.jsp</result>
-			
+			<result name="getrecentlyUI">WEB-INF/jsp/recentlylook.jsp</result>
 		</action>
 	</package>
 </struts>
