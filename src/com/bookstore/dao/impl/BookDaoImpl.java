@@ -96,13 +96,13 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
         query.setParameter(0,i);
         query.setFirstResult(startIndex);//从第几条数据开始查询
         query.setMaxResults(pageSize);//每页显示多少条数据
-        System.out.println("messsage=开始"+startIndex+"条数="+pageSize+"typeId="+i);
-        try {
-			List list=query.list();
-		} catch (HibernateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//        System.out.println("messsage=开始"+startIndex+"条数="+pageSize+"typeId="+i);
+//        try {
+//			List list=query.list();
+//		} catch (HibernateException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
         return query.list();
 	}
 

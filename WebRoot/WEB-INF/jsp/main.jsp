@@ -277,17 +277,12 @@ border: 1px solid #c3c3c3;
     <div id="news"><h2>最新活动</h2>
     	<div style="height: 200px;width: 160px;background: #fff0d9;border:1px sloid yellow; padding: 10px 10px;" >
     		<table><!-- 迭代活动/新闻目录  8条 -->
+    			<s:iterator value="#session.newsmessage" var="news">
     			<tr>
     				<td></td>
-    				<td>最新活动</td>
+    				<td><a href="javascript:looknews('<s:property value="news.nid"/>')"><s:property value="news.ntitle"/></a></td>
     			</tr>
-    			<tr><td></td><td>最新活动</td></tr>
-    			<tr><td></td><td>最新活动</td></tr>
-    			<tr><td></td><td>最新活动</td></tr>
-    			<tr><td></td><td>最新活动</td></tr>
-    			<tr><td></td><td>最新活动</td></tr>
-    			<tr><td></td><td>最新活动</td></tr>
-    			<tr><td></td><td>最新活动</td></tr>
+    			</s:iterator>
     		</table>
     	</div>
     </div>
@@ -367,7 +362,26 @@ border: 1px solid #c3c3c3;
 $().ready(function(){
   		if(!checkalreadylogin()){
   			$("#usernames").text("你还没有登入哦");	}
+  			
+  			//加载新闻活动session
   	})
+  	
+  	function looknews(nid){//查看活动新闻
+  		var json={nid:nid}
+  		$.ajax({//执行异步交互将要查看的商品详情放入session
+			url:"NewsAction_getSomeOneNews.action",
+			type:"post",
+			async:false,
+			data:json,
+			success:function(){
+			$("#showbook1").empty();
+			$("#showbook1").load('NewsAction_getSomeOneNews.action');
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("异步请求错误");
+			}
+		})
+  	}
   </script>
   </body>
 </html>

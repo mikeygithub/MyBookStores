@@ -9,4 +9,5 @@
 	<include file="struts/struts-user.xml"></include>
 	<include file="struts/struts-buycar.xml"></include>
 	<include file="struts/struts-book.xml"></include>
+	<include file="struts/struts-news.xml"></include>
 </struts>

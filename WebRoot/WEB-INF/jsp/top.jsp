@@ -98,7 +98,7 @@ border-top-right-radius:5px;
     	</div>
     	<div class="nav"><ul>
   <li><a class="active" href="index.jsp">主页</a></li>
-  <li><a href="#news">新闻</a></li>
+  <li><a href="javascript:news()">新闻</a></li>
   <li><a href="#contact">联系</a></li>
   <li><a href="#about">关于</a></li>
 </ul>
@@ -152,6 +152,11 @@ border-top-right-radius:5px;
     		$("#inputbox").load(url);
     		$('#light2').css("display","block");
     		$('#fade').css("display","block");
+    	}
+    	function news(){
+    		
+			$("#showbook1").load('BookAction_BookDetailsUI.action');
+	
     	}
     </script>
   </body>
