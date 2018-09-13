@@ -35,12 +35,13 @@ public class NewsAction extends ActionSupport implements ModelDriven<News> {
 			List<News> news=this.newsService.getAllNewAlreadlyD();
 		
 			ActionContext.getContext().getSession().put("newsmessage", news);//放入session
-			
+			System.out.println("news大小="+news.size());
 		return "getNwesMessages";
 	}
 	public void getSomeOneNews(){
 		News news=this.newsService.findNewsById(model.getNid());
 		ActionContext.getContext().getSession().put("someonenews", news);//放入session
+		System.out.println("活动id="+news.getNid());
 	}
 	
 	public String getNewsUI(){

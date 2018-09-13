@@ -277,10 +277,11 @@ border: 1px solid #c3c3c3;
     <div id="news"><h2>最新活动</h2>
     	<div style="height: 200px;width: 160px;background: #fff0d9;border:1px sloid yellow; padding: 10px 10px;" >
     		<table><!-- 迭代活动/新闻目录  8条 -->
-    			<s:iterator value="#session.newsmessage" var="news">
+    			<s:iterator value="#session.newsmessage" var="newss">
     			<tr>
-    				<td></td>
-    				<td><a href="javascript:looknews('<s:property value="news.nid"/>')"><s:property value="news.ntitle"/></a></td>
+    				<td style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+    				<a href="javascript:looknews('<s:property value="#newss.nid"/>')">
+    				<s:property value="%{#newss.ntitle}"/></a></td>
     			</tr>
     			</s:iterator>
     		</table>

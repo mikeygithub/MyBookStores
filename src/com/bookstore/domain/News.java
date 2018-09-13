@@ -1,10 +1,10 @@
 package com.bookstore.domain;
 
 public class News {
-	private Long nid;//新闻活动id
-	private String ntitle;//新闻活动title
-	private String ncontext;//新闻活动正文
-	private Long statics;//是否加入公告栏;
+	public  Long nid;//新闻活动id
+	public  String ntitle;//新闻活动title
+	public String ncontext;//新闻活动正文
+	public Long statics;//是否加入公告栏;
 	public Long getNid() {
 		return nid;
 	}

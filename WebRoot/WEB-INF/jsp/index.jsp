@@ -98,6 +98,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	var json2={"specialcrruentPageNum":1}
   	getSpecialpage(json2);//当页面加载的时候将两个模块的book加载进值栈的session
 	getHotpage(json1);*/
+	
+	//加载最新的活动或者新闻到session
 	$.ajax({url:"NewsAction_getNwesMessages.action",async:false});
 })
 function getHotpage(json){
