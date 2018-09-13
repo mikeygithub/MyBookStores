@@ -88,7 +88,7 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 	}
 	
 	public String loadHotBook(){//加载特价模块图书和热门图书
-		
+		System.out.println("需要跳转到的页码数="+hotcrruentPageNum);
 		if(hotcrruentPageNum==0)hotcrruentPageNum=1;
 		
 		hotpage.setParament(hotcrruentPageNum,this.bookService.getTotalRecords("HotBook"),6);
@@ -102,7 +102,7 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 		return SUCCESS;
 	}
 	public String loadSpecialBook(){
-		
+		System.out.println("需要跳转到的页码数="+specialcrruentPageNum);
 		if(specialcrruentPageNum==0)specialcrruentPageNum=1;
 		
 		specialpage.setParament(specialcrruentPageNum,this.bookService.getTotalRecords("SpecialBook"),12);

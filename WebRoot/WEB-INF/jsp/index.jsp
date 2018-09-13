@@ -89,18 +89,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
   <script type="text/javascript">
   $().ready(function(){
-  	
-/*  var json1={"hotcrruentPageNum":$("#pagehot").val()}//获取当前页码
-  	
-	var json2={"specialcrruentPageNum":$("#pagespecial").val()}//获取当前页码
-*/  	
-	/*var json1={"hotcrruentPageNum":1}alert("hello");
-	var json2={"specialcrruentPageNum":1}
-  	getSpecialpage(json2);//当页面加载的时候将两个模块的book加载进值栈的session
-	getHotpage(json1);*/
 	
 	//加载最新的活动或者新闻到session
-	$.ajax({url:"NewsAction_getNwesMessages.action",async:false});
+	//$.ajax({url:"NewsAction_getNwesMessages.action",async:false});
 })
 function getHotpage(json){
 	
@@ -110,7 +101,7 @@ function getHotpage(json){
 			async:false,
 			data:json,
 			success:function(){
-				setTimeout("location.href='index.jsp'",0);
+				setTimeout("location.href='BookAction_index.action'",0);
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误");
@@ -124,7 +115,7 @@ function getSpecialpage(json){
 			async:false,
 			data:json,
 			success:function(){
-				setTimeout("location.href='index.jsp'",0);
+				setTimeout("location.href='BookAction_index.action'",0);
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误");
