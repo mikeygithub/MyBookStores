@@ -25,16 +25,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <div id="news_childs" style="height: 500px;width: 590px;background: red;margin: 0 auto;">
+    <div id="news_childs" style="height: 500px;width: 590px;margin: 0 auto;background: #fff0d9;">
     	<h2 style="font-size: 14px;
 	line-height: 30px;
 	border-bottom: 2px solid #fbaa62;
 	padding-left: 25px;">当前位置：新闻活动页</h2>
-    	<div id="news_titles" style="float: left;width: 590px;height:50px; margin-top:20px;background: yellow;">
-    		<s:property value="#session.someonenews.ntitle"/>
+    	<div id="news_titles" style="text-align:center;float: left;width: 590px;height:50px; margin-top:20px;font-size:20px;">
+    		<strong><s:property value="#session.someonenews.ntitle"/></strong>
     	</div>
     	<div>
-    		<p>
+    		<p style="text-indent:2em">
     			<s:property value="#session.someonenews.ncontext"/>
     		</p>
     	</div>

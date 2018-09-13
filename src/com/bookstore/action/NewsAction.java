@@ -38,7 +38,9 @@ public class NewsAction extends ActionSupport implements ModelDriven<News> {
 			System.out.println("news大小="+news.size());
 		return "getNwesMessages";
 	}
+	
 	public void getSomeOneNews(){
+		System.out.println("要显示的newsid="+model.getNid());
 		News news=this.newsService.findNewsById(model.getNid());
 		ActionContext.getContext().getSession().put("someonenews", news);//放入session
 		System.out.println("活动id="+news.getNid());
