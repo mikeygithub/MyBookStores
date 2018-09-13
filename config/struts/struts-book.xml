@@ -8,7 +8,8 @@
 		<action name="BookAction_*" method="{1}" class="com.bookstore.action.BookAction">
 			<result name="BookDetailsUI">WEB-INF/jsp/BookDetails.jsp</result>
 			<result name="test">WEB-INF/jsp/ajax.jsp</result>
-			<result name="index" type="redirect">index.jsp</result>
+			<!-- <result name="index" type="redirect">index.jsp</result> -->
+			<result name="index">WEB-INF/jsp/index.jsp</result>
 			<result name="TypeBookUI">/WEB-INF/jsp/oneTypeBook.jsp</result>
 			<result name="getrecentlyUI">WEB-INF/jsp/recentlylook.jsp</result>
 		</action>

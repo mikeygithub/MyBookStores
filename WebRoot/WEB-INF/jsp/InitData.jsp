@@ -26,10 +26,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <script type="text/javascript">
 		$().ready(function(){
   		$.ajax({url:"NewsAction_getNwesMessages.action",async:true});//加载最新的活动或者新闻到session
-  		$.ajax({url:"BookAction_index.action",async:false});//加载
-  		$(location).attr("href",'index.jsp');
-  		//window.location.href="BookAction_index.action";
-  		alert("加载数据完成");
+  		$.ajax({url:"BookAction_loadHotBook.action",async:false});//加载HotBook
+  		$.ajax({url:"BookAction_loadSpecialBook.action",async:false});//加载SpecialBook
+  		
+  		//$(location).attr("href",'index.jsp');
+  		window.location.href="BookAction_index.action";
+  		//alert("加载数据完成");
   	})
 	</script>
   </body>

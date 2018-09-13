@@ -81,8 +81,8 @@ public class BookAction extends ActionSupport implements ModelDriven<Book> {
 
 	public String index(){//第一次加载页面的时候将两个模块的信息放入session
 		
-		loadHotBook();
-		loadSpecialBook();
+//		loadHotBook();
+//		loadSpecialBook();
 		
 		return "index";
 	}
