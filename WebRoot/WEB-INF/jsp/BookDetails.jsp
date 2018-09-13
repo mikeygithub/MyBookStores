@@ -144,7 +144,7 @@ display: none;
   			
   		}
   		function goBuy(){
-  		if(checkalreadylogin()){
+  		if(checkalreadylogin()){//判断是否已经登入了
     		$("#showbook1").load("UserAction_myBuyCar.action");//跳转到购买界面  直接生成订单
     		}else{
   				jumps("UserAction_buyCarNullJumpPage.action");
