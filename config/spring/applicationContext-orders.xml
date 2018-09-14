@@ -18,7 +18,7 @@
 			<ref bean="ordersDao"/>
 		</property>
 	</bean>
-	<bean id="ordersAction" class="com.bookstore.action.OrderAction">
+	<bean id="ordersAction" class="com.bookstore.action.OrdersAction">
 		<property name="ordersService">
 			<ref bean="ordersService"/>
 		</property>

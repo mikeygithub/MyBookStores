@@ -5,7 +5,7 @@
 
 <struts>
 	<package name="orders" namespace="/" extends="struts-default">
-		<action name="OrdersAction_*" method="{1}" class="com.bookstore.action.OrderAction">
+		<action name="OrderAction_*" method="{1}" class="com.bookstore.action.OrderAction">
 			<result name="success">WEB-INF/jsp/PaySuccess.jsp</result>
 			<result name="getOrderUI">WEB-INF/jsp/submitOrder.jsp</result>
 		</action>

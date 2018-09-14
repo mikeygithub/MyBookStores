@@ -5,7 +5,7 @@ import com.bookstore.service.OrdersService;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
+public class OrdersAction extends ActionSupport implements ModelDriven<Orders> {
 
 	private OrdersService ordersService;
 	
@@ -21,6 +21,7 @@ public class OrderAction extends ActionSupport implements ModelDriven<Orders> {
 	}
 	
 	public String getOrderUI(){
+		System.out.println("order ui page");
 		return "getOrderUI";
 	}
 
