@@ -8,7 +8,7 @@
            http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
            http://www.springframework.org/schema/tx 
            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
-	<bean id="ordersDao" class="com.bookstore.domain.Orders">
+	<bean id="ordersDao" class="com.bookstore.dao.impl.OrdersDaoImpl">
 		<property name="sessionFactory">
 			<ref bean="sessionFactory"/>
 		</property>

@@ -9,7 +9,7 @@ public class OrdersAction extends ActionSupport implements ModelDriven<Orders> {
 
 	private OrdersService ordersService;
 	
-	Orders orders=new Orders();
+	Orders model=new Orders();
 	
 	public void setOrdersService(OrdersService ordersService) {
 		this.ordersService = ordersService;
@@ -17,9 +17,13 @@ public class OrdersAction extends ActionSupport implements ModelDriven<Orders> {
 
 	public Orders getModel() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.model;
 	}
 	
+	public void setModel(Orders model) {
+		this.model = model;
+	}
+
 	public String getOrderUI(){
 		System.out.println("order ui page");
 		return "getOrderUI";
