@@ -8,9 +8,19 @@
            http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
            http://www.springframework.org/schema/tx 
            http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
-	<import resource="applicationContext-db.xml"/>
-	<import resource="applicationContext-user.xml"/>
-	<import resource="applicationContext-book.xml"/>
-	<import resource="applicationContext-news.xml"/>
-	<import resource="applicationContext-orders.xml"/>
+	<bean id="ordersDao" class="com.bookstore.domain.Orders">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="ordersService" class="com.bookstore.service.impl.OrderServiceImpl">
+		<property name="ordersDao">
+			<ref bean="ordersDao"/>
+		</property>
+	</bean>
+	<bean id="ordersAction" class="com.bookstore.action.OrderAction">
+		<property name="ordersService">
+			<ref bean="ordersService"/>
+		</property>
+	</bean>
 </beans>

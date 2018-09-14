@@ -17,4 +17,14 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 		this.getHibernateTemplate().update(order);
 	}
 
+	public Orders findOrder(Long orderId) {
+		return this.getHibernateTemplate().get(Orders.class,orderId);
+	}
+
+	public void deleteOrder(Long orderId) {
+		// TODO Auto-generated method stub
+		Orders entity=this.findOrder(orderId);
+		this.getHibernateTemplate().delete(entity);
+	}
+
 }

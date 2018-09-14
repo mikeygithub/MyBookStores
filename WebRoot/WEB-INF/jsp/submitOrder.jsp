@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 <style type="text/css">
-.wrapss { width:580px; height:490px; margin:0 auto; overflow: hidden;}
+.wrapss { width:580px; height:490px; margin:0 auto; overflow: hidden;background: #fff0d9}
 .wrapss h2{font-size: 18px;color: #F60;display : inline
 	line-height: 30px;
 	border-bottom: 2px solid #fbaa62;
@@ -41,9 +41,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<select id="province" onchange="Get_Next_Place('province','Get_city')" style="width:150px;">
   <option id="Not_data1">省份</option>
-  <option id="GuangDong" value="GuangDong">GuangDong</option>
-  <option id="ShanDong" value="ShanDong">ShanDong</option>
-  <option id="HuNan" value="HuNan">HuNan</option>
+  <option id="GuangXi" value="GuangXi">广西</option>
+  <option id="GuangDong" value="GuangDong">广东</option>
+  <option id="ShanDong" value="ShanDong">山东</option>
+  <option id="HuNan" value="HuNan">湖南</option>
  </select>
  <select id="city" onchange="Get_Next_Place('city','Get_country')" style="width:150px;">
   <option id="Not_data2">城市</option>
@@ -54,15 +55,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <br/>
  </div>
  	<div style="clear: both;margin-top: 10px;">
- 		<div>详细信息:<input type="text" width="570px" style="" height="50px;"></div>
+ 		<div>详细信息:<input type="text" style="width: 485px;" height="50px;"></div>
  	</div>
  </div>
 			</div>
-			<div id="payway" style="height: 80px;border: 1px solid red;">支付方式</div>
-			<div id="allproduct" style="height: 180px;border: 1px solid red;">购物清单</div>
-			<div id="suresubmintorder" style="height: 85px;border: 1px solid red;">提交订单
-			<div style="float: right; height:37px;width: 134px; margin-top: 20px;margin-bottom: 20px;">
-			<img alt="${pageContext.request.contextPath}/images/submit.png" src=""></div></div>
+			<div id="payway" style="height: 30px;border: 1px solid red;padding: 20px 80px;" id="pw">支付方式:
+				<input type="radio" name="payways"  id="pw">支付宝
+					<input type="radio" name="payways" onclick="wechatpayway()" id="pw">微信
+					<input type="radio" onclick="anotherpayway()" name="payways"  id="pw">其他
+					
+				</div>
+			<div id="allproduct" style="height: 180px;border: 1px solid red;"><div>购物清单:</div>
+				<div style="clear: both;border: 1px solid black;height: 160px;overflow: hidden;"></div>
+			</div>
+			<div id="suresubmintorder" style="height: 95px;border: 1px solid red;"><div>提交订单</div>
+			<div style="font: color: #c30"><strong>应付金额：￥<s:property value="#session."/></strong></div>
+			<div style="float: right; height:37px;width: 134px; margin-top:0px;margin-bottom: 20px;border: 1px solid black;">
+			<img src="${pageContext.request.contextPath}/images/submit.png"></div></div>
 		</div>
 	</div>
 </div>
@@ -97,8 +106,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   }
   //用来存储省市区的数据结构
   var Place_dict = {
+  "GuangXi":{
+       "梧州":["万秀区","HuangPu","TianHe"],
+       "QingYuan":["QingCheng","YingDe","LianShan"],
+       "FoShan":["NanHai","ShunDe","SanShui"]
+       },
    "GuangDong":{
-       "GuangZhou":["PanYu","HuangPu","TianHe"],
+       "广州":["PanYu","HuangPu","TianHe"],
        "QingYuan":["QingCheng","YingDe","LianShan"],
        "FoShan":["NanHai","ShunDe","SanShui"]
        },
@@ -139,6 +153,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     $("#country").append(text);
     console.log(text); //用来观察生成的text数据
    }
+  }
+  
+  
+  function wechatpayway(){
+  	alert("暂不支持");
+  	return;
+  }
+  
+  function anotherpayway(){
+  	alert("暂不支持");
+  	return;
   }
 	</script>
 </body>
