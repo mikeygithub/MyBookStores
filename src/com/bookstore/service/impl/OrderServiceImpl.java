@@ -8,8 +8,6 @@ public class OrderServiceImpl implements OrdersService {
 
 	private OrdersDao ordersDao;
 	
-	
-	
 	public void setOrdersDao(OrdersDao ordersDao) {
 		this.ordersDao = ordersDao;
 	}
