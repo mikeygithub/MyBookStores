@@ -226,9 +226,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		
 		 function checkbox(checkbox){//勾选商品进行结算
+		 
+		 var wspa=new Array()//没有var 将全局共享
+		 
 		 	if(checkbox.checked==true){//检查是否勾选
 		 		alert("选中商品");
 		 		$("#resultmoney").text('checkbox');
+		 		//将商品的id传给action,在从session中获取要结算的商品信息封装成订单,在将以及结算啦的商品重购物车中移除即可
 		 	}else{
 		 		//取消选中总金额要减
 		 		alert("取消选中");
