@@ -20,6 +20,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
 <style type="text/css">
 .wraps { width:580px; height:490px; margin:0 auto; overflow: hidden;}
 #shopping { }
@@ -85,7 +86,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr><!-- 进行将 购物车的商品遍历  6行-->
 				<s:iterator value="#session.newBuyCarPage.records" var="bc">
 				<tr id="product_id_1">
-					<td align="center" valign="middle"><input type="checkbox" value="checkbox" onclick="checkbox(this)"></td>
+					<td align="center" valign="middle">
+				<input type="checkbox" value="checkbox" onclick="checkbox1(this,'<s:property value="%{#bc.opbook.bid}"/>')"/></td>
 					<td class="thumb">
 					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#bc.opbook.bimage}"/>.jpg' title="快把我带回家" style="width:30px;height: 30px;"/>
 					<a href="javascript:bookdetails('<s:property value="%{#bc.opbook.bid}"/>')"><s:property value="%{#bc.opbook.bname}"/></a>
@@ -123,13 +125,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div style="margin-top:15px;">
 					结算金额：<span id="resultmoney">￥</span>
 				</div>
-				<div id="confirmsubmitorder"><input type="submit" value="提交订单"/>
+				<div id="confirmsubmitorder"><input type="submit" value="提交订单" onclick="submitorder()"/>
 				</div>
 			</div>
 		</form>
 	</div>
 </div>
 <script type="text/javascript">
+		 wspa=new Array()//没有var 将全局共享
+		 totalmoney=0;//选中的购物车商品总价
+		 
 		function reduceproductnumber(bid,nownumber){//减少商品数量
 			alert("要减少数量的图书id"+bid+"现在数量="+nownumber);
 			//判断是否为最小值1
@@ -225,24 +230,52 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		})
 		}
 		
-		 function checkbox(checkbox){//勾选商品进行结算
-		 
-		 wspa=new Array()//没有var 将全局共享
-		 
-		 	if(checkbox.checked==true){//检查是否勾选
-		 		alert("选中商品");
-		 		wspa.push()//添加要购买的商品id到数组中
-		 		$("#resultmoney").text('checkbox');
+		 function checkbox1(thischeck,rbid){//勾选商品进行结算
+
+		 	if(thischeck.checked==true){//检查是否勾选
+		 		alert("选中商品"+rbid);
+		 		wspa.push(rbid)//添加要购买的商品id到数组中
+		 		//$("#resultmoney").text('checkbox');
 		 		//将商品的id传给action,在从session中获取要结算的商品信息封装成订单,在将以及结算啦的商品重购物车中移除即可
+		 		updataTotalMoney();//更新订单消费价格
 		 	}else{
 		 		//取消选中总金额要减
 		 		alert("取消选中");
+		 		//将数组中的商品id移除
+		 		var index=wspa.indexOf(rbid)
+		 		wspa.splice(index,1);
+		 		updataTotalMoney();//更新订单消费价格
 		 	}
 		 }
 		 function updataTotalMoney(){//
+		 
+		 	$("#resultmoney").text(totalmoney);
 		 	
 		 }
 		 function submitorder(){//确定提交订单
+		 
+		 	alert("确认提交订单"+wspa.length);
+		 	//JSON.stringify(wspa)
+		 	
+		 	//处理数组信息为json格式
+		 	for(int i=0;i<wspa.length;i++){
+		 		wsp[i]=
+		 	}
+		 	
+		 	
+		 	var json={wspa:JSON.stringify(wspa)}
+		 	$.ajax({//执行异步交互
+			url:"ordersAction_getOrder.action",
+			type:"post",
+			async:false,
+			data:json,
+			success:function(){
+				$("#showbook1").load("ordersAction_getOrderUI.action");
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("异步请求错误！");
+			}
+		})
 		 }
 	</script>
 </body>
