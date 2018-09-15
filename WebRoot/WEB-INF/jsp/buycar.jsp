@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr><!-- 进行将 购物车的商品遍历  6行-->
 				<s:iterator value="#session.newBuyCarPage.records" var="bc">
 				<tr id="product_id_1">
-					<td align="center" valign="middle"><input type="checkbox" value="checkbox"></td>
+					<td align="center" valign="middle"><input type="checkbox" value="checkbox" onclick="checkbox(this)"></td>
 					<td class="thumb">
 					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#bc.opbook.bimage}"/>.jpg' title="快把我带回家" style="width:30px;height: 30px;"/>
 					<a href="javascript:bookdetails('<s:property value="%{#bc.opbook.bid}"/>')"><s:property value="%{#bc.opbook.bname}"/></a>
@@ -224,6 +224,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			}
 		})
 		}
+		
+		 function checkbox(checkbox){//勾选商品进行结算
+		 	if(checkbox.checked==true){//检查是否勾选
+		 		alert("选中商品");
+		 		$("#resultmoney").text('checkbox');
+		 	}else{
+		 		//取消选中总金额要减
+		 		alert("取消选中");
+		 	}
+		 }
+		 function updataTotalMoney(){//
+		 	
+		 }
+		 function submitorder(){//确定提交订单
+		 }
 	</script>
 </body>
 </html>

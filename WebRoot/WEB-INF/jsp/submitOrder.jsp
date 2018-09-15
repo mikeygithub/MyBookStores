@@ -65,9 +65,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<input type="radio" onclick="anotherpayway()" name="payways"  id="pw">其他
 					
 				</div>
+				
+				
 			<div id="allproduct" style="height: 180px;border: 1px solid red;"><div>购物清单:</div>
-				<div style="clear: both;border: 1px solid black;height: 160px;overflow: hidden;"></div>
+				<div style="clear: both;border: 1px solid black;height: 160px;overflow: hidden;">
+					<!-- 将购物清单进行遍历 -->
+					<s:iterator value="#session." var="plist">
+					<s:property value=""/>
+					</s:iterator>
+					<!-- 遍历完成 -->
+				</div>
 			</div>
+			
+			
 			<div id="suresubmintorder" style="height: 95px;border: 1px solid red;"><div>提交订单</div>
 			<div style="font: color: #c30"><strong>应付金额：￥<s:property value="#session."/></strong></div>
 			<div style="float: right; height:37px;width: 134px; margin-top:0px;margin-bottom: 20px;border: 1px solid black;">
@@ -86,7 +96,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				$("#showbook1").load("BuyCarAction_myBuyCarUI.action");
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
-				alert("删除失败！异步请求错误！");
+				alert("异步请求错误！");
 			}
 		})
 		}
