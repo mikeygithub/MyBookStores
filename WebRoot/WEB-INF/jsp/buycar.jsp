@@ -132,7 +132,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 <script type="text/javascript">
-		 wspa=new Array()//没有var 将全局共享
+		 wspas=new Array()//没有var 将全局共享
 		 totalmoney=0;//选中的购物车商品总价
 		 
 		function reduceproductnumber(bid,nownumber){//减少商品数量
@@ -234,7 +234,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		 	if(thischeck.checked==true){//检查是否勾选
 		 		alert("选中商品"+rbid);
-		 		wspa.push(rbid)//添加要购买的商品id到数组中
+		 		wspas.push(rbid)//添加要购买的商品id到数组中
 		 		//$("#resultmoney").text('checkbox');
 		 		//将商品的id传给action,在从session中获取要结算的商品信息封装成订单,在将以及结算啦的商品重购物车中移除即可
 		 		updataTotalMoney();//更新订单消费价格
@@ -242,8 +242,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 		//取消选中总金额要减
 		 		alert("取消选中");
 		 		//将数组中的商品id移除
-		 		var index=wspa.indexOf(rbid)
-		 		wspa.splice(index,1);
+		 		var index=wspas.indexOf(rbid)
+		 		wspas.splice(index,1);
 		 		updataTotalMoney();//更新订单消费价格
 		 	}
 		 }
@@ -254,16 +254,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 }
 		 function submitorder(){//确定提交订单
 		 
-		 	alert("确认提交订单"+wspa.length);
+		 	alert("确认提交订单"+wspas.length);
 		 	//JSON.stringify(wspa)
 		 	
-		 	//处理数组信息为json格式
-		 	for(int i=0;i<wspa.length;i++){
-		 		wsp[i]=
-		 	}
+		 	//处理数组信息为json格式序列化
 		 	
+		 	var json=$.param({'wspa':wspas},true);
 		 	
-		 	var json={wspa:JSON.stringify(wspa)}
+		 	//var json={wspa:JSON.stringify(wspas)}
 		 	$.ajax({//执行异步交互
 			url:"ordersAction_getOrder.action",
 			type:"post",
