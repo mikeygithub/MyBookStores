@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 <style type="text/css">
-.wrapss { width:580px; height:490px; margin:0 auto; overflow: hidden;background: #fff0d9}
+.wrapss { width:580px; height:500px; margin:0 auto; overflow: hidden;background: #fff0d9}
 .wrapss h2{font-size: 18px;color: #F60;display : inline
 	line-height: 30px;
 	border-bottom: 2px solid #fbaa62;
@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="ordertatil" style="height:px;">
 		<div style="height: 435px;border: 1px solid yellow;">
 			<div id="message" style="height: 80px;border: 1px solid red;">收货人信息：
-				<div style=""><div><input type="text" value="" style="width: 90px;">
+				<div style=""><div><input type="text" value="<s:property value="#session.usermessage.uname"/>" style="width: 90px;">
 
 	<select id="province" onchange="Get_Next_Place('province','Get_city')" style="width:150px;">
   <option id="Not_data1">省份</option>
@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  <br/>
  </div>
  	<div style="clear: both;margin-top: 10px;">
- 		<div>详细信息:<input type="text" style="width: 485px;" height="50px;"></div>
+ 		<div>详细信息:<input type="text" style="width: 485px;" height="50px; " value="<s:property value="#session.usermessage.uaddress"/>"></div>
  	</div>
  </div>
 			</div>
@@ -67,10 +67,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				
 				
-			<div id="allproduct" style="height: 180px;border: 1px solid red;"><div>购物清单:</div>
+			<div id="allproduct" style="height: 200px;border: 1px solid red;"><div>购物清单:</div>
 				<div style="clear: both;border: 1px solid black;height: 160px;overflow: hidden;">
 					<!-- 将购物清单进行遍历 -->
-					<s:iterator value="#session." var="plist">
+					<s:iterator value="#session.willbuybook" var="plist">
 					<s:property value=""/>
 					</s:iterator>
 					<!-- 遍历完成 -->
@@ -78,9 +78,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			
 			
-			<div id="suresubmintorder" style="height: 95px;border: 1px solid red;"><div>提交订单</div>
+			<div id="suresubmintorder" style="height: 120px;border: 1px solid red;"><div>提交订单</div>
 			<div style="font: color: #c30"><strong>应付金额：￥<s:property value="#session."/></strong></div>
-			<div style="float: right; height:37px;width: 134px; margin-top:0px;margin-bottom: 20px;border: 1px solid black;">
+			<div style="float: right; height:37px;width: 134px; margin-top:0px;margin-bottom: 20px;">
 			<img src="${pageContext.request.contextPath}/images/submit.png"></div></div>
 		</div>
 	</div>
