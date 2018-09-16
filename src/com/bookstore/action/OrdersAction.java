@@ -51,6 +51,7 @@ public class OrdersAction extends ActionSupport implements ModelDriven<Orders> {
 		
 		List<OrderProduct> willbuybook=new ArrayList<OrderProduct>();//用于订单提交页面回显数据
 		
+		@SuppressWarnings("unchecked")
 		List<OrderProduct> buycar=(List<OrderProduct>) ActionContext.getContext().getSession().get("buycar");//从session中获取要购买的商品信息
 for(int j=0;j<wspa.length;j++){
 	for(int i=0;i<buycar.size();i++){

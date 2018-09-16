@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	
 <style type="text/css">
 .wraps { width:580px; height:490px; margin:0 auto; overflow: hidden;}
 #shopping { }
@@ -256,6 +257,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 
 		 	alert("确认提交订单"+wspas.length);
 		 	//JSON.stringify(wspa)
+		 	if(wspas.length<1){//判断是否未选中商品
+		 		alert("你还没有选中要购买的商品哦！");return;
+		 	}
+		 	
 		 	
 		 	//处理数组信息为json格式序列化
 		 	
@@ -268,7 +273,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			async:false,
 			data:json,
 			success:function(){
+				alert("提交数据成功！");
+				$("#showbook1").empty();
 				$("#showbook1").load("ordersAction_getOrderUI.action");
+				
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误！");
