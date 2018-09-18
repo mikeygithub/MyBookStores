@@ -41,6 +41,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
 width:100px;">双宽带+无线WiFi 网速升3倍 WiFi手机设置无线上网的方法</div>
+
+
+	<ul>
+		<li style="border: 1px solid red;width: 140px;height: 130px;line-height: 15px;font-size: 14px;overflow: hidden;float:left;
+margin-right:5px;
+margin-left: 10px;
+margin-top:5px;">
+			<dl>
+				<dt>
+					<a href="javascript:void(0)" onclick="bookdetails('<s:property value="%{#sp.bid}"/>')">
+					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg' title="快把我带回家"/></a>
+				</dt>
+				<dd>价格</dd>
+				<dd>数量</dd>			
+			</dl>				
+		</li>
+		
+		<li style="border: 1px solid red;width: 140px;height: 130px;line-height: 15px;font-size: 14px;overflow: hidden;float:left;
+margin-right:5px;
+margin-left: 10px;
+margin-top:5px;">
+			<dl>
+				<dt>
+					<a href="javascript:void(0)" onclick="bookdetails('<s:property value="%{#sp.bid}"/>')">
+					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg' title="快把我带回家"/></a>
+				</dt>
+				<dd>价格</dd>
+				<dd>数量</dd>			
+			</dl>				
+		</li>
+		
+	</ul>
 </body>
 <script type="text/javascript">
 function f(){

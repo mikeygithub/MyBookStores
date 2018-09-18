@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <h2>确认购买界面</h2>
 	<div id="ordertatil" style="height:px;">
 		<div style="height: 435px;border: 1px solid yellow;">
-			<div id="message" style="height: 80px;border: 1px solid red;">收货人信息：
+			<div id="message" style="height: 120px;border: 1px solid red;">收货人信息：
 				<div style=""><div><input type="text" value="<s:property value="#session.usermessage.uname"/>" style="width: 90px;">
 
 	<select id="province" onchange="Get_Next_Place('province','Get_city')" style="width:150px;">
@@ -57,6 +57,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  	<div style="clear: both;margin-top: 10px;">
  		<div>详细信息:<input type="text" style="width: 485px;" height="50px; " value="<s:property value="#session.usermessage.uaddress"/>"></div>
  	</div>
+ 	
+ </div>
+ <div>
+ 	<div style="clear: both;margin-top: 10px;">
+ 		<div>联系电话:<input type="text" style="width: 485px;" height="20px; " value="<s:property value="#session.usermessage.uphone"/>"></div>
+ 	</div>
  </div>
 			</div>
 			<div id="payway" style="height: 30px;border: 1px solid red;padding: 20px 80px;" id="pw">支付方式:
@@ -68,12 +74,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 			<div id="allproduct" style="height: 200px;border: 1px solid red;"><div>购物清单:</div>
-				<div style="clear: both;border: 1px solid black;height: 160px;overflow: hidden;">
+				<div style="clear: both;border: 1px solid black;height: 180px;overflow: hidden;">
 					<!-- 将购物清单进行遍历 -->
+					<ul>
 					<s:iterator value="#session.willbuybook" var="plist">
-					<s:property value=""/>
+		<li style="border: 1px solid red;width: 100px;height: 130px;line-height: 15px;font-size: 14px;overflow: hidden;float:left;margin-right:5px;margin-left: 6px;margin-top:15px;">
+			<dl>
+				<dt style="height:80px;width: 80px;margin: 10px 10px; ">
+					<a href="javascript:void(0)" onclick="bookdetails('<s:property value="%{#sp.bid}"/>')">
+					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg' title="快把我带回家" style="height:80px;width: 80px; "/></a>
+				</dt>
+				<dd style="text-align: center;color: #c30;font-weight: bold;">价格：<s:property value="#plist.opbook.bprice"/>元/本</dd>
+				<dd style="text-align: center;">数量:<s:property value="#plist."/>本</dd>			
+			</dl>				
+		</li>
+		<!-- 测试迭代 -->
+		<!-- 测试迭代 -->
 					</s:iterator>
 					<!-- 遍历完成 -->
+					</ul>
 				</div>
 			</div>
 			
@@ -81,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="suresubmintorder" style="height: 120px;border: 1px solid red;"><div>提交订单</div>
 			<div style="font: color: #c30"><strong>应付金额：￥<s:property value="#session."/></strong></div>
 			<div style="float: right; height:37px;width: 134px; margin-top:0px;margin-bottom: 20px;">
-			<img src="${pageContext.request.contextPath}/images/submit.png"></div></div>
+			<img src="${pageContext.request.contextPath}/images/submit.png" onclick=""></div></div>
 		</div>
 	</div>
 </div>

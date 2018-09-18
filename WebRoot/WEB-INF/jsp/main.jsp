@@ -240,7 +240,7 @@ border: 1px solid #c3c3c3;
     			<dl>
 					<dt>
 					<a href="javascript:void(0)" onclick="bookdetails('<s:property value="%{#sp.bid}"/>')">
-					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg' title="快把我带回家"/></a>
+					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg' title="快把我带回家吧"/></a>
 					</dt>
 					<dd class="title"><a href="javascript:void(0)" onclick="bookdetails('<s:property value="%{#sp.bid}"/>')"><s:property value="%{#sp.bname}"></s:property></a></dd>
 					<dd class="price">￥<s:property value="%{#sp.bspecialprice}"></s:property></dd>
