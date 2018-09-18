@@ -239,16 +239,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 function checkbox1(thischeck,rbid,num,price){//勾选商品进行结算
 
 		 	if(thischeck.checked==true){//检查是否勾选
-		 		alert("选中商品"+rbid);
+		 		//alert("选中商品"+rbid);
 		 		wspas.push(rbid)//添加要购买的商品id到数组中
 		 		//$("#resultmoney").text('checkbox');
 		 		//将商品的id传给action,在从session中获取要结算的商品信息封装成订单,在将以及结算啦的商品重购物车中移除即可
 		 		var all=parseInt(num)*parseInt(price);
 		 		updataTotalMoney(all);//更新订单消费价格
-		 		alert(all);
+		 		//alert(all);
 		 	}else{
 		 		//取消选中总金额要减
-		 		alert("取消选中");
+		 		//alert("取消选中");
 		 		//将数组中的商品id移除
 		 		var index=wspas.indexOf(rbid)
 		 		wspas.splice(index,1);
@@ -263,7 +263,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		 }
 		 function submitorder(){//确定提交订单
 		 
-		 	alert("确认提交订单"+wspas.length);
+		 	//alert("确认提交订单"+wspas.length);
 		 	//JSON.stringify(wspa)
 		 	if(wspas.length<1){//判断是否未选中商品
 		 		alert("你还没有选中要购买的商品哦！");return;

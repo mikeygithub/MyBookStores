@@ -3,7 +3,7 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 	<class name="com.bookstore.domain.OrderProduct">
-		<id name="opid" length="10">
+		<id name="opid" length="100">
 			<generator class="increment"></generator>
 		</id>
 		<property name="opnum"></property>

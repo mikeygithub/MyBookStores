@@ -205,6 +205,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			success:function(){
 				alert("提交成功");
 				//$("#showbook1").load("");
+				setTimeout("location.href='BookAction_index.action'",0);
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误！");

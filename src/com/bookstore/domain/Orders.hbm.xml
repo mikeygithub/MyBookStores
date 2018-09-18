@@ -6,7 +6,7 @@
 		<id name="oid">
 			<generator class="increment"></generator>
 		</id>
-		<property name="orderno" type="java.lang.String" length="50" unique="true"></property>
+		<property name="orderno" type="java.lang.String" length="100" unique="true"></property>
 		<property name="ocreatetime" type="time"></property>
 		<property name="cost" type="java.lang.Long" length="10"></property>
 		<property name="status" type="java.lang.Integer" length="1"></property>

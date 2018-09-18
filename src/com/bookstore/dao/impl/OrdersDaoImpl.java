@@ -10,14 +10,13 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 
 	public void addOrder(Orders order) {
 		// TODO Auto-generated method stub
-		try {
-			this.getHibernateTemplate().save(order);
-		} catch (DataAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				this.getHibernateTemplate().save(order);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
-
 	public void upDataOrder(Orders order) {
 		// TODO Auto-generated method stub
 		this.getHibernateTemplate().update(order);

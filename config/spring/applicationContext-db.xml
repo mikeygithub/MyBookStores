@@ -33,7 +33,7 @@
 			<tx:method name="delete*"
 				read-only="false"/>
 			<!-- 
-				除了上述三种情况以外的情况
+				除了上述情况以外的情况
 			 -->
 			<tx:method name="*"
 				read-only="true"/>
