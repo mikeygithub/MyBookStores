@@ -8,7 +8,7 @@
 		</id>
 		<property name="orderno" type="java.lang.String" length="50" unique="true"></property>
 		<property name="ocreatetime" type="time"></property>
-		<property name="cost" type="java.lang.Double" length="10"></property>
+		<property name="cost" type="java.lang.Long" length="10"></property>
 		<property name="status" type="java.lang.Integer" length="1"></property>
 		<property name="ouserid" type="java.lang.Long" length="10"></property>
 		<set name="allproduct" cascade="save-update,delete">
@@ -18,5 +18,4 @@
 			<one-to-many class="com.bookstore.domain.OrderProduct"/>
 		</set>
 	</class>
-
 </hibernate-mapping>

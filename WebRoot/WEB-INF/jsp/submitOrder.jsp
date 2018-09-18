@@ -195,9 +195,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	return;
   }
   function goPay(){//判断用户资料信息
-					alert("确认信息");
+					//alert("确认信息");
 					//转向支付模块
-					alert("转向支付");
+					//alert("转向支付");
+			$.ajax({//执行异步交互
+			url:"ordersAction_addorders.action",
+			type:"post",
+			async:false,
+			success:function(){
+				alert("提交成功");
+				//$("#showbook1").load("");
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				alert("异步请求错误！");
+			}
+		})
 	
   }
 	</script>

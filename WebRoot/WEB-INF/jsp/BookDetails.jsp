@@ -124,7 +124,7 @@ display: none;
   		function putInBuyCar(){
   		if(checkalreadylogin()){
   			var json={opnum:1}//封装图书信息
-    		alert("添加中！")//
+    		//alert("添加中！")//
     		
     		$.ajax({//执行异步交互添加到购物车
 			url:"BuyCarAction_addBookToBuyCar.action",
@@ -132,7 +132,7 @@ display: none;
 			async:false,
 			data:json,
 			success:function(){
-				alert("添加成功！");
+				//alert("添加成功！");
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				alert("异步请求错误");

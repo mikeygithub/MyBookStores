@@ -16,14 +16,11 @@
 		<property name="utruename"></property>
 		<property name="uaddress"></property>
 		<property name="uemail" length="50" unique="true"></property>
-		<list name="orders" cascade="save-update,delete">
+		<set name="orders" cascade="save-update,delete">
 			<key>
 				<column name="uid"></column>
 			</key>
-			<list-index>
-				<column name="index_o"></column>
-			</list-index>
 			<one-to-many class="com.bookstore.domain.Orders"/>
-		</list>
+		</set>
 	</class>
 </hibernate-mapping>

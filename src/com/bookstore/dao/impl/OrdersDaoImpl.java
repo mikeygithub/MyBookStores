@@ -1,5 +1,6 @@
 package com.bookstore.dao.impl;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bookstore.dao.OrdersDao;
@@ -9,7 +10,12 @@ public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 
 	public void addOrder(Orders order) {
 		// TODO Auto-generated method stub
-		this.getHibernateTemplate().save(order);
+		try {
+			this.getHibernateTemplate().save(order);
+		} catch (DataAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void upDataOrder(Orders order) {

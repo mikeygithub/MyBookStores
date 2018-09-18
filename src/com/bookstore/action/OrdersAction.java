@@ -1,11 +1,17 @@
 package com.bookstore.action;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
+import java.util.UUID;
 
 import com.bookstore.domain.Book;
 import com.bookstore.domain.OrderProduct;
 import com.bookstore.domain.Orders;
+import com.bookstore.domain.User;
 import com.bookstore.service.OrdersService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -76,8 +82,22 @@ for(int j=0;j<wspa.length;j++){
 	
 	}
 	public void addorders(){//支付完成新增加订单到数据库
-		
-		this.ordersService.addOrder(order);
+			Long  oId= new Random().nextLong();//订单id
+			if(oId<0)oId=oId*(-1);
+			String orderNo=UUID.randomUUID().toString();//用户订单编号
+			Date createtime=new Date();//创建时间
+			Long totalmoney=(Long) ActionContext.getContext().getSession().get("totalmaney");//总价格	
+			Integer status=1;//支付状态
+			User user=(User)ActionContext.getContext().getSession().get("usermessage");
+			Long ouserid=user.getUid();//对应当前用户id
+			List<OrderProduct> list=(List<OrderProduct>) ActionContext.getContext().getSession().get("willbuybook");
+			Set<OrderProduct> set=new HashSet<OrderProduct>(list);
+			
+			System.out.println(oId+"//"+"//"+orderNo+"//"+createtime.toString()+"//"+totalmoney+"//"+status+"//"+ouserid+"//"+set.toString());
+			
+			Orders orders=new Orders(oId,orderNo,createtime,totalmoney,status,ouserid,set);
+			
+			this.ordersService.addOrder(orders);
 		
 	}
 }

@@ -8,7 +8,7 @@ public class Orders implements Serializable {
 		private Long oid;//id
 		private String orderno;//订单号
 		private Date ocreatetime;//创建时间
-		private double cost;//订单金额
+		private Long cost;//订单金额
 		private Integer status;//订单状态
 		private Long ouserid;//订单对应userid
 		private Set<OrderProduct> allproduct;
@@ -33,7 +33,7 @@ public class Orders implements Serializable {
 		public double getCost() {
 			return cost;
 		}
-		public void setCost(double cost) {
+		public void setCost(Long cost) {
 			this.cost = cost;
 		}
 		public Integer getStatus() {
@@ -54,6 +54,20 @@ public class Orders implements Serializable {
 		public void setAllproduct(Set<OrderProduct> allproduct) {
 			this.allproduct = allproduct;
 		}
+		public Orders() {super();
+		}
+		public Orders(Long oid, String orderno, Date ocreatetime, Long cost, Integer status, Long ouserid,
+				Set<OrderProduct> allproduct) {
+			super();
+			this.oid = oid;
+			this.orderno = orderno;
+			this.ocreatetime = ocreatetime;
+			this.cost = cost;
+			this.status = status;
+			this.ouserid = ouserid;
+			this.allproduct = allproduct;
+		}
+		
 		
 
 }

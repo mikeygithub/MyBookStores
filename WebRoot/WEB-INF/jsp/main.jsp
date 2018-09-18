@@ -319,7 +319,7 @@ border: 1px solid #c3c3c3;
   </div>
   <script type="text/javascript">
   	function bookdetails(bid){
-  		alert(bid);
+  		//alert(bid);
   		var json={bid:bid}
   				//将该商品放进最近浏览模块session
   		putbooktorecently(json);
@@ -368,7 +368,7 @@ $().ready(function(){
   	})
   	
   	function looknews(nid){//查看活动新闻
-  	alert(nid);
+  	//alert(nid);
   		var json={nid:nid}
   		$.ajax({//执行异步交互将要查看的商品详情放入session
 			url:"NewsAction_getSomeOneNews.action",

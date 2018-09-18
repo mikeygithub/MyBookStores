@@ -2,6 +2,7 @@ package com.bookstore.domain;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 public class User implements Serializable {
 	private static final int USER_NOT_STATE=0;//未激活状态
@@ -18,13 +19,13 @@ public class User implements Serializable {
 	private String udentitycode;
 	private String uaddress;
 	private String sex;
-	private List<Orders> orders;
+	private Set<Orders> orders;
 	
 	
-	public List<Orders> getOrders() {
+	public Set<Orders> getOrders() {
 		return orders;
 	}
-	public void setOrders(List<Orders> orders) {
+	public void setOrders(Set<Orders> orders) {
 		this.orders = orders;
 	}
 	public int getState() {
