@@ -1,6 +1,8 @@
 package com.bookstore.domain;
 
-public class News {
+import java.io.Serializable;
+
+public class News implements Serializable{
 	public  Long nid;//新闻活动id
 	public  String ntitle;//新闻活动title
 	public String ncontext;//新闻活动正文
