@@ -98,14 +98,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			
 			<div id="suresubmintorder" style="height: 120px;border: 1px solid red;"><div>提交订单</div>
-			<div style="font: color: #c30"><strong>应付金额：￥<s:property value="#session."/></strong></div>
+			<div style="font: color: #c30"><strong>应付金额：<s:property value="#session.totalmaney"/>￥</strong></div>
 			<div style="float: right; height:37px;width: 134px; margin-top:0px;margin-bottom: 20px;">
-			<img src="${pageContext.request.contextPath}/images/submit.png" onclick=""></div></div>
+			<img src="${pageContext.request.contextPath}/images/submit.png" onclick="goPay()"></div></div>
 		</div>
 	</div>
 </div>
 <script type="text/javascript">
-		function submitorders(json){//将订单数据进行提交
+		function submitorders(json){//将订单数据进行提交	
 			$.ajax({//执行异步交互
 			url:".action",
 			type:"post",
@@ -193,6 +193,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   function anotherpayway(){
   	alert("暂不支持");
   	return;
+  }
+  function goPay(){//判断用户资料信息
+					alert("确认信息");
+					//转向支付模块
+					alert("转向支付");
+	
   }
 	</script>
 </body>

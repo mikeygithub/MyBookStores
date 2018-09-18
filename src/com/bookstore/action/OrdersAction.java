@@ -64,6 +64,13 @@ for(int j=0;j<wspa.length;j++){
 			}
 		}
 }
+	//总价格
+	long totalmaney=0;
+	for(OrderProduct o:willbuybook){
+		totalmaney=totalmaney+(long) (o.getOpnum()*o.getOpbook().getBprice());
+	}
+
+	ActionContext.getContext().getSession().put("totalmaney",totalmaney);//总价格	
 	ActionContext.getContext().getSession().put("buycar",buycar);//更新购物车session
 	ActionContext.getContext().getSession().put("willbuybook",willbuybook);//保存将要结算的商品session
 	
