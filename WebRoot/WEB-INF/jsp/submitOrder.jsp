@@ -82,10 +82,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<dl>
 				<dt style="height:80px;width: 80px;margin: 10px 10px; ">
 					<a href="javascript:void(0)" onclick="bookdetails('<s:property value="%{#sp.bid}"/>')">
-					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg' title="快把我带回家" style="height:80px;width: 80px; "/></a>
+					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#plist.opbook.bimage}"/>.jpg' title="快把我带回家" style="height:80px;width: 80px; "/></a>
 				</dt>
 				<dd style="text-align: center;color: #c30;font-weight: bold;">价格：<s:property value="#plist.opbook.bprice"/>元/本</dd>
-				<dd style="text-align: center;">数量:<s:property value="#plist."/>本</dd>			
+				<dd style="text-align: center;">数量:<s:property value="#plist.opnum"/>本</dd>			
 			</dl>				
 		</li>
 		<!-- 测试迭代 -->
