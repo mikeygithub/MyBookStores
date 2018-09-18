@@ -75,4 +75,9 @@ for(int j=0;j<wspa.length;j++){
 	ActionContext.getContext().getSession().put("willbuybook",willbuybook);//保存将要结算的商品session
 	
 	}
+	public void addorders(){//支付完成新增加订单到数据库
+		
+		this.ordersService.addOrder(order);
+		
+	}
 }
