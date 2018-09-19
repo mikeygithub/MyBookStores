@@ -7,9 +7,9 @@
 			<generator class="increment"></generator>
 		</id>
 		<property name="opnum"></property>
-		<property name="opbook"></property>
+		<!-- <property name="opbook"></property> -->
+		<one-to-one name="opbook" class="com.bookstore.domain.Book"></one-to-one>
 		<many-to-one name="oporder" column="oid" class="com.bookstore.domain.Orders" cascade="save-update">
 		</many-to-one> 
-		
 	</class>
 </hibernate-mapping>

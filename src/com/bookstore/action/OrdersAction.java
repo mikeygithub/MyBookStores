@@ -82,8 +82,8 @@ for(int j=0;j<wspa.length;j++){
 	
 	}
 	public void addorders(){//支付完成新增加订单到数据库
-			Long  oId= new Random().nextLong();//订单id
-			if(oId<0)oId=oId*(-1);
+			Long  oId= new Random().nextLong();if(oId<0)oId=oId*(-1);//订单id
+			
 			String orderNo=UUID.randomUUID().toString();//用户订单编号
 			Date createtime=new Date();//创建时间
 			Long totalmoney=(Long) ActionContext.getContext().getSession().get("totalmaney");//总价格	
