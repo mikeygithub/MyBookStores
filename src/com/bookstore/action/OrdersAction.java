@@ -93,11 +93,12 @@ for(int j=0;j<wspa.length;j++){
 			List<OrderProduct> list=(List<OrderProduct>) ActionContext.getContext().getSession().get("willbuybook");
 			Set<OrderProduct> set=new HashSet<OrderProduct>(list);
 			
-			System.out.println(oId+"//"+"//"+orderNo+"//"+createtime.toString()+"//"+totalmoney+"//"+status+"//"+ouserid+"//set大小="+set.size());
+			System.out.println(oId+"//"+"//"+orderNo+"//"+createtime.toString()+"//"+totalmoney+"//"+
+			status+"//"+ouserid+"//set大小="+set.size());
 			
 			Orders orders=new Orders(oId,orderNo,createtime,totalmoney,status,ouserid,set);
 			
-			this.ordersService.addOrder(orders);
+			this.ordersService.saveOrder(orders);
 		
 	}
 }

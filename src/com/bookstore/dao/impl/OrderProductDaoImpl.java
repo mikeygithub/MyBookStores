@@ -7,7 +7,7 @@ import com.bookstore.domain.OrderProduct;
 
 public class OrderProductDaoImpl extends HibernateDaoSupport implements OrderProductDao {
 
-	public void addBookNumber(OrderProductDao orderProductDao) {
+	public void saveBookNumber(OrderProductDao orderProductDao) {
 		// TODO Auto-generated method stub
 		this.getHibernateTemplate().save(orderProductDao);
 	}

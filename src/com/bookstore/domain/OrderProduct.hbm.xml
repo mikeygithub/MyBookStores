@@ -8,6 +8,8 @@
 		</id>
 		<property name="opnum"></property>
 		<property name="opbook"></property>
-		<many-to-one name="oporder" column="oid" class="com.bookstore.domain.Orders"></many-to-one>
+		<many-to-one name="oporder" column="oid" class="com.bookstore.domain.Orders" cascade="save-update">
+		</many-to-one> 
+		
 	</class>
 </hibernate-mapping>

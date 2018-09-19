@@ -13,9 +13,9 @@ public class OrderProductServiceImpl implements OrderProductService {
 		this.orderProductDao = orderProductDao;
 	}
 
-	public void addBookNumber(OrderProductDao orderProductDao) {
+	public void saveBookNumber(OrderProductDao orderProductDao) {
 		// TODO Auto-generated method stub
-		this.orderProductDao.addBookNumber(orderProductDao);
+		this.orderProductDao.saveBookNumber(orderProductDao);
 	}
 
 	public void deleteBookNumber(OrderProductDao orderProductDao) {

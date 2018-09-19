@@ -12,9 +12,9 @@ public class OrderServiceImpl implements OrdersService {
 		this.ordersDao = ordersDao;
 	}
 
-	public void addOrder(Orders order) {
+	public void saveOrder(Orders order) {
 		// TODO Auto-generated method stub
-		this.ordersDao.addOrder(order);
+		this.ordersDao.saveOrder(order);
 	}
 
 	public void upDataOrder(Orders order) {

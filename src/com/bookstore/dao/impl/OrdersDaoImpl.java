@@ -8,14 +8,16 @@ import com.bookstore.domain.Orders;
 
 public class OrdersDaoImpl extends HibernateDaoSupport implements OrdersDao {
 
-	public void addOrder(Orders order) {
+	public void saveOrder(Orders order) {
 		// TODO Auto-generated method stub
 			try {
+				this.getSession().beginTransaction();
 				this.getHibernateTemplate().save(order);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			this.getSession().getTransaction().commit();
 	}
 	public void upDataOrder(Orders order) {
 		// TODO Auto-generated method stub
