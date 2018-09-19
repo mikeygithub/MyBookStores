@@ -269,7 +269,7 @@ border: 1px solid #c3c3c3;
     	<div style="height: 50px;width:178px;clear: left;"><table>
     	<tr>
     		<td><a href="javascript:void(0)" onclick="">修改资料</a></td>
-    		<td><a href="javascript:void(0)" onclick="">物流跟踪</a></td>
+    		<td><a href="https://m.kuaidi100.com/" target="_blank">快递查询</a></td>
     		<td><a href="javascript:void(0)" onclick="">我的订单</a></td>
     	</tr>
     	</table></div>

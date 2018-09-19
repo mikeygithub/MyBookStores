@@ -74,7 +74,9 @@ public class BuyCarAction extends ActionSupport implements ModelDriven<Book> {
 		OrderProduct opnew=new OrderProduct();
 		opnew.setOpbook(needputbuycarbook);
 		opnew.setOpnum(1);
-		buycar.add(opnew);
+		opnew.setObid();
+		buycar.add(opnew);//弥补当初表设计的错误不想改了就这样
+		
 		ActionContext.getContext().getSession().put("buycar",buycar);//存放到session
 		return SUCCESS;
 	}

@@ -8,6 +8,7 @@ public class OrderProduct implements Serializable {
 	private int opnum;// 数量
 	private Orders oporder;// 订单
 	private Book opbook;// 商品
+	private Long obid;//商品id
 	
 	public Long getOpid() {
 		return opid;
@@ -33,7 +34,15 @@ public class OrderProduct implements Serializable {
 	public void setOpbook(Book opbook) {
 		this.opbook = opbook;
 	}
-	
+	public Long getObid() {
+		return obid;
+	}
+	public void setObid(Long obid) {
+		this.obid = obid;
+	}
+	public void setObid() {
+		this.obid = this.opbook.getBid();
+	}
 
 	
 
