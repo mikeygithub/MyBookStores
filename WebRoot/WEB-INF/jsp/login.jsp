@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		</tr>
 	</table>
 </form>
-</div><s:debug></s:debug>
+</div>
   </body>
   <script type="text/javascript">
   function CheckItem(obj)

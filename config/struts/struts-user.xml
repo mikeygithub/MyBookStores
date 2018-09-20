@@ -14,7 +14,7 @@
 			<result name="buycar">WEB-INF/jsp/buycar.jsp</result>
 			<result name="JumpPage">WEB-INF/jsp/jumpPage.jsp</result>
 			<result name="loginout">WEB-INF/jsp/jumpPage.jsp</result>
-			
+			<result name="userMessage">WEB-INF/jsp/UserMessage.jsp</result>
 		</action>
 	</package>
 	<!-- 配置返回json格式action -->
