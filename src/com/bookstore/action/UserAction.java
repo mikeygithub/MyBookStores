@@ -129,11 +129,18 @@ public class UserAction extends ActionSupport implements ModelDriven<User> {
 		return "JumpPage";
 	}
 	
-	public String userMessage(){//购物车
+	public String userMessageUI(){
 		
-		return "userMessage";
+		return "userMessageUI";
 	}
-	
+	public String getMyAllOrderUI(){//
+		
+		return "getMyAllOrder";
+	}
+	public String getLogisticsQueryUI(){//购物车
+		
+		return "getLogisticsQueryUI";
+	}
 	public String  index(){//加载入口
 //		userService.
 		

@@ -240,7 +240,7 @@ border: 1px solid #c3c3c3;
     			<dl>
 					<dt>
 					<a href="javascript:void(0)" onclick="bookdetails('<s:property value="%{#sp.bid}"/>')">
-					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg' title="快把我带回家吧"/></a>
+					<img src='${pageContext.request.contextPath}/images/product/<s:property value="%{#sp.bimage}"/>.jpg' title="快把我带回家吧" style="height: 100px;width: 100px;"/></a>
 					</dt>
 					<dd class="title"><a href="javascript:void(0)" onclick="bookdetails('<s:property value="%{#sp.bid}"/>')"><s:property value="%{#sp.bname}"></s:property></a></dd>
 					<dd class="price">￥<s:property value="%{#sp.bspecialprice}"></s:property></dd>
@@ -268,9 +268,9 @@ border: 1px solid #c3c3c3;
     		</div>
     	<div style="height: 50px;width:178px;clear: left;"><table>
     	<tr>
-    		<td><a href="javascript:void(0)" onclick="">修改资料</a></td>
-    		<td><a href="https://m.kuaidi100.com/" target="_blank">快递查询</a></td>
-    		<td><a href="javascript:void(0)" onclick="">我的订单</a></td>
+    		<td><a href="javascript:changeusermessage()">修改资料</a></td>
+    		<td><a href="javascript:querylogistics()">快递查询</a></td>
+    		<td><a href="javascript:myallorder()">我的订单</a></td>
     	</tr>
     	</table></div>
     	</div>
@@ -295,7 +295,7 @@ border: 1px solid #c3c3c3;
     					<li>
     						<dl>
 						<dt><a href="javascript:void(0)" onclick="bookdetails('${product.bid}')">
-						<img src="${pageContext.request.contextPath}/images/product/${product.bimage}.jpg" title="快把我带回家"/></a></dt>
+						<img src="${pageContext.request.contextPath}/images/product/${product.bimage}.jpg" title="快把我带回家" style="height: 100px;width: 100px;"/></a></dt>
 						<dd class="title"><a href="javascript:void(0)" onclick="bookdetails('${product.bid}')">${product.bname}</a></dd>
 						<dd class="price">￥${product.bprice}</dd>
 							</dl>
@@ -383,6 +383,18 @@ $().ready(function(){
 				alert("异步请求错误");
 			}
 		})
+  	}
+  	function changeusermessage(){
+  		alert("修改用户信息");
+  		$("#showbook1").load('UserAction_userMessageUI.action');
+  	}
+  	function querylogistics(){
+  		alert("查询信息");
+  		$("#showbook1").load('UserAction_getLogisticsQueryUI.action');
+  	}
+  	function myallorder(){
+  		alert("我的订单");
+  		$("#showbook1").load('UserAction_getMyAllOrderUI.action');
   	}
   </script>
   </body>
